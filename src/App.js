@@ -118,8 +118,8 @@ function App(props) {
       } else if (y > 80) {
         // console.log(" ------------------else if---------------");
 
-        divPosition.style.background = "rgba(207,227,255,.5)";
-        divPosition.style.backdropFilter = "blur(5px)";
+        divPosition.style.background = "rgba(141, 93, 217,.1)";
+        divPosition.style.backdropFilter = "blur(20px)";
         // if (windowHeight < y + 120) {
         //   // document.getElementById("header").style.top = "0px";
         //   divPosition.style.background = "rgba(207,227,255,.5)";

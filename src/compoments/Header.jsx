@@ -178,26 +178,20 @@ const Header = () => {
               >
                 Home
               </Button> */}
-             
-           
-             
-              
-          
-           
-            
-            
+
               <Button
                 disableElevation
                 variant="contained"
+                sx={{ px: 2, py: 1, borderRadius: "100vw", mr: 2 }}
                 // className="nav_button"
                 // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
                 // onClick={handleClickOpen}
-                sx={{mr:2}}
               >
                 Start now
               </Button>
               <Button
                 variant="outlined"
+                sx={{ px: 2, py: 1, borderRadius: "100vw" }}
                 // className="nav_button"
                 // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
                 // onClick={handleClickOpen}

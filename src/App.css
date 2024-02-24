@@ -327,7 +327,7 @@
 .message_box {
   padding: 60px 100px;
   box-sizing: border-box;
-  background: #e2eeff;
+  background: #e7ddff;
   border: 1px solid #ffffff;
   box-shadow: 0px 0px 26px 10px rgba(124, 124, 124, 0.06);
   border-radius: 32px;
@@ -390,7 +390,7 @@
 }
 /* -------------------accrodian------------------------ */
 .accrodian_style {
-  background: #e2eeff !important;
+  background: #e7ddff !important;
 }
 .accrodian_style .MuiAccordionSummary-root {
   align-items: start !important;

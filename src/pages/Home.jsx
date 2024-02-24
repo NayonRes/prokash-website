@@ -1,14 +1,24 @@
 import React, { useEffect, useRef } from "react";
 import "../App.css";
-import { Button, Container, Grid } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "../compoments/MouseDown.css";
 import Lottie from "lottie-react";
 import splash from "../animations/splash.json";
 import UnlockThePower from "../animations/UnlockThePower.json";
 import { Link } from "react-router-dom";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const Home = () => {
+  const [expanded, setExpanded] = React.useState("");
+
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
   const scrollToTop = () => {
     const scrollableDiv = document.getElementById("message-form");
     console.log("scrollableDiv", scrollableDiv);
@@ -33,13 +43,13 @@ const Home = () => {
   return (
     <div>
       <div style={{ position: "relative" }}>
-        <div id="mouse-animation" className="mouse_holder">
+        {/* <div id="mouse-animation" className="mouse_holder">
           <div className="scroll-downs">
             <div className="mousey">
               <div className="scroller"></div>
             </div>
           </div>
-        </div>
+        </div> */}
         <Container
           maxWidth="xl"
           className="container home_circle_bg"
@@ -70,9 +80,9 @@ const Home = () => {
                 data-aos-delay="300"
                 data-aos-offset="0"
               >
-                Build a powerful,
-                <br /> white-label <br />
-                <span style={{ color: "#CB2027" }}>payments platform</span>.
+                Digital Marketing,
+                <br />
+                <span style={{ color: "#834BFF" }}>Simplified</span>.
               </h1>
               <p
                 className="title_large mb24 showForMobileViewOnly"
@@ -80,38 +90,47 @@ const Home = () => {
                 data-aos-delay="300"
                 data-aos-offset="0"
               >
-                Build a <b>powerful,</b>
-                <br /> white-label <br />
-                <span style={{ color: "#CB2027" }}>
-                  <b>payments</b> platform
+                Digital Marketing,
+                <br />
+                <span style={{ color: "#834BFF" }}>
+                  <b>Simplified</b>
                 </span>
                 .
               </p>
 
               <p
-                className="text_body_medium mb24 centerForTabAndMobileViewOnly"
+                className="text_body_medium mb12 centerForTabAndMobileViewOnly"
                 style={{ maxWidth: "500px" }}
                 data-aos="fade-down"
                 data-aos-delay="600"
                 data-aos-offset="0"
               >
-                Our API-driven SaaS platform is a revolutionary way to build
-                digital banking and payment products quickly, without hefty
-                upfront investments, saving time and accelerating release.
+                AdHawk is the simplest solution for managing your ads and
+                optimizing sales & marketing efforts.
+              </p>
+              <p
+                className="text_body_medium mb24 centerForTabAndMobileViewOnly"
+                style={{ maxWidth: "500px" }}
+                data-aos="fade-down"
+                data-aos-delay="800"
+                data-aos-offset="0"
+              >
+                Already using AdHawk? Sign In
               </p>
 
               <Button
                 variant="contained"
-                color="error"
+                // color="error"
                 endIcon={<ArrowForwardIcon />}
-                className="contained_buttton hideForMobileViewOnly hideForTabViewOnly"
+                sx={{ px: 2, py: 1, borderRadius: "100vw", mr: 2 }}
+                className=" hideForMobileViewOnly hideForTabViewOnly"
                 disableElevation
                 data-aos="fade-down"
-                data-aos-delay="900"
+                data-aos-delay="1000"
                 data-aos-offset="0"
                 onClick={scrollToTop}
               >
-                Get a cot code
+                Start Now
               </Button>
 
               <div className="center showForTabAndMobileViewOnly">
@@ -146,7 +165,7 @@ const Home = () => {
               loop
               autoplay
             ></lottie-player> */}
-              <Lottie animationData={splash} loop={true} />
+              {/* <Lottie animationData={splash} loop={true} /> */}
 
               {/* <img
               className="home_circle"
@@ -155,22 +174,20 @@ const Home = () => {
               alt=""
              
             /> */}
-              {/* <div style={{ position: "relative", maxWidth: "100%" }}>
-              <img src="/images/home-circle.svg" alt="" width="100%" />
+
               <img
-                src="/images/hand.png"
+                src="/prokash-images/hero.png"
                 alt=""
-            
-                style={{ position: "absolute" }}
+                width="80%"
+                style={{ display: "block", margin: "auto" }}
               />
-            </div> */}
             </Grid>
           </Grid>
         </Container>
       </div>
       <div style={{ height: "1px", background: "#fff" }}></div>
       <Container maxWidth="lg" className="container">
-        <div
+        {/* <div
           className="card1 section_style"
           data-aos="fade-up"
           data-aos-offset="0"
@@ -206,8 +223,8 @@ const Home = () => {
               />
             </Grid>
           </Grid>
-        </div>
-        <Grid container alignItems="center" className="section_style">
+        </div> */}
+        {/* <Grid container alignItems="center" className="section_style">
           <Grid
             item
             xs={12}
@@ -260,11 +277,11 @@ const Home = () => {
               className="right_image_style"
             />
           </Grid>
-        </Grid>
-        <Grid container alignItems="center" className="section_style">
+        </Grid> */}
+        {/* <Grid container alignItems="center" className="section_style">
           <Grid item xs={12} sm={12} md={12} lg={6}>
             {" "}
-            {/* <img src="/images/left2.svg" alt="" className="left_image_style" /> */}
+          
             <Lottie
               animationData={UnlockThePower}
               loop={true}
@@ -295,7 +312,7 @@ const Home = () => {
                 <li>Signing the agreement and transferring the code.</li>
               </ul>
             </div>
-            {/* <Button
+            <Button
               data-aos="fade-up"
               variant="outlined"
               color="error"
@@ -304,10 +321,10 @@ const Home = () => {
               disableElevation
             >
               Learn More
-            </Button> */}
+            </Button>
           </Grid>
-        </Grid>
-        <div className="section_style">
+        </Grid> */}
+        {/* <div className="section_style">
           <div data-aos="fade-up">
             <h3 className="title_semibold_medium center">
               Our fintech products are backed by a strong foundation
@@ -458,9 +475,9 @@ const Home = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <Grid container alignItems="center" className="section_style">
+        {/* <Grid container alignItems="center" className="section_style">
           <Grid
             xs={12}
             sm={12}
@@ -482,7 +499,7 @@ const Home = () => {
               services. We can address all of your product requirements through
               these partnerships.
             </p>
-            {/* <Button
+            <Button
               data-aos="fade-up"
               variant="outlined"
               color="error"
@@ -491,7 +508,7 @@ const Home = () => {
               disableElevation
             >
               Get in touch
-            </Button> */}
+            </Button>
           </Grid>
           <Grid
             item
@@ -508,8 +525,8 @@ const Home = () => {
               className="right_image_style"
             />
           </Grid>
-        </Grid>
-        <div className="section_style">
+        </Grid> */}
+        {/* <div className="section_style">
           <div data-aos="fade-up">
             <h3 className="title_semibold_medium center">Why TheQRPay?</h3>
             <p className="text_body_medium center mt10">
@@ -598,9 +615,9 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="section_style">
+        {/* <div className="section_style">
           <div>
             <h3 className="title_semibold_medium center" data-aos="fade-up">
               Real-world applications of TheQRPay
@@ -634,7 +651,7 @@ const Home = () => {
                 TheQRPay software and developing on top of it.
               </p>
 
-              {/* <Button
+              <Button
                 data-aos="fade-up"
                 variant="outlined"
                 color="error"
@@ -643,7 +660,7 @@ const Home = () => {
                 disableElevation
               >
                 Explore
-              </Button> */}
+              </Button>
             </Grid>
           </Grid>
           <Grid container alignItems="center" className="section_style">
@@ -665,7 +682,7 @@ const Home = () => {
                 system by integrating TheQRPay's on-premise ledger layer
                 software with its current POS software.
               </p>
-              {/* <Button
+              <Button
                 data-aos="fade-up"
                 variant="outlined"
                 color="error"
@@ -674,7 +691,7 @@ const Home = () => {
                 disableElevation
               >
                 Explore
-              </Button> */}
+              </Button>
             </Grid>
             <Grid
               item
@@ -692,9 +709,9 @@ const Home = () => {
               />
             </Grid>
           </Grid>
-        </div>
+        </div> */}
 
-        <div className="section_style">
+        {/* <div className="section_style">
           <div data-aos="fade-up">
             <h3 className="title_semibold_medium center">
               Simplify the development of your fintech product
@@ -788,7 +805,7 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* <Button
+              <Button
                 data-aos="fade-up"
                 variant="outlined"
                 color="error"
@@ -797,11 +814,148 @@ const Home = () => {
                 disableElevation
               >
                 Lets work together
-              </Button> */}
+              </Button>
             </Grid>
           </Grid>
+        </div> */}
+        <div className="section_style">
+          <div data-aos="fade-up" className="mb60">
+            <h3 className="title_semibold_medium center">
+              Create the eWallet that people will favor
+            </h3>
+            <p className="text_body_medium center mt10 ">
+              In order to make your digital wallet product popular with your
+              customers and fulfill their financial needs, TheQRPay eWallet
+              provider supplies the foundation you need for it to be successful.
+            </p>
+          </div>
+
+          <Grid container spacing={{ lg: 3, md: 0, sm: 0, xs: 0 }}>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+              {" "}
+              <div data-aos="fade-up" data-aos-delay="300">
+                <Accordion
+                  expanded={
+                    expanded ===
+                    "Accounts supporting multiple currencies and various assets"
+                  }
+                  onChange={handleChange(
+                    "Accounts supporting multiple currencies and various assets"
+                  )}
+                  className="accrodian_style card_shadow mb24"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "Accounts supporting multiple currencies and various assets" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Accounts supporting multiple currencies and various assets
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Our transaction core platform serves as a versatile
+                      foundation, accommodating various asset types – from
+                      currencies and bonus points to coffee beans and liters.
+                      Seamlessly integrate multiple currencies and assets into
+                      the digital wallet system without any restrictions.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="400">
+                <Accordion
+                  expanded={
+                    expanded === "Payment transactions via banking institutions"
+                  }
+                  onChange={handleChange(
+                    "Payment transactions via banking institutions"
+                  )}
+                  className="accrodian_style card_shadow mb24"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "Payment transactions via banking institutions" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Payment transactions via banking institutions
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Incorporate a banking network integration to offer bank
+                      payments such as IBAN and SWIFT, fulfilling your users'
+                      financial service demands and enabling fund transfers to
+                      bank accounts. This integration presents a chance for your
+                      digital wallet product to appeal to diverse audience
+                      segments and enhance transaction volume.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="500">
+                <Accordion
+                  expanded={expanded === "Seamless cross-border transactions"}
+                  onChange={handleChange("Seamless cross-border transactions")}
+                  className="accrodian_style card_shadow mb24"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Seamless cross-border transactions" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Seamless cross-border transactions
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Offer seamless internal P2P transfers, regardless of
+                      location. Allow users to effortlessly transfer funds
+                      between friends at local spots or even send money
+                      internationally with just a few clicks, eliminating
+                      transfer-related complexities. Enable smooth transactions
+                      between cards, wallets, and mobile devices by integrating
+                      with the relevant payment services or providers.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+            </Grid>
+            
+          </Grid>
         </div>
-        {/* <MessageForm /> */}
       </Container>
     </div>
   );
