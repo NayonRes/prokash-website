@@ -1,0 +1,129 @@
+/* :root {
+  --padding: 60px;
+} */
+.circle1 {
+  background: transparent;
+  height: 750px;
+  width: 750px;
+  border-radius: 50%;
+  margin: auto;
+  box-sizing: border-box;
+  padding: var(--padding);
+  position: relative;
+  border: 1px solid #fff;
+}
+
+.circle2 {
+  background: transparent;
+  height: 600px;
+  width: 600px;
+  border-radius: 50%;
+  margin: auto;
+  box-sizing: border-box;
+  padding: var(--padding);
+  /* position: relative; */
+  border: 1px solid #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* animation: spin infinite 20s linear; */
+}
+.circle3 {
+  background: transparent;
+  height: 450px;
+  width: 450px;
+  border-radius: 50%;
+  margin: auto;
+  box-sizing: border-box;
+  padding: var(--padding);
+  /* position: relative; */
+  border: 1px solid #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* animation: spin infinite 20s linear; */
+}
+.circle4 {
+  background: transparent;
+  height: 320px;
+  width: 320px;
+  border-radius: 50%;
+  margin: auto;
+  box-sizing: border-box;
+  padding: var(--padding);
+  /* position: relative; */
+  border: 1px solid #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* animation: spin infinite 20s linear; */
+}
+
+.circle2_img1 {
+  left: 50%;
+  top: -20px;
+  transform: translateX(-50%);
+  position: absolute;
+}
+/* .circle2_img1, */
+.circle3_img1,
+.circle4_img1 {
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+}
+
+.circle2_img2 {
+  position: absolute;
+  right: 50%;
+  bottom: -20px;
+  transform: translateX(-50%);
+}
+
+.circle3_img2 {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+}
+.circle2_img1,
+.circle2_img2 {
+  /* animation: spin2 infinite 20s linear; */
+}
+.circle3_img1,
+.circle3_img2 {
+  /* animation: spin2 infinite 20s linear; */
+}
+.circle4_img1 {
+  /* animation: spin2 infinite 20s linear; */
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* .circle1,
+  .circle2,
+  .circle3,
+  .circle4 {
+    animation: spin infinite 20s linear;
+  } */
+}
+@keyframes spin {
+  from {
+    /* transform: rotate(0deg); */
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    /* transform: rotate(360deg); */
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes spin2 {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

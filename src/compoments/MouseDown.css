@@ -1,0 +1,80 @@
+.mouse_holder {
+  position: absolute;
+  /* top: 0; */
+  right: 100px;
+  bottom: 100px;
+  /* left: 0; */
+  /* background: #fff; */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  z-index: 50;
+}
+
+.scroll-downs {
+  /* position: absolute; */
+  /* top: 0; */
+  /* right: 0px; */
+  /* bottom: 150px; */
+  /* left: 0; */
+  margin: auto;
+  /* width: 27px;
+  height: 45px; */
+  transform: rotate(180deg);
+  /* margin: 9px 15px; */
+}
+.mousey {
+  background: #fff;
+  width: 3px;
+  padding: 7px 9px;
+  height: 20px;
+  border: 2px solid #25316d;
+  border-radius: 25px;
+  /* opacity: 0.75; */
+  box-sizing: content-box;
+}
+.scroller {
+  width: 3px;
+  height: 5px;
+  border-radius: 25%;
+  background-color: #25316d;
+  animation-name: scrollAnimation;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+  animation-iteration-count: infinite;
+}
+@keyframes scrollAnimation {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 1536px) {
+  .mouse_holder {
+    position: absolute;
+    /* right: 0px;
+    bottom: 50px; */
+  }
+}
+@media screen and (max-width: 1200px) {
+  .mouse_holder {
+    /* display: none; */
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .mouse_holder {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .mouse_holder {
+    display: none;
+  }
+}

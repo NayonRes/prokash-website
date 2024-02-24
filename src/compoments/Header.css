@@ -1,0 +1,183 @@
+.header_logo_style {
+  width: 200px;
+}
+.appbar_style {
+  background: rgba(0, 0, 0, 0) !important;
+  box-shadow: none !important;
+  position: sticky !important;
+  max-width: 2400px;
+  margin: auto;
+}
+
+.appbar_holder {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  /* max-width: 2400px; */
+  box-sizing: border-box;
+  padding: 15px 150px;
+  margin: auto;
+  z-index: 1000;
+  /* transition: 0.3s; */
+}
+
+.appbar_holder header {
+  padding-right: 0 !important;
+}
+.nav_item {
+  color: #303030 !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  text-transform: none !important;
+  /* margin-right: 28px !important; */
+  padding-right: 24px !important;
+  padding-left: 24px !important;
+  border: 2px solid rgba(0, 0, 0, 0) !important;
+  border-radius: 0px !important;
+}
+.nav_button {
+  color: #cb2027 !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  text-transform: none !important;
+  /* margin-right: 28px !important; */
+  padding-right: 24px !important;
+  padding-left: 24px !important;
+  border: 2px solid #25316d !important;
+}
+.active {
+  border-bottom: 2px solid #25316d !important;
+}
+.topbar_submenu li {
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 28px !important;
+}
+
+.topbar_submenu li:hover {
+  background: #f3f3f3 !important;
+}
+.topbar_submenu_active {
+  background: #f3f3f3 !important;
+}
+.list_item_icon_style {
+  position: absolute;
+  right: 15px;
+}
+.topbar_submenu_menu {
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  line-height: 28px !important;
+  /* background: #f3f3f3 !important; */
+  padding: 10px 15px 10px 40px !important;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  cursor: pointer;
+}
+
+.topbar_submenu_menu:hover {
+  background: #f3f3f3 !important;
+}
+
+.mobile_drawer_menu span {
+  color: #303030 !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 28px !important;
+}
+.mobile_drawer_menu svg {
+  color: #303030 !important;
+}
+.mobile_drawer_menu .MuiListItemIcon-root {
+  min-width: 35px !important;
+}
+.mobile_drawer_menu img {
+  width: 20px;
+}
+@media screen and (max-width: 1536px) {
+  .header_logo_style {
+    width: 120px;
+  }
+  .appbar_holder {
+    padding: 15px 75px;
+  }
+  .nav_item {
+    font-size: 16px !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+  .nav_button {
+    font-size: 16px !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .header_logo_style {
+    width: 100px;
+  }
+  .appbar_holder {
+    padding: 0px 40px;
+  }
+  .nav_item {
+    font-size: 14px !important;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+  }
+  .nav_button {
+    font-size: 13px !important;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+  }
+  .topbar_submenu li {
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 28px !important;
+    /* background: #f3f3f3 !important; */
+    padding: 10px 15px !important;
+    margin-bottom: 2px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .header_logo_style {
+    width: 140px;
+  }
+  .nav_item {
+    font-size: 9px !important;
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+  }
+  .nav_button {
+    font-size: 9px !important;
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .header_logo_style {
+    width: 130px;
+  }
+  .appbar_holder {
+    padding: 0px 20px;
+  }
+  .topbar_submenu li {
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 28px !important;
+    padding: 10px 15px !important;
+    margin-bottom: 2px;
+  }
+}
+
+.MuiDrawer-paper {
+  background: #cfe3ff !important;
+}
