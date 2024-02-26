@@ -17,6 +17,8 @@ import MobileDrawer from "./MobileDrawer";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import ClearIcon from "@mui/icons-material/Clear";
+import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
+import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
 const Header = () => {
   // const { window } = props;
   const location = useLocation();
@@ -186,6 +188,7 @@ const Header = () => {
                 // className="nav_button"
                 // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
                 // onClick={handleClickOpen}
+                startIcon={<LibraryAddCheckOutlinedIcon />}
               >
                 Start now
               </Button>
@@ -194,7 +197,8 @@ const Header = () => {
                 sx={{ px: 2, py: 1, borderRadius: "100vw" }}
                 // className="nav_button"
                 // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
-                // onClick={handleClickOpen}
+                startIcon={<ExitToAppOutlinedIcon />}
+                onClick={handleClickOpen}
               >
                 Login
               </Button>
@@ -210,8 +214,8 @@ const Header = () => {
           className="demo_dialog"
         >
           <DialogContent style={{ padding: "0px" }}>
-            <Grid container style={{ maxWidth: "1050px" }}>
-              <Grid
+            <Grid container style={{ maxWidth: "600px" }}>
+              {/* <Grid
                 item
                 md={5.5}
                 className="demo_dialog_left  hideForTabViewOnly hideForMobileViewOnly"
@@ -225,12 +229,12 @@ const Header = () => {
                 <p className="text_body_medium center">
                   Fill it up. We will contact you
                 </p>
-              </Grid>
+              </Grid> */}
               <Grid
                 item
                 xs={12}
                 sm={12}
-                md={6.5}
+                md={12}
                 style={{ padding: "50px 40px 40px 40px", position: "relative" }}
               >
                 <IconButton
@@ -239,6 +243,12 @@ const Header = () => {
                 >
                   <ClearIcon />
                 </IconButton>
+                <p
+                  className="demo_form_title center"
+                  style={{ marginTop: "0px" }}
+                >
+                  Login
+                </p>
                 <Grid container>
                   <Grid item xs={12}>
                     <p className="demo_form_title center showForTabAndMobileViewOnly">
@@ -299,7 +309,7 @@ const Header = () => {
                       style={{ minWidth: "250px" }}
                       disableElevation
                     >
-                      Send
+                      Submit
                     </Button>
                   </Grid>
                 </Grid>

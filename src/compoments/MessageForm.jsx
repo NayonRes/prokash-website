@@ -23,13 +23,13 @@ const MessageForm = () => {
       <div className="section_style">
         <div className="message_box">
           <h3 className="title_semibold_medium center">
-            Contact us to initiate a discussion
+            Contact Us
           </h3>
-          <p className="text_body_medium center mt10">
+          {/* <p className="text_body_medium center mt10">
             Create an exceptional fintech product with TheQRPay.
-          </p>
+          </p> */}
 
-          <Grid container spacing={6} className="message_box_input_box_margin">
+          <Grid container spacing={3} className="message_box_input_box_margin">
             <Grid item xs={12} sm={12} md={6}>
               <p className="text_body_medium">First name*</p>
               <TextField
@@ -91,7 +91,7 @@ const MessageForm = () => {
             <Grid item xs={12} className="center mt25">
               <Button
                 variant="contained"
-                color="error"
+                color="primary"
                 endIcon={<ArrowForwardIcon />}
                 className="contained_buttton message_button"
                 disableElevation

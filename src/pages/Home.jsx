@@ -12,6 +12,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import Feedback from "./Feedback";
 
 const Home = () => {
   const [expanded, setExpanded] = React.useState("");
@@ -176,7 +177,7 @@ const Home = () => {
             /> */}
 
               <img
-                src="/prokash-images/hero.png"
+                src="/hero.png"
                 alt=""
                 width="80%"
                 style={{ display: "block", margin: "auto" }}
@@ -617,99 +618,40 @@ const Home = () => {
           </div>
         </div> */}
 
-        {/* <div className="section_style">
+        <div className="section_style">
           <div>
             <h3 className="title_semibold_medium center" data-aos="fade-up">
-              Real-world applications of TheQRPay
-              <br />
-              software in business operations
+              OUR STORY
             </h3>
-            <p className="text_body_medium center mt10" data-aos="fade-up">
+            {/* <p className="text_body_medium center mt10" data-aos="fade-up">
               Take a look at our case studies to witness the extensive potential
               of TheQRPay's white label payment software
               <br /> solution and how it has been a game-changer for our clients
               in the fintech sector.
-            </p>
+            </p> */}
           </div>
           <Grid container alignItems="center" className="section_style">
             <Grid item xs={12} sm={12} md={12} lg={6}>
               {" "}
               <img
-                src="/images/Developer.svg"
+                src="/feedback-images/story.png"
                 alt="Development of an e-wallet"
                 className="left_image_style"
               />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={6}>
               <h3 className="title_semibold_medium mb12" data-aos="fade-up">
-                Development of an e-wallet and payment application utilizing
-                TheQRPay software
+                Build by marketers, for founders
               </h3>
               <p className="text_body_medium mb40" data-aos="fade-up">
-                Learn how the transformation of a network of cash-in payment
-                into a comprehensive payment application by incorporating
-                TheQRPay software and developing on top of it.
+                We believe customer intelligence is the way to help people find
+                their brands. It’s a different approach to marketing – one that
+                puts people first. We help brands create marketing so relevant
+                and respectful, people feel it’s on their terms.
               </p>
-
-              <Button
-                data-aos="fade-up"
-                variant="outlined"
-                color="error"
-                endIcon={<ArrowForwardIcon />}
-                className="outlined_buttton"
-                disableElevation
-              >
-                Explore
-              </Button>
             </Grid>
           </Grid>
-          <Grid container alignItems="center" className="section_style">
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={12}
-              lg={6}
-              className="right_order_maintain"
-            >
-              <h3 className="title_semibold_medium mb40" data-aos="fade-up">
-                A top PSP in MENA overhauls its
-                <br /> transaction accounting system
-              </h3>
-              <p className="text_body_medium mb40" data-aos="fade-up">
-                Discover how a prominent payment service provider (NDA) from a
-                MENA country revolutionized its central transaction accounting
-                system by integrating TheQRPay's on-premise ledger layer
-                software with its current POS software.
-              </p>
-              <Button
-                data-aos="fade-up"
-                variant="outlined"
-                color="error"
-                endIcon={<ArrowForwardIcon />}
-                className="outlined_buttton"
-                disableElevation
-              >
-                Explore
-              </Button>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={12}
-              lg={6}
-              className="left_order_maintain"
-            >
-              {" "}
-              <img
-                src="/images/php.svg"
-                alt="A top PSP in MENA overhauls"
-                className="right_image_style"
-              />
-            </Grid>
-          </Grid>
-        </div> */}
+        </div>
 
         {/* <div className="section_style">
           <div data-aos="fade-up">
@@ -820,14 +762,25 @@ const Home = () => {
         </div> */}
         <div className="section_style">
           <div data-aos="fade-up" className="mb60">
-            <h3 className="title_semibold_medium center">
-              Create the eWallet that people will favor
-            </h3>
+            <h3 className="title_semibold_medium center">REVIEWS</h3>
             <p className="text_body_medium center mt10 ">
+              Hear from our clients
+            </p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="300">
+            <Feedback />
+          </div>
+        </div>
+        <div className="section_style">
+          <div data-aos="fade-up" className="mb60">
+            <h3 className="title_semibold_medium center">
+              Frequently Asked Questions (FAQs)
+            </h3>
+            {/* <p className="text_body_medium center mt10 ">
               In order to make your digital wallet product popular with your
               customers and fulfill their financial needs, TheQRPay eWallet
               provider supplies the foundation you need for it to be successful.
-            </p>
+            </p> */}
           </div>
 
           <Grid container spacing={{ lg: 3, md: 0, sm: 0, xs: 0 }}>
@@ -836,18 +789,17 @@ const Home = () => {
               <div data-aos="fade-up" data-aos-delay="300">
                 <Accordion
                   expanded={
-                    expanded ===
-                    "Accounts supporting multiple currencies and various assets"
+                    expanded === "Top digital marketing service in Bangladesh"
                   }
                   onChange={handleChange(
-                    "Accounts supporting multiple currencies and various assets"
+                    "Top digital marketing service in Bangladesh"
                   )}
-                  className="accrodian_style card_shadow mb24"
+                  className="accrodian_style card_shadow mb12"
                 >
                   <AccordionSummary
                     expandIcon={
                       expanded ===
-                      "Accounts supporting multiple currencies and various assets" ? (
+                      "Top digital marketing service in Bangladesh" ? (
                         <RemoveIcon />
                       ) : (
                         <AddIcon />
@@ -860,16 +812,56 @@ const Home = () => {
                       // sx={{ flexShrink: 0 }}
                       className="subtitle_bold"
                     >
-                      Accounts supporting multiple currencies and various assets
+                      Top digital marketing service in Bangladesh
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <p className="text_body_small_regular">
-                      Our transaction core platform serves as a versatile
-                      foundation, accommodating various asset types – from
-                      currencies and bonus points to coffee beans and liters.
-                      Seamlessly integrate multiple currencies and assets into
-                      the digital wallet system without any restrictions.
+                      At Prokash, we stand out as a top digital marketing
+                      service in Bangladesh due to our strategic approach,
+                      innovative solutions, and proven track record of
+                      delivering exceptional results for our clients.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="350">
+                <Accordion
+                  expanded={
+                    expanded ===
+                    "Top 10 digital marketing services in Bangladesh"
+                  }
+                  onChange={handleChange(
+                    "Top 10 digital marketing services in Bangladesh"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "Top 10 digital marketing services in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Top 10 digital marketing services in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Yes, Prokash consistently ranks among the top 10 digital
+                      marketing services in Bangladesh. Our dedication to
+                      excellence, diverse service offerings, and client
+                      satisfaction contribute to our recognition in the
+                      industry.
                     </p>
                   </AccordionDetails>
                 </Accordion>
@@ -877,17 +869,16 @@ const Home = () => {
               <div data-aos="fade-up" data-aos-delay="400">
                 <Accordion
                   expanded={
-                    expanded === "Payment transactions via banking institutions"
+                    expanded === "Best digital marketing agency in Dhaka"
                   }
                   onChange={handleChange(
-                    "Payment transactions via banking institutions"
+                    "Best digital marketing agency in Dhaka"
                   )}
-                  className="accrodian_style card_shadow mb24"
+                  className="accrodian_style card_shadow mb12"
                 >
                   <AccordionSummary
                     expandIcon={
-                      expanded ===
-                      "Payment transactions via banking institutions" ? (
+                      expanded === "Best digital marketing agency in Dhaka" ? (
                         <RemoveIcon />
                       ) : (
                         <AddIcon />
@@ -900,30 +891,69 @@ const Home = () => {
                       // sx={{ flexShrink: 0 }}
                       className="subtitle_bold"
                     >
-                      Payment transactions via banking institutions
+                      Best digital marketing agency in Dhaka
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <p className="text_body_small_regular">
-                      Incorporate a banking network integration to offer bank
-                      payments such as IBAN and SWIFT, fulfilling your users'
-                      financial service demands and enabling fund transfers to
-                      bank accounts. This integration presents a chance for your
-                      digital wallet product to appeal to diverse audience
-                      segments and enhance transaction volume.
+                      As the best digital marketing agency in Dhaka, Prokash
+                      combines global expertise with a deep understanding of the
+                      local market. Our team in Dhaka crafts tailored strategies
+                      to ensure our client's success in the vibrant business
+                      landscape.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="450">
+                <Accordion
+                  expanded={
+                    expanded === "Top digital marketing agency in Bangladesh"
+                  }
+                  onChange={handleChange(
+                    "Top digital marketing agency in Bangladesh"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "Top digital marketing agency in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Top digital marketing agency in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Prokash has earned its reputation as the top digital
+                      marketing agency in Bangladesh by consistently delivering
+                      outstanding results. Our commitment to staying ahead of
+                      industry trends and providing cutting-edge solutions sets
+                      us apart.
                     </p>
                   </AccordionDetails>
                 </Accordion>
               </div>
               <div data-aos="fade-up" data-aos-delay="500">
                 <Accordion
-                  expanded={expanded === "Seamless cross-border transactions"}
-                  onChange={handleChange("Seamless cross-border transactions")}
-                  className="accrodian_style card_shadow mb24"
+                  expanded={expanded === "Top marketing agency in Bangladesh?"}
+                  onChange={handleChange("Top marketing agency in Bangladesh?")}
+                  className="accrodian_style card_shadow mb12"
                 >
                   <AccordionSummary
                     expandIcon={
-                      expanded === "Seamless cross-border transactions" ? (
+                      expanded === "Top marketing agency in Bangladesh?" ? (
                         <RemoveIcon />
                       ) : (
                         <AddIcon />
@@ -936,24 +966,845 @@ const Home = () => {
                       // sx={{ flexShrink: 0 }}
                       className="subtitle_bold"
                     >
-                      Seamless cross-border transactions
+                      Top marketing agency in Bangladesh?
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <p className="text_body_small_regular">
-                      Offer seamless internal P2P transfers, regardless of
-                      location. Allow users to effortlessly transfer funds
-                      between friends at local spots or even send money
-                      internationally with just a few clicks, eliminating
-                      transfer-related complexities. Enable smooth transactions
-                      between cards, wallets, and mobile devices by integrating
-                      with the relevant payment services or providers.
+                      Prokash distinguishes itself as a top marketing agency in
+                      Bangladesh through its commitment to delivering impactful
+                      marketing solutions, understanding local nuances, and
+                      helping businesses thrive in the dynamic marketplace.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="550">
+                <Accordion
+                  expanded={expanded === "Digital agency in BD?"}
+                  onChange={handleChange("Digital agency in BD?")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Digital agency in BD?" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Digital agency in BD?
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Choosing Prokash as your digital agency in BD means
+                      partnering with a team that stays abreast of the latest
+                      industry trends, leverages innovative techniques, and
+                      focuses on achieving your business goals through digital
+                      excellence.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="600">
+                <Accordion
+                  expanded={expanded === "Facebook page boost with bKash"}
+                  onChange={handleChange("Facebook page boost with bKash")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Facebook page boost with bKash" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Facebook page boost with bKash
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Boosting your Facebook page with bKash is easy. Just
+                      select your boost settings, choose bKash as your payment
+                      method, and complete the payment through bKash.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="650">
+                <Accordion
+                  expanded={
+                    expanded ===
+                    "Price for Facebook Boost Service in Bangladesh"
+                  }
+                  onChange={handleChange(
+                    "Price for Facebook Boost Service in Bangladesh"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "Price for Facebook Boost Service in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Price for Facebook Boost Service in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      The price for Facebook boost service in Bangladesh varies
+                      depending on your target audience and campaign duration.
+                      Contact our team for a customized quote.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="700">
+                <Accordion
+                  expanded={expanded === "Best boosting service in Bangladesh"}
+                  onChange={handleChange("Best boosting service in Bangladesh")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Best boosting service in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Best boosting service in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      We take pride in being recognized as the best-boosting
+                      service in Bangladesh. Our effective strategies and proven
+                      results set us apart.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="750">
+                <Accordion
+                  expanded={
+                    expanded === "Best Facebook boost service in Bangladesh"
+                  }
+                  onChange={handleChange(
+                    "Best Facebook boost service in Bangladesh"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "Best Facebook boost service in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Best Facebook boost service in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Finding the best Facebook boost service in Bangladesh
+                      involves checking reviews, looking at past performance,
+                      and ensuring they align with your business goals. We
+                      invite you to explore our success stories.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="800">
+                <Accordion
+                  expanded={expanded === "Facebook Boost app in Bangladesh"}
+                  onChange={handleChange("Facebook Boost app in Bangladesh")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Facebook Boost app in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Facebook Boost app in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Yes, we offer a user-friendly web app for Facebook boost
+                      service in Bangladesh. signup our app for convenient and
+                      efficient boosting.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="850">
+                <Accordion
+                  expanded={expanded === "Free Facebook page boost service"}
+                  onChange={handleChange("Free Facebook page boost service")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Free Facebook page boost service" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Free Facebook page boost service
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      While we don't provide a completely free service, we offer
+                      competitive prices and ensure that your investment results
+                      in significant visibility and engagement.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="900">
+                <Accordion
+                  expanded={
+                    expanded === "How can I pay to boost my Facebook page"
+                  }
+                  onChange={handleChange(
+                    "How can I pay to boost my Facebook page"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "How can I pay to boost my Facebook page" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      How can I pay to boost my Facebook page
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      You can conveniently pay to boost your Facebook page
+                      through various methods, including bKash. Choose the
+                      payment option that suits you best.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="950">
+                <Accordion
+                  expanded={
+                    expanded === "Best Facebook boosting agency in Bangladesh"
+                  }
+                  onChange={handleChange(
+                    "Best Facebook boosting agency in Bangladesh"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "Best Facebook boosting agency in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Best Facebook boosting agency in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      We take pride in being recognized as the best Facebook
+                      boosting agency in Bangladesh. Our dedicated team ensures
+                      your page reaches its full potential.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1000">
+                <Accordion
+                  expanded={expanded === "Free YouTube video boost service"}
+                  onChange={handleChange("Free YouTube video boost service")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Free YouTube video boost service" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Free YouTube video boost service
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Currently, we do not provide a free YouTube video boost
+                      service. However, we offer competitive prices to ensure
+                      your video gains maximum visibility.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1020">
+                <Accordion
+                  expanded={
+                    expanded === "Price for YouTube video boost service?"
+                  }
+                  onChange={handleChange(
+                    "Price for YouTube video boost service?"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Price for YouTube video boost service?" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Price for YouTube video boost service?
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      YouTube video boost service prices vary based on factors
+                      such as target audience and campaign duration. Connect
+                      with us for a personalized quote.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1040">
+                <Accordion
+                  expanded={
+                    expanded ===
+                    "How much does it cost to boost a YouTube video"
+                  }
+                  onChange={handleChange(
+                    "How much does it cost to boost a YouTube video"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "How much does it cost to boost a YouTube video" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      How much does it cost to boost a YouTube video
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      The cost of boosting a YouTube video depends on your
+                      specific requirements. Contact us, and we'll provide you
+                      with a detailed breakdown of the pricing.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1060">
+                <Accordion
+                  expanded={
+                    expanded ===
+                    "Best boosting service in Bangladesh for YouTube"
+                  }
+                  onChange={handleChange(
+                    "Best boosting service in Bangladesh for YouTube"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "Best boosting service in Bangladesh for YouTube" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Best boosting service in Bangladesh for YouTube
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      We take pride in being recognized as the best
+                      YouTube-boosting service in Bangladesh. Our team is
+                      dedicated to ensuring your video gains the visibility it
+                      deserves.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1080">
+                <Accordion
+                  expanded={
+                    expanded ===
+                    "Best Google Ads service provider in Bangladesh"
+                  }
+                  onChange={handleChange(
+                    "Best Google Ads service provider in Bangladesh"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "Best Google Ads service provider in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Best Google Ads service provider in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      We stand out as the best Google Ads service provider due
+                      to our experienced team, proven track record, and
+                      dedication to delivering results. Explore our services to
+                      see how we can elevate your online presence.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1100">
+                <Accordion
+                  expanded={expanded === "Google Ads expert in Bangladesh"}
+                  onChange={handleChange("Google Ads expert in Bangladesh")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Google Ads expert in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Google Ads expert in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Yes, our team comprises certified Google Ads experts with
+                      in-depth knowledge and skills to optimize campaigns for
+                      maximum impact.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1120">
+                <Accordion
+                  expanded={expanded === "Google Ads management service"}
+                  onChange={handleChange("Google Ads management service")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Google Ads management service" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Google Ads management service
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Our Google Ads management services include strategic
+                      campaign planning, keyword optimization, ad creation,
+                      performance monitoring, and continuous optimization for
+                      optimal results.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1140">
+                <Accordion
+                  expanded={
+                    expanded === "Google Ads agency for small businesses"
+                  }
+                  onChange={handleChange(
+                    "Google Ads agency for small businesses"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Google Ads agency for small businesses" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Google Ads agency for small businesses
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Absolutely! Our Google Ads agency caters to businesses of
+                      all sizes. We tailor our services to meet the specific
+                      needs and budget constraints of small businesses, ensuring
+                      effective and affordable campaigns.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1160">
+                <Accordion
+                  expanded={expanded === "Top SEO agency in Bangladesh"}
+                  onChange={handleChange("Top SEO agency in Bangladesh")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Top SEO agency in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Top SEO agency in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Prokash stands out as a top SEO agency due to its proven
+                      track record, experienced team of SEO experts, and
+                      commitment to delivering measurable results for clients.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1180">
+                <Accordion
+                  expanded={expanded === "Top SEO agency in Dhaka"}
+                  onChange={handleChange("Top SEO agency in Dhaka")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Top SEO agency in Dhaka" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Top SEO agency in Dhaka
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Yes, Prokash is recognized as a leading SEO agency in
+                      Dhaka, offering tailored SEO solutions to businesses
+                      seeking enhanced online visibility and organic growth.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1200">
+                <Accordion
+                  expanded={expanded === "Top 10 SEO agencies in Bangladesh"}
+                  onChange={handleChange("Top 10 SEO agencies in Bangladesh")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "Top 10 SEO agencies in Bangladesh" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Top 10 SEO agencies in Bangladesh
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Prokash secures its position among the top 10 SEO agencies
+                      in Bangladesh through its strategic approach, industry
+                      expertise, and successful SEO campaigns that drive
+                      results.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1220">
+                <Accordion
+                  expanded={expanded === "SEO experts at Prokash"}
+                  onChange={handleChange("SEO experts at Prokash")}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded === "SEO experts at Prokash" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      SEO experts at Prokash
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Prokash boasts a team of seasoned SEO experts in
+                      Bangladesh with a deep understanding of search engine
+                      algorithms, industry trends, and effective optimization
+                      strategies.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1240">
+                <Accordion
+                  expanded={
+                    expanded ===
+                    "Can Prokash help improve my website's SEO ranking"
+                  }
+                  onChange={handleChange(
+                    "Can Prokash help improve my website's SEO ranking"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "Can Prokash help improve my website's SEO ranking" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      Can Prokash help improve my website's SEO ranking
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      Prokash is dedicated to improving your website's SEO
+                      ranking through strategic planning, on-page optimization,
+                      content enhancement, and other proven SEO techniques.
+                    </p>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="1260">
+                <Accordion
+                  expanded={
+                    expanded === "How can I contact Prokash for SEO services?"
+                  }
+                  onChange={handleChange(
+                    "How can I contact Prokash for SEO services?"
+                  )}
+                  className="accrodian_style card_shadow mb12"
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expanded ===
+                      "How can I contact Prokash for SEO services?" ? (
+                        <RemoveIcon />
+                      ) : (
+                        <AddIcon />
+                      )
+                    }
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                  >
+                    <Typography
+                      // sx={{ flexShrink: 0 }}
+                      className="subtitle_bold"
+                    >
+                      How can I contact Prokash for SEO services?
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <p className="text_body_small_regular">
+                      To discuss your SEO requirements or inquire about our
+                      services, contact us through our website, and our team
+                      will be happy to assist you.
                     </p>
                   </AccordionDetails>
                 </Accordion>
               </div>
             </Grid>
-            
           </Grid>
         </div>
       </Container>

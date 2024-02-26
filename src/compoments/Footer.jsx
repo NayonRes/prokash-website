@@ -11,11 +11,9 @@ import LocalPhoneSharpIcon from "@mui/icons-material/LocalPhoneSharp";
 const Footer = () => {
   return (
     <>
-      <Container maxWidth="lg">
-        <MessageForm />
-      </Container>
+      <Container maxWidth="lg">{/* <MessageForm /> */}</Container>
       {/* <MySlider /> */}
-      <footer style={{ background: "#E2EEFF" }}>
+      <footer style={{ borderTop: "1px solid #f4f4f4" }}>
         <Container maxWidth="lg" style={{ padding: "56px 24px" }}>
           <Grid container spacing={4}>
             <Grid item xs={12} sm={12} md={12} lg={3.5}>

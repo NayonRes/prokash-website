@@ -15,6 +15,16 @@ import VerticalAlignTopIcon from "@mui/icons-material/VerticalAlignTop";
 import { useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
+
+import AuthContextProvider from "./context/AuthContext";
+import Slide from "@mui/material/Slide";
+import axios from "axios";
+import { SnackbarProvider } from "notistack";
+import { BrowserRouter } from "react-router-dom";
+import { Paper } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import ColorPalette from "./color-palette/ColorPalette";
+
 const theme = createTheme({
   typography: {
     // allVariants: {
@@ -139,33 +149,44 @@ function App(props) {
   return (
     <>
       <ThemeProvider theme={theme}>
-        {/* <Test /> */}
-        <div
-          style={{
-            position: "relative",
-            maxWidth: "100%",
-            margin: "auto",
-            // display: "none",
+        <SnackbarProvider
+          maxSnack={1}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
           }}
+          TransitionComponent={Slide}
         >
-          <Header />
-          <div>
-            <Navigation />
-          </div>
-          <div>
-            <Footer />{" "}
-          </div>
-          <ScrollTop {...props}>
-            <Fab
-              // color="primary"
-              size="small"
-              style={{ background: "#fff" }}
-              aria-label="scroll back to top"
+          <AuthContextProvider>
+         
+            <div
+              style={{
+                position: "relative",
+                maxWidth: "100%",
+                margin: "auto",
+                // display: "none",
+              }}
             >
-              <VerticalAlignTopIcon onClick={scrollToTop} color="#25316" />
-            </Fab>
-          </ScrollTop>
-        </div>
+              <Header />
+              <div>
+                <Navigation />
+              </div>
+              <div>
+                <Footer />{" "}
+              </div>
+              <ScrollTop {...props}>
+                <Fab
+                  // color="primary"
+                  size="small"
+                  style={{ background: "#fff" }}
+                  aria-label="scroll back to top"
+                >
+                  <VerticalAlignTopIcon onClick={scrollToTop} color="#25316" />
+                </Fab>
+              </ScrollTop>
+            </div>
+          </AuthContextProvider>
+        </SnackbarProvider>
       </ThemeProvider>
     </>
   );

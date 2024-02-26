@@ -27,7 +27,7 @@
 .title_large {
   font-family: "Poppins", sans-serif;
   margin: 0;
-  color: #25316d;
+  color: #4d318c;
   font-style: italic;
   font-weight: 900;
   font-size: 48px;
@@ -37,7 +37,7 @@
 .title_large2 {
   font-family: "Poppins", sans-serif;
   margin: 0;
-  color: #25316d;
+  color: #4d318c;
   font-style: italic;
   font-weight: 900;
   font-size: 32px;
@@ -47,7 +47,7 @@
 .title_semibold_medium {
   font-family: "Poppins", sans-serif;
   margin: 0;
-  color: #25316d;
+  color: #4d318c;
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
@@ -56,7 +56,7 @@
 .title_semibold_small {
   font-family: "Poppins", sans-serif;
   margin: 0;
-  color: #25316d;
+  color: #4d318c;
   font-style: normal;
   font-weight: 600;
   font-size: 22px;
@@ -65,7 +65,7 @@
 .subtitle_bold {
   font-family: "Poppins", sans-serif !important;
   margin: 0 !important;
-  color: #25316d !important;
+  color: #4d318c !important;
   font-style: normal !important;
   font-weight: 700 !important;
   font-size: 18px !important;
@@ -74,7 +74,7 @@
 .table_subtitle_bold {
   font-family: "Poppins", sans-serif !important;
   margin: 0 !important;
-  color: #303030 !important;
+  color: #696969 !important;
   font-style: normal !important;
   font-weight: 700 !important;
   font-size: 18px !important;
@@ -86,7 +86,7 @@
 .text_body_medium {
   font-family: "Poppins", sans-serif !important;
   margin: 0 !important;
-  color: #303030 !important;
+  color: #696969 !important;
   font-style: normal !important;
   font-weight: 500 !important;
   font-size: 18px !important;
@@ -100,7 +100,7 @@
 .text_body_small_regular {
   font-family: "Poppins", sans-serif !important;
   margin: 0 !important;
-  color: #303030 !important;
+  color: #696969 !important;
   font-style: normal !important;
   font-weight: 400 !important;
   font-size: 16px !important;
@@ -112,7 +112,7 @@
 .text_body_xs_regular {
   font-family: "Poppins", sans-serif;
   margin: 0;
-  color: #303030;
+  color: #696969;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -305,7 +305,7 @@
   font-weight: 700;
   font-size: 28px;
   line-height: 24px;
-  color: #303030;
+  color: #696969;
 }
 .card_padding {
   padding-left: 50px;
@@ -316,9 +316,9 @@
 .demo_form_title {
   font-family: "Poppins", sans-serif;
   margin: 0;
-  color: #25316d;
+  color: #4d318c;
   font-style: normal;
-  font-style: italic;
+  /* font-style: italic; */
   font-weight: 900;
   font-size: 32px;
   line-height: 46px;
@@ -327,7 +327,7 @@
 .message_box {
   padding: 60px 100px;
   box-sizing: border-box;
-  background: #e7ddff;
+  background: #f4f4f4;
   border: 1px solid #ffffff;
   box-shadow: 0px 0px 26px 10px rgba(124, 124, 124, 0.06);
   border-radius: 32px;
@@ -340,7 +340,10 @@
   letter-spacing: 0.32px !important;
   font-weight: 500 !important;
   font-size: 16px !important;
-  color: #686868 !important;
+  color: #696969 !important;
+}
+.message_form_input_style .MuiOutlinedInput-root:hover fieldset {
+  border-color: #834bff !important;
 }
 .message_form_input_style input,
 .demo_form_input_style input {
@@ -353,7 +356,7 @@
   letter-spacing: 0.32px !important;
   font-weight: 500 !important;
   font-size: 16px !important;
-  color: #303030 !important;
+  color: #696969 !important;
 }
 .message_form_textarea_style .MuiOutlinedInput-root {
   padding: 16.5px 42px 15.5px 16px !important;
@@ -362,7 +365,7 @@
   letter-spacing: 0.32px !important;
   font-weight: 500 !important;
   font-size: 16px !important;
-  color: #686868 !important;
+  color: #696969 !important;
 }
 .demo_form_textarea_style .MuiOutlinedInput-root {
   padding: 16.5px 42px 15.5px 16px !important;
@@ -371,7 +374,7 @@
   letter-spacing: 0.32px !important;
   font-weight: 500 !important;
   font-size: 16px !important;
-  color: #303030 !important;
+  color: #696969 !important;
 }
 .message_form_input_style fieldset,
 .message_form_textarea_style fieldset {
@@ -383,18 +386,19 @@
   /* border-color: rgba(0, 0, 0, 0); */
 }
 .message_box_input_box_margin {
-  margin-top: 50px !important;
+  margin-top: 20px !important;
 }
 .message_box_title_margin {
   margin-top: 25px;
 }
 /* -------------------accrodian------------------------ */
 .accrodian_style {
-  background: #e7ddff !important;
+  background: #f4f4f4 !important;
+  box-shadow: none !important;
 }
 .accrodian_style .MuiAccordionSummary-root {
   align-items: start !important;
-  padding: 24px !important;
+  padding: 16px 24px !important;
 }
 .accrodian_style .MuiAccordionSummary-content {
   margin: 0px !important;
@@ -403,7 +407,7 @@
   padding: 0px 24px 16px !important;
 }
 .accrodian_style svg {
-  color: #25316d !important;
+  color: #4d318c !important;
   font-size: 28px !important;
 }
 
@@ -522,7 +526,7 @@
 }
 .bullet_color li::before {
   content: "\2022";
-  color: #25316d;
+  color: #4d318c;
   font-weight: bold;
   display: inline-block;
   width: 1em;
@@ -530,7 +534,7 @@
 }
 .bullet_color ol li::before {
   content: "";
-  /* color: #25316d;
+  /* color: #4d318c;
   font-weight: bold;
   display: inline-block;
   width: 1em;
@@ -602,14 +606,14 @@
   font-style: normal;
   font-weight: 500;
   line-height: 28px;
-  color: #303030;
+  color: #696969;
   border-bottom: none;
 }
 .table_style th {
   border-bottom: none;
 }
 .table_style td:first-child {
-  color: #25316d;
+  color: #4d318c;
 }
 .menu_button_group_holder {
   margin-bottom: 28px;
@@ -633,12 +637,12 @@
   font-style: normal;
   font-weight: 700;
   font-weight: 500;
-  color: #686868;
+  color: #696969;
   padding: 18px 24px;
 }
 .menu_button_active {
   border-radius: 100px;
-  color: #303030;
+  color: #696969;
   font-weight: 700;
   background: #fff;
 }
@@ -826,7 +830,7 @@
   .text_body_xs_regular {
     /* font-family: "Poppins", sans-serif;
     margin: 0;
-    color: #303030;
+    color: #696969;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -942,7 +946,7 @@
   }
   .title_large {
     text-align: center;
-    color: #25316d;
+    color: #4d318c;
     font-style: inherit !important;
     font-weight: 400;
     font-size: 26px;
@@ -953,7 +957,7 @@
     text-align: center;
     /* font-family: "Poppins", sans-serif;
     margin: 0;
-    color: #25316d;
+    color: #4d318c;
     font-style: italic;
     font-weight: 900;
     font-size: 32px;
