@@ -64,7 +64,7 @@ const MobileDrawer = ({
     >
       <List className="mobile_drawer_menu">
         <div style={{ position: "relative", padding: "10px 15px 15px" }}>
-          <img src="/images/logo.svg" alt="the qrpay logo" style={{ width: "120px" }} />
+          <img src="/images/logo.svg" alt="prokash logo" style={{ width: "120px" }} />
           <IconButton
             id="closeButton"
             onClick={toggleDrawer(anchor, false)}

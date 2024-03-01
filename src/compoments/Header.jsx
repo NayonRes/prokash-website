@@ -159,7 +159,7 @@ const Header = () => {
               <Link to="/">
                 <img
                   src="/images/logo.svg"
-                  alt="the qrpay logo"
+                  alt="prokash logo"
                   className="header_logo_style"
                 />
               </Link>

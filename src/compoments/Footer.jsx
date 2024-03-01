@@ -20,7 +20,7 @@ const Footer = () => {
               <Link to="/">
                 <img
                   src="/images/logo.svg"
-                  alt="the qrpay logo"
+                  alt="prokash logo"
                   className="footer_logo_style"
                 />
               </Link>
