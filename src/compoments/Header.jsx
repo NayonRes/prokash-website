@@ -165,12 +165,39 @@ const Header = () => {
               </Link>
             </Box>
             <Box sx={{ display: { xs: "block", md: "none" } }}>
-              <MobileDrawer
+              {/* <MobileDrawer
                 checkServiceMenuActive={checkServiceMenuActive}
                 checkUseCasesMenuActive={checkUseCasesMenuActive}
                 checkCaseStudiesMenuActive={checkCaseStudiesMenuActive}
                 checkWhoWeServeMenuActive={checkWhoWeServeMenuActive}
-              />
+              /> */}
+              <Button
+                disableElevation
+                variant="contained"
+                size="small"
+                sx={{ borderRadius: "100vw", mr: 2, fontSize: "8px" }}
+                // className="nav_button"
+                // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
+                // onClick={handleClickOpen}
+                startIcon={
+                  <LibraryAddCheckOutlinedIcon style={{ fontSize: "12px" }} />
+                }
+              >
+                Start now
+              </Button>
+              <Button
+                variant="outlined"
+                size="small"
+                sx={{ borderRadius: "100vw", fontSize: "8px" }}
+                // className="nav_button"
+                // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
+                startIcon={
+                  <ExitToAppOutlinedIcon style={{ fontSize: "12px" }} />
+                }
+                onClick={handleClickOpen}
+              >
+                Login
+              </Button>
             </Box>
             <Box sx={{ display: { xs: "none", md: "block" } }}>
               {/* <Button
@@ -184,7 +211,7 @@ const Header = () => {
               <Button
                 disableElevation
                 variant="contained"
-                sx={{ px: 2, py: 1, borderRadius: "100vw", mr: 2 }}
+                sx={{ px: 3, py: 1, borderRadius: "100vw", mr: 2 }}
                 // className="nav_button"
                 // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
                 // onClick={handleClickOpen}
@@ -194,7 +221,7 @@ const Header = () => {
               </Button>
               <Button
                 variant="outlined"
-                sx={{ px: 2, py: 1, borderRadius: "100vw" }}
+                sx={{ px: 3, py: 1, borderRadius: "100vw" }}
                 // className="nav_button"
                 // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
                 startIcon={<ExitToAppOutlinedIcon />}

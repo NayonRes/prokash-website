@@ -16,6 +16,7 @@ import Feedback from "./Feedback";
 import { useTheme } from "@mui/material/styles";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import Marquee from "react-fast-marquee";
+import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
 
 const Home = () => {
   const theme = useTheme();
@@ -128,8 +129,8 @@ const Home = () => {
               <Button
                 variant="contained"
                 // color="error"
-                endIcon={<ArrowForwardIcon />}
-                sx={{ px: 2, py: 1, borderRadius: "100vw", mr: 2 }}
+                startIcon={<LibraryAddCheckOutlinedIcon />}
+                sx={{ px: 3, py: 1, borderRadius: "100vw", mr: 2 }}
                 className=" hideForMobileViewOnly hideForTabViewOnly"
                 disableElevation
                 data-aos="fade-down"
@@ -143,15 +144,15 @@ const Home = () => {
               <div className="center showForTabAndMobileViewOnly">
                 <Button
                   variant="contained"
-                  color="error"
-                  endIcon={<ArrowForwardIcon />}
-                  className=""
+                  // color="error"
+                  startIcon={<LibraryAddCheckOutlinedIcon />}
+                  sx={{ px: 3, py: 1, borderRadius: "100vw", mr: 2 }}
                   disableElevation
                   data-aos="fade-down"
                   data-aos-delay="900"
                   data-aos-offset="0"
                 >
-                  Request a demo
+                  Start Now
                 </Button>
               </div>
             </Grid>
@@ -285,7 +286,17 @@ const Home = () => {
             style={{ backgroundImage: "none" }}
             data-aos="fade-up"
           >
-            <Grid container alignItems="center" className="idea_card">
+            <Grid
+              container
+              alignItems="center"
+              className="idea_card"
+              // sx={{
+              //   flexDirection: "row",
+              //   [theme.breakpoints.down("xs")]: {
+              //     flexDirection: "row-reverse",
+              //   },
+              // }}
+            >
               <Grid item xs={12} sm={6} md={6} lg={6}>
                 <div className="margin_left_50">
                   <h3 className="title_semibold_medium mb6">
@@ -308,8 +319,8 @@ const Home = () => {
                   <Button
                     variant="contained"
                     // color="error"
-                    endIcon={<ArrowForwardIcon />}
-                    sx={{ px: 2, py: 1, borderRadius: "100vw", mr: 2 }}
+                    startIcon={<LibraryAddCheckOutlinedIcon />}
+                    sx={{ px: 3, py: 1, borderRadius: "100vw", mr: 2 }}
                     className=" hideForMobileViewOnly hideForTabViewOnly"
                     disableElevation
                     data-aos="fade-down"
@@ -327,14 +338,13 @@ const Home = () => {
                 sm={6}
                 md={6}
                 lg={6}
-                style={{ textAlign: "right" }}
-                className="hideForMobileViewOnly"
+                // style={{ textAlign: "right" }}
+                // className="hideForMobileViewOnly"
               >
                 <img
                   src="/Mobile-App.png"
                   alt="developing"
                   className="card_image"
-                  width="80%"
                 />
               </Grid>
             </Grid>
@@ -352,7 +362,7 @@ const Home = () => {
             <div
               className="card6 "
               style={{ border: "2px solid #f4f4f4" }}
-              data-aos="fade-up"
+              data-aos="zoom-in"
               data-aos-delay="300"
             >
               <div>
@@ -432,8 +442,8 @@ const Home = () => {
             <div
               className="card6 "
               style={{ border: "2px solid #f4f4f4" }}
-              data-aos="fade-up"
-              data-aos-delay="300"
+              data-aos="zoom-in"
+              data-aos-delay="500"
             >
               <div>
                 <Grid

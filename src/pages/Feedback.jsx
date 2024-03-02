@@ -30,7 +30,7 @@ const Feedback = () => {
     // boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
     boxSizing: "border-box",
     [theme.breakpoints.down("sm")]: {
-      width: "60px",
+      width: "95%",
     },
   };
 
@@ -74,16 +74,16 @@ const Feedback = () => {
         },
       },
       {
-        breakpoint: 800,
+        breakpoint: 1200,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           // centerPadding: "20px",
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 1,
           centerPadding: "20px",
         },
       },

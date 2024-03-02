@@ -273,6 +273,7 @@
   padding: 36px 36px;
   border-radius: 16px;
   box-sizing: border-box;
+  min-width: 365px;
 }
 .card7 {
   background: #e2eeff;
@@ -558,6 +559,7 @@
 
 .idea_card {
   min-height: 320px;
+  flex-direction: row;
 }
 /* -------------------tables-------------------- */
 .table_container {
@@ -708,6 +710,11 @@
 }
 .fw700 {
   font-weight: 700 !important;
+}
+.card_image {
+  width: 70%;
+  display: block;
+  margin-left: auto;
 }
 @media screen and (max-width: 1536px) {
   .top_section {
@@ -907,6 +914,19 @@
   } */
 }
 @media screen and (max-width: 600px) {
+  .card_image {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card6 {
+    flex: 0 0 calc(50% - 15px);
+    min-width: 0px;
+    max-width: 365px;
+  }
+  .idea_card {
+    flex-direction: column-reverse !important;
+  }
   .demo_form_title {
     font-size: 24px;
   }
@@ -1000,6 +1020,7 @@
 
   .card_holder {
     flex-direction: column;
+    align-items: center;
   }
   .card2,
   .card2_non_hover {
