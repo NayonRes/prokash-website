@@ -15,6 +15,8 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import Feedback from "./Feedback";
 import { useTheme } from "@mui/material/styles";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
+import DoneAllIcon from "@mui/icons-material/DoneAll";
+import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
 import Marquee from "react-fast-marquee";
 import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
 
@@ -47,6 +49,17 @@ const Home = () => {
     //   scrollableDiv.scrollTop = 0;
     // }
   };
+
+  const styles = (theme) => ({
+    root: {
+      backgroundColor: "blue",
+      // Match [md, ∞)
+      //       [900px, ∞)
+      [theme.breakpoints.up("md")]: {
+        backgroundColor: "red",
+      },
+    },
+  });
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -93,7 +106,7 @@ const Home = () => {
                 <span style={{ color: "#834BFF" }}>Simplified</span>.
               </h1>
               <p
-                className="title_large mb24 showForMobileViewOnly"
+                className="title_large mb40 showForMobileViewOnly"
                 data-aos="fade-down"
                 data-aos-delay="300"
                 data-aos-offset="0"
@@ -107,23 +120,14 @@ const Home = () => {
               </p>
 
               <p
-                className="text_body_medium mb12 centerForTabAndMobileViewOnly"
+                className="text_body_medium mb40 centerForTabAndMobileViewOnly"
                 style={{ maxWidth: "500px" }}
                 data-aos="fade-down"
                 data-aos-delay="600"
                 data-aos-offset="0"
               >
-                AdHawk is the simplest solution for managing your ads and
-                optimizing sales & marketing efforts.
-              </p>
-              <p
-                className="text_body_medium mb24 centerForTabAndMobileViewOnly"
-                style={{ maxWidth: "500px" }}
-                data-aos="fade-down"
-                data-aos-delay="800"
-                data-aos-offset="0"
-              >
-                Already using AdHawk? Sign In
+                Prokash makes digital marketing effortless, boosting your sales
+                and marketing efforts seamlessly.
               </p>
 
               <Button
@@ -179,9 +183,13 @@ const Home = () => {
               <Box
                 sx={{
                   mt: 3,
+
                   "& img": {
-                    maxWidth: "150px",
-                    mr: 3,
+                    maxWidth: "100px",
+                    mr: 5,
+                    [theme.breakpoints.down("md")]: {
+                      maxWidth: "60px",
+                    },
                   },
                 }}
               >
@@ -227,11 +235,6 @@ const Home = () => {
                   />
                 </Marquee>
               </Box>
-              {/* <Grid container spacing={2} justifyContent="center">
-                <Grid item xs="auto">
-                  <img src="/client-images/Baham.svg" alt="Baham" />
-                </Grid>
-              </Grid> */}
             </Grid>
           </Grid>
         </Container>
@@ -239,31 +242,36 @@ const Home = () => {
       <div style={{ height: "1px", background: "#fff" }}></div>
       <Container maxWidth="lg" className="container">
         <div className="section_style">
-          <div>
-            <h3 className="title_semibold_medium center" data-aos="fade-up">
-              OUR STORY
-            </h3>
-            {/* <p className="text_body_medium center mt10" data-aos="fade-up">
-              Take a look at our case studies to witness the extensive potential
-              of TheQRPay's white label payment software
-              <br /> solution and how it has been a game-changer for our clients
-              in the fintech sector.
-            </p> */}
-          </div>
           <Grid container alignItems="center" className="section_style">
             <Grid item xs={12} sm={12} md={12} lg={6}>
               {" "}
               <img
-                src="/feedback-images/story.png"
-                alt="Development of an e-wallet"
+                src="/our_story.gif"
+                alt=""
                 className="left_image_style"
+                loading="lazy"
               />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={6}>
-              <h3 className="title_semibold_medium mb12" data-aos="fade-up">
+              <h6
+                className="text_body_xs_regular  "
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                OUR STORY
+              </h6>
+              <h3
+                className="title_semibold_medium mb12"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
                 Build by marketers, for founders
               </h3>
-              <p className="text_body_medium mb40" data-aos="fade-up">
+              <p
+                className="text_body_medium mb40"
+                data-aos="fade-up"
+                data-aos-delay="500"
+              >
                 We believe customer intelligence is the way to help people find
                 their brands. It’s a different approach to marketing – one that
                 puts people first. We help brands create marketing so relevant
@@ -300,12 +308,12 @@ const Home = () => {
               <Grid item xs={12} sm={6} md={6} lg={6}>
                 <div className="margin_left_50">
                   <h3 className="title_semibold_medium mb6">
-                    Mobile app for monitoring contact availability&nbsp;
+                    Boost Your Products in Minutes with Prokash
                     {/* <span style={{ color: "#CB2027" }}>your solution?</span> */}
                   </h3>
                   <p className="text_body_medium mb24">
-                    Status encourages spontaneous calls by allowing you ti share
-                    when you're available.
+                    No need to worry about ad accounts or payments, Start
+                    promoting your business today!
                   </p>
                   {/* <Button
                   variant="outlined"
@@ -343,7 +351,7 @@ const Home = () => {
               >
                 <img
                   src="/Mobile-App.png"
-                  alt="developing"
+                  alt=""
                   className="card_image"
                 />
               </Grid>
@@ -403,8 +411,13 @@ const Home = () => {
                       className="text_body_xs_regular center mb12"
                       style={{ fontWeight: 500 }}
                     >
-                      <CheckBoxOutlinedIcon
-                        sx={{ color: "#834BFF", position: "relative", top: 6 }}
+                      <TaskAltOutlinedIcon
+                        sx={{
+                          color: "#696969",
+                          position: "relative",
+                          top: 6,
+                          fontSize: "22px",
+                        }}
                       />
                       &nbsp;&nbsp; Quick Activation
                     </p>
@@ -412,8 +425,13 @@ const Home = () => {
                       className="text_body_xs_regular center mb12"
                       style={{ fontWeight: 500 }}
                     >
-                      <CheckBoxOutlinedIcon
-                        sx={{ color: "#834BFF", position: "relative", top: 6 }}
+                      <TaskAltOutlinedIcon
+                        sx={{
+                          color: "#696969",
+                          position: "relative",
+                          top: 6,
+                          fontSize: "22px",
+                        }}
                       />
                       &nbsp;&nbsp; Quick Activation
                     </p>
@@ -421,8 +439,13 @@ const Home = () => {
                       className="text_body_xs_regular center mb12"
                       style={{ fontWeight: 500 }}
                     >
-                      <CheckBoxOutlinedIcon
-                        sx={{ color: "#834BFF", position: "relative", top: 6 }}
+                      <TaskAltOutlinedIcon
+                        sx={{
+                          color: "#696969",
+                          position: "relative",
+                          top: 6,
+                          fontSize: "22px",
+                        }}
                       />
                       &nbsp;&nbsp; Quick Activation
                     </p>
@@ -483,8 +506,13 @@ const Home = () => {
                       className="text_body_xs_regular center mb12"
                       style={{ fontWeight: 500 }}
                     >
-                      <CheckBoxOutlinedIcon
-                        sx={{ color: "#834BFF", position: "relative", top: 6 }}
+                      <TaskAltOutlinedIcon
+                        sx={{
+                          color: "#696969",
+                          position: "relative",
+                          top: 6,
+                          fontSize: "22px",
+                        }}
                       />
                       &nbsp;&nbsp; Quick Activation
                     </p>
@@ -492,8 +520,13 @@ const Home = () => {
                       className="text_body_xs_regular center mb12"
                       style={{ fontWeight: 500 }}
                     >
-                      <CheckBoxOutlinedIcon
-                        sx={{ color: "#834BFF", position: "relative", top: 6 }}
+                      <TaskAltOutlinedIcon
+                        sx={{
+                          color: "#696969",
+                          position: "relative",
+                          top: 6,
+                          fontSize: "22px",
+                        }}
                       />
                       &nbsp;&nbsp; Quick Activation
                     </p>
@@ -501,21 +534,27 @@ const Home = () => {
                       className="text_body_xs_regular center mb12"
                       style={{ fontWeight: 500 }}
                     >
-                      <CheckBoxOutlinedIcon
-                        sx={{ color: "#834BFF", position: "relative", top: 6 }}
+                      <TaskAltOutlinedIcon
+                        sx={{
+                          color: "#696969",
+                          position: "relative",
+                          top: 6,
+                          fontSize: "22px",
+                        }}
                       />
                       &nbsp;&nbsp; Quick Activation
                     </p>
                   </Box>
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    disableElevation
-                    sx={{ mt: 3 }}
-                  >
-                    {" "}
-                    book a schedule
-                  </Button>
+                  <Box sx={{ mt: 3, textAlign: "center" }}>
+                    <Button
+                      variant="contained"
+                      disableElevation
+                      sx={{ borderRadius: "100vw", px: 3 }}
+                    >
+                      {" "}
+                      book a schedule
+                    </Button>
+                  </Box>
                 </div>
               </div>
             </div>
