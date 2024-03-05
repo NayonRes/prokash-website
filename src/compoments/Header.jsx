@@ -158,7 +158,7 @@ const Header = () => {
             >
               <Link to="/">
                 <img
-                  src="/images/logo.svg"
+                  src="/logo.svg"
                   alt="prokash logo"
                   className="header_logo_style"
                 />

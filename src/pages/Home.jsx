@@ -31,7 +31,8 @@ const Home = () => {
   const cardTitle = {
     fontSize: "12px",
     // margin: "16px 0 0 0",
-    color: "#061A38",
+    color: "#696969",
+    fontWeight: 600,
     [theme.breakpoints.down("sm")]: {
       fontSize: "7px",
     },
@@ -60,13 +61,13 @@ const Home = () => {
       },
     },
   });
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     left: 0,
+  //     behavior: "smooth",
+  //   });
+  // }, []);
 
   return (
     <div>
@@ -349,11 +350,7 @@ const Home = () => {
                 // style={{ textAlign: "right" }}
                 // className="hideForMobileViewOnly"
               >
-                <img
-                  src="/Mobile-App.png"
-                  alt=""
-                  className="card_image"
-                />
+                <img src="/Mobile-App.png" alt="" className="card_image" />
               </Grid>
             </Grid>
           </div>
@@ -389,7 +386,10 @@ const Home = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs="auto" sx={{ textAlign: "right" }}>
-                    <Typography variant="base" sx={{ ...cardTitle }}>
+                    <Typography
+                      variant="base"
+                      sx={{ ...cardTitle, color: "#999999" }}
+                    >
                       INSTANT
                     </Typography>
                   </Grid>
@@ -401,65 +401,137 @@ const Home = () => {
 
                   <p
                     className="text_body_xs_regular center mb24"
-                    style={{ fontWeight: 500 }}
+                    style={{ fontWeight: 400 }}
                   >
                     Launch Your Google and Facebook Ads in Minutes. No Tech
                     Hassles.
                   </p>
-                  <Box>
-                    <p
-                      className="text_body_xs_regular center mb12"
-                      style={{ fontWeight: 500 }}
-                    >
-                      <TaskAltOutlinedIcon
-                        sx={{
-                          color: "#696969",
-                          position: "relative",
-                          top: 6,
-                          fontSize: "22px",
-                        }}
-                      />
-                      &nbsp;&nbsp; Quick Activation
-                    </p>
-                    <p
-                      className="text_body_xs_regular center mb12"
-                      style={{ fontWeight: 500 }}
-                    >
-                      <TaskAltOutlinedIcon
-                        sx={{
-                          color: "#696969",
-                          position: "relative",
-                          top: 6,
-                          fontSize: "22px",
-                        }}
-                      />
-                      &nbsp;&nbsp; Quick Activation
-                    </p>
-                    <p
-                      className="text_body_xs_regular center mb12"
-                      style={{ fontWeight: 500 }}
-                    >
-                      <TaskAltOutlinedIcon
-                        sx={{
-                          color: "#696969",
-                          position: "relative",
-                          top: 6,
-                          fontSize: "22px",
-                        }}
-                      />
-                      &nbsp;&nbsp; Quick Activation
-                    </p>
-                  </Box>
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    disableElevation
-                    sx={{ mt: 3 }}
-                  >
-                    {" "}
-                    book a schedule
-                  </Button>
+                  <Grid container justifyContent="center">
+                    <Grid item xs="auto">
+                      <p
+                        className="text_body_xs_regular  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Free account signup
+                      </p>
+                      <p
+                        className="text_body_xs_regular  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Targeted advertising
+                      </p>
+                      <p
+                        className="text_body_xs_regular  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Maximize results, boost sales
+                      </p>
+                      <p
+                        className="text_body_xs_regular  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; No Ad account needed
+                      </p>
+                      <p
+                        className="text_body_xs_regular "
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Easy payment with Bkash
+                      </p>
+                    </Grid>
+                  </Grid>
+
                 </div>
+                  <Box sx={{ mt: 5, textAlign: "center" }}>
+                    <Button
+                      variant="contained"
+                      disableElevation
+                      sx={{ borderRadius: "100vw", px: 3 }}
+                    >
+                      {" "}
+                      book a schedule
+                    </Button>
+                  </Box>
               </div>
             </div>
             <div
@@ -480,72 +552,103 @@ const Home = () => {
                       variant="base"
                       sx={{ ...cardTitle, fontWeight: 700 }}
                     >
-                      BOOST
+                      FULL-SERVICE
                     </Typography>
                   </Grid>
                   <Grid item xs="auto" sx={{ textAlign: "right" }}>
-                    <Typography variant="base" sx={{ ...cardTitle }}>
-                      INSTANT
+                    <Typography
+                      variant="base"
+                      sx={{ ...cardTitle, color: "#999999" }}
+                    >
+                      WORKING HOURS
                     </Typography>
                   </Grid>
                 </Grid>
                 <div className="card_text_box">
                   <p className="title_semibold_small center  mb12">
-                    Pay as You Go
+                    Sales & Marketing
                   </p>
 
                   <p
                     className="text_body_xs_regular center mb24"
-                    style={{ fontWeight: 500 }}
+                    style={{ fontWeight: 400 }}
                   >
-                    Launch Your Google and Facebook Ads in Minutes. No Tech
-                    Hassles.
+                    Get Personalized Business Branding, Marketing, And Sales
+                    Solutions On a Monthly, Quarterly, or Yearly Plan.
                   </p>
-                  <Box>
-                    <p
-                      className="text_body_xs_regular center mb12"
-                      style={{ fontWeight: 500 }}
-                    >
-                      <TaskAltOutlinedIcon
-                        sx={{
-                          color: "#696969",
-                          position: "relative",
-                          top: 6,
-                          fontSize: "22px",
-                        }}
-                      />
-                      &nbsp;&nbsp; Quick Activation
-                    </p>
-                    <p
-                      className="text_body_xs_regular center mb12"
-                      style={{ fontWeight: 500 }}
-                    >
-                      <TaskAltOutlinedIcon
-                        sx={{
-                          color: "#696969",
-                          position: "relative",
-                          top: 6,
-                          fontSize: "22px",
-                        }}
-                      />
-                      &nbsp;&nbsp; Quick Activation
-                    </p>
-                    <p
-                      className="text_body_xs_regular center mb12"
-                      style={{ fontWeight: 500 }}
-                    >
-                      <TaskAltOutlinedIcon
-                        sx={{
-                          color: "#696969",
-                          position: "relative",
-                          top: 6,
-                          fontSize: "22px",
-                        }}
-                      />
-                      &nbsp;&nbsp; Quick Activation
-                    </p>
-                  </Box>
-                  <Box sx={{ mt: 3, textAlign: "center" }}>
+                  <Grid container justifyContent="center">
+                    <Grid item xs="auto">
+                      <p
+                        className="text_body_xs_regular  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Customize & Pay
+                      </p>
+                      <p
+                        className="text_body_xs_regular  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Maximum ROI
+                      </p>
+                      <p
+                        className="text_body_xs_regular"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Measure & Report
+                      </p>
+                    </Grid>
+                  </Grid>
+
+                </div>
+                  <Box sx={{ mt: 5, textAlign: "center" }}>
                     <Button
                       variant="contained"
                       disableElevation
@@ -555,7 +658,6 @@ const Home = () => {
                       book a schedule
                     </Button>
                   </Box>
-                </div>
               </div>
             </div>
           </div>

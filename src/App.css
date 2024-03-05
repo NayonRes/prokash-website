@@ -155,7 +155,7 @@
   padding: 32px;
 
   /* background image */
-  background-image: url("../public/images/logo-icon.svg");
+  /* background-image: url("../public/images/logo-icon.svg"); */
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: contain;
@@ -249,7 +249,7 @@
   box-sizing: border-box;
 
   /* background image */
-  background-image: url("../public/images/Boy.svg");
+  /* background-image: url("../public/images/Boy.svg"); */
   background-repeat: no-repeat;
   background-position: right 40px bottom -2px;
   background-size: 380px;
@@ -270,10 +270,13 @@
 .card6 {
   background: #fff;
   flex: 0 0 calc(33% - 17px);
-  padding: 36px 36px;
+  padding: 50px 36px;
   border-radius: 16px;
   box-sizing: border-box;
   min-width: 365px;
+}
+.card_text_box {
+  min-height: 320px;
 }
 .card7 {
   background: #e2eeff;
@@ -491,7 +494,7 @@
 }
 .demo_dialog_left {
   background-color: #e2eeff;
-  background-image: url("../public/images/request-demo-image.svg");
+  /* background-image: url("../public/images/request-demo-image.svg"); */
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: contain;
@@ -941,7 +944,7 @@
     background-size: 0px;
   }
   .home_circle_bg {
-    background-image: url("../public/images/Splash.svg");
+    /* background-image: url("../public/images/Splash.svg"); */
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 930px;
