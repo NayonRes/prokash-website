@@ -34,7 +34,19 @@ const Home = () => {
     color: "#696969",
     fontWeight: 600,
     [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
+      fontSize: "10px",
+    },
+  };
+  const buttonStyle = {
+    borderRadius: "100vw",
+    px: 3,
+    py: 1,
+    // textTransform: "none",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "12px",
+      "& .MuiSvgIcon-root": {
+        fontSize: "14px",
+      },
     },
   };
   const scrollToTop = () => {
@@ -92,10 +104,15 @@ const Home = () => {
             //   height: "calc(100vh - 65px)",
             //   maxHeight: "900px",
             // }}
+
             className="home_main_section"
             // style={{ background: "red" }}
           >
             <Grid item xs={12} md={6} lg={6} xl={5}>
+              <img
+                src="/hero.png"
+                className="hero_image mb24 showForTabAndMobileViewOnly"
+              />
               <h1
                 className="title_large mb24 hideForMobileViewOnly centerForTabAndMobileViewOnly"
                 data-aos="fade-down"
@@ -107,7 +124,7 @@ const Home = () => {
                 <span style={{ color: "#834BFF" }}>Simplified</span>.
               </h1>
               <p
-                className="title_large mb40 showForMobileViewOnly"
+                className="title_large mb24 showForMobileViewOnly"
                 data-aos="fade-down"
                 data-aos-delay="300"
                 data-aos-offset="0"
@@ -135,13 +152,15 @@ const Home = () => {
                 variant="contained"
                 // color="error"
                 startIcon={<LibraryAddCheckOutlinedIcon />}
-                sx={{ px: 3, py: 1, borderRadius: "100vw", mr: 2 }}
+                // sx={{ px: 3, py: 1, borderRadius: "100vw" }}
+                sx={{ ...buttonStyle }}
                 className=" hideForMobileViewOnly hideForTabViewOnly"
                 disableElevation
                 data-aos="fade-down"
                 data-aos-delay="1000"
                 data-aos-offset="0"
-                onClick={scrollToTop}
+
+                // onClick={scrollToTop}
               >
                 Start Now
               </Button>
@@ -151,11 +170,12 @@ const Home = () => {
                   variant="contained"
                   // color="error"
                   startIcon={<LibraryAddCheckOutlinedIcon />}
-                  sx={{ px: 3, py: 1, borderRadius: "100vw", mr: 2 }}
+                  // sx={{ px: 3, py: 1, borderRadius: "100vw", mr: 2 }}
                   disableElevation
                   data-aos="fade-down"
                   data-aos-delay="900"
                   data-aos-offset="0"
+                  sx={{ ...buttonStyle }}
                 >
                   Start Now
                 </Button>
@@ -170,12 +190,7 @@ const Home = () => {
               className="hideForMobileViewOnly hideForTabViewOnly"
               // data-aos="fade-up"
             >
-              <img
-                src="/hero.png"
-                alt=""
-                width="70%"
-                style={{ display: "block", margin: "auto" }}
-              />
+              <img src="/hero.png" alt="" className="hero_image" />
             </Grid>
             <Grid item xs={12}>
               <p className="text_body_xs_regular center">
@@ -186,10 +201,10 @@ const Home = () => {
                   mt: 3,
 
                   "& img": {
-                    maxWidth: "100px",
+                    maxWidth: "80px",
                     mr: 5,
                     [theme.breakpoints.down("md")]: {
-                      maxWidth: "60px",
+                      maxWidth: "40px",
                     },
                   },
                 }}
@@ -269,14 +284,20 @@ const Home = () => {
                 Build by marketers, for founders
               </h3>
               <p
-                className="text_body_medium mb40"
+                className="text_body_medium mb6"
                 data-aos="fade-up"
                 data-aos-delay="500"
               >
-                We believe customer intelligence is the way to help people find
-                their brands. It’s a different approach to marketing – one that
-                puts people first. We help brands create marketing so relevant
-                and respectful, people feel it’s on their terms.
+                We believe that the right advertising plan for your business can
+                attract the right customers and increase sales.
+              </p>
+              <p
+                className="text_body_medium mb40"
+                data-aos="fade-up"
+                data-aos-delay="500"
+                style={{ fontWeight: 500 }}
+              >
+                So advertise more efficiently through Prokash!
               </p>
             </Grid>
           </Grid>
@@ -322,23 +343,27 @@ const Home = () => {
                   endIcon={<ArrowForwardIcon />}
                   className="outlined_buttton"
                   disableElevation
+                       sx={{ ...buttonStyle }}
                 >
                 Start Now
                 </Button> */}
-                  <Button
-                    variant="contained"
-                    // color="error"
-                    startIcon={<LibraryAddCheckOutlinedIcon />}
-                    sx={{ px: 3, py: 1, borderRadius: "100vw", mr: 2 }}
-                    className=" hideForMobileViewOnly hideForTabViewOnly"
-                    disableElevation
-                    data-aos="fade-down"
-                    data-aos-delay="1000"
-                    data-aos-offset="0"
-                    // onClick={scrollToTop}
-                  >
-                    Start Now
-                  </Button>
+                  <Box className="centerForMobileViewOnly">
+                    <Button
+                      variant="contained"
+                      // color="error"
+                      startIcon={<LibraryAddCheckOutlinedIcon />}
+                      // sx={{ px: 3, py: 1, borderRadius: "100vw" }}
+                      sx={{ ...buttonStyle }}
+                      // className=" hideForMobileViewOnly hideForTabViewOnly"
+                      disableElevation
+                      data-aos="fade-down"
+                      data-aos-delay="1000"
+                      data-aos-offset="0"
+                      // onClick={scrollToTop}
+                    >
+                      Start Now
+                    </Button>
+                  </Box>
                 </div>
               </Grid>
               <Grid
@@ -409,7 +434,7 @@ const Home = () => {
                   <Grid container justifyContent="center">
                     <Grid item xs="auto">
                       <p
-                        className="text_body_xs_regular  mb12"
+                        className="text_body_xs_regular left  mb12"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -431,7 +456,7 @@ const Home = () => {
                         &nbsp;&nbsp; Free account signup
                       </p>
                       <p
-                        className="text_body_xs_regular  mb12"
+                        className="text_body_xs_regular left  mb12"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -453,7 +478,7 @@ const Home = () => {
                         &nbsp;&nbsp; Targeted advertising
                       </p>
                       <p
-                        className="text_body_xs_regular  mb12"
+                        className="text_body_xs_regular left mb12"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -475,7 +500,7 @@ const Home = () => {
                         &nbsp;&nbsp; Maximize results, boost sales
                       </p>
                       <p
-                        className="text_body_xs_regular  mb12"
+                        className="text_body_xs_regular left  mb12"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -497,7 +522,7 @@ const Home = () => {
                         &nbsp;&nbsp; No Ad account needed
                       </p>
                       <p
-                        className="text_body_xs_regular "
+                        className="text_body_xs_regular left"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -520,18 +545,25 @@ const Home = () => {
                       </p>
                     </Grid>
                   </Grid>
-
                 </div>
-                  <Box sx={{ mt: 5, textAlign: "center" }}>
-                    <Button
-                      variant="contained"
-                      disableElevation
-                      sx={{ borderRadius: "100vw", px: 3 }}
-                    >
-                      {" "}
-                      book a schedule
-                    </Button>
-                  </Box>
+                <Box
+                  sx={{
+                    [theme.breakpoints.down("sm")]: {
+                      mt: 3,
+                    },
+                    mt: 5,
+                    textAlign: "center",
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    disableElevation
+                    sx={{ ...buttonStyle }}
+                  >
+                    {" "}
+                    Book a Schedule
+                  </Button>
+                </Box>
               </div>
             </div>
             <div
@@ -579,7 +611,7 @@ const Home = () => {
                   <Grid container justifyContent="center">
                     <Grid item xs="auto">
                       <p
-                        className="text_body_xs_regular  mb12"
+                        className="text_body_xs_regular left  mb12"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -601,7 +633,7 @@ const Home = () => {
                         &nbsp;&nbsp; Customize & Pay
                       </p>
                       <p
-                        className="text_body_xs_regular  mb12"
+                        className="text_body_xs_regular left  mb12"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -623,7 +655,7 @@ const Home = () => {
                         &nbsp;&nbsp; Maximum ROI
                       </p>
                       <p
-                        className="text_body_xs_regular"
+                        className="text_body_xs_regular left"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -646,18 +678,25 @@ const Home = () => {
                       </p>
                     </Grid>
                   </Grid>
-
                 </div>
-                  <Box sx={{ mt: 5, textAlign: "center" }}>
-                    <Button
-                      variant="contained"
-                      disableElevation
-                      sx={{ borderRadius: "100vw", px: 3 }}
-                    >
-                      {" "}
-                      book a schedule
-                    </Button>
-                  </Box>
+                <Box
+                  sx={{
+                    [theme.breakpoints.down("sm")]: {
+                      mt: 3,
+                    },
+                    mt: 5,
+                    textAlign: "center",
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    disableElevation
+                    sx={{ ...buttonStyle }}
+                  >
+                    {" "}
+                    Book a Schedule
+                  </Button>
+                </Box>
               </div>
             </div>
           </div>
@@ -665,10 +704,9 @@ const Home = () => {
 
         <div className="section_style">
           <div data-aos="fade-up" className="mb60">
-            <h3 className="title_semibold_medium center">REVIEWS</h3>
-            <p className="text_body_medium center mt10 ">
-              Hear from our clients
-            </p>
+            <h3 className="title_semibold_medium center">
+              Get top-notch marketing services
+            </h3>
           </div>
           <div data-aos="fade-up" data-aos-delay="300">
             <Feedback />
@@ -719,7 +757,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       At Prokash, we stand out as a top digital marketing
                       service in Bangladesh due to our strategic approach,
                       innovative solutions, and proven track record of
@@ -759,7 +797,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Yes, Prokash consistently ranks among the top 10 digital
                       marketing services in Bangladesh. Our dedication to
                       excellence, diverse service offerings, and client
@@ -798,7 +836,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       As the best digital marketing agency in Dhaka, Prokash
                       combines global expertise with a deep understanding of the
                       local market. Our team in Dhaka crafts tailored strategies
@@ -838,7 +876,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Prokash has earned its reputation as the top digital
                       marketing agency in Bangladesh by consistently delivering
                       outstanding results. Our commitment to staying ahead of
@@ -850,13 +888,13 @@ const Home = () => {
               </div>
               <div data-aos="fade-up" data-aos-delay="500">
                 <Accordion
-                  expanded={expanded === "Top marketing agency in Bangladesh?"}
-                  onChange={handleChange("Top marketing agency in Bangladesh?")}
+                  expanded={expanded === "Top marketing agency in Bangladesh"}
+                  onChange={handleChange("Top marketing agency in Bangladesh")}
                   className="accrodian_style card_shadow mb12"
                 >
                   <AccordionSummary
                     expandIcon={
-                      expanded === "Top marketing agency in Bangladesh?" ? (
+                      expanded === "Top marketing agency in Bangladesh" ? (
                         <RemoveIcon />
                       ) : (
                         <AddIcon />
@@ -869,11 +907,11 @@ const Home = () => {
                       // sx={{ flexShrink: 0 }}
                       className="subtitle_bold"
                     >
-                      Top marketing agency in Bangladesh?
+                      Top marketing agency in Bangladesh
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Prokash distinguishes itself as a top marketing agency in
                       Bangladesh through its commitment to delivering impactful
                       marketing solutions, understanding local nuances, and
@@ -884,13 +922,13 @@ const Home = () => {
               </div>
               <div data-aos="fade-up" data-aos-delay="550">
                 <Accordion
-                  expanded={expanded === "Digital agency in BD?"}
-                  onChange={handleChange("Digital agency in BD?")}
+                  expanded={expanded === "Digital agency in BD"}
+                  onChange={handleChange("Digital agency in BD")}
                   className="accrodian_style card_shadow mb12"
                 >
                   <AccordionSummary
                     expandIcon={
-                      expanded === "Digital agency in BD?" ? (
+                      expanded === "Digital agency in BD" ? (
                         <RemoveIcon />
                       ) : (
                         <AddIcon />
@@ -903,11 +941,11 @@ const Home = () => {
                       // sx={{ flexShrink: 0 }}
                       className="subtitle_bold"
                     >
-                      Digital agency in BD?
+                      Digital agency in BD
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Choosing Prokash as your digital agency in BD means
                       partnering with a team that stays abreast of the latest
                       industry trends, leverages innovative techniques, and
@@ -942,7 +980,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Boosting your Facebook page with bKash is easy. Just
                       select your boost settings, choose bKash as your payment
                       method, and complete the payment through bKash.
@@ -981,7 +1019,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       The price for Facebook boost service in Bangladesh varies
                       depending on your target audience and campaign duration.
                       Contact our team for a customized quote.
@@ -1014,7 +1052,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       We take pride in being recognized as the best-boosting
                       service in Bangladesh. Our effective strategies and proven
                       results set us apart.
@@ -1052,7 +1090,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Finding the best Facebook boost service in Bangladesh
                       involves checking reviews, looking at past performance,
                       and ensuring they align with your business goals. We
@@ -1086,7 +1124,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Yes, we offer a user-friendly web app for Facebook boost
                       service in Bangladesh. signup our app for convenient and
                       efficient boosting.
@@ -1119,7 +1157,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       While we don't provide a completely free service, we offer
                       competitive prices and ensure that your investment results
                       in significant visibility and engagement.
@@ -1156,7 +1194,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       You can conveniently pay to boost your Facebook page
                       through various methods, including bKash. Choose the
                       payment option that suits you best.
@@ -1194,7 +1232,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       We take pride in being recognized as the best Facebook
                       boosting agency in Bangladesh. Our dedicated team ensures
                       your page reaches its full potential.
@@ -1227,7 +1265,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Currently, we do not provide a free YouTube video boost
                       service. However, we offer competitive prices to ensure
                       your video gains maximum visibility.
@@ -1264,7 +1302,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       YouTube video boost service prices vary based on factors
                       such as target audience and campaign duration. Connect
                       with us for a personalized quote.
@@ -1303,7 +1341,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       The cost of boosting a YouTube video depends on your
                       specific requirements. Contact us, and we'll provide you
                       with a detailed breakdown of the pricing.
@@ -1342,7 +1380,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       We take pride in being recognized as the best
                       YouTube-boosting service in Bangladesh. Our team is
                       dedicated to ensuring your video gains the visibility it
@@ -1382,7 +1420,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       We stand out as the best Google Ads service provider due
                       to our experienced team, proven track record, and
                       dedication to delivering results. Explore our services to
@@ -1416,7 +1454,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Yes, our team comprises certified Google Ads experts with
                       in-depth knowledge and skills to optimize campaigns for
                       maximum impact.
@@ -1449,7 +1487,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Our Google Ads management services include strategic
                       campaign planning, keyword optimization, ad creation,
                       performance monitoring, and continuous optimization for
@@ -1487,7 +1525,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Absolutely! Our Google Ads agency caters to businesses of
                       all sizes. We tailor our services to meet the specific
                       needs and budget constraints of small businesses, ensuring
@@ -1521,7 +1559,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Prokash stands out as a top SEO agency due to its proven
                       track record, experienced team of SEO experts, and
                       commitment to delivering measurable results for clients.
@@ -1554,7 +1592,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Yes, Prokash is recognized as a leading SEO agency in
                       Dhaka, offering tailored SEO solutions to businesses
                       seeking enhanced online visibility and organic growth.
@@ -1587,7 +1625,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Prokash secures its position among the top 10 SEO agencies
                       in Bangladesh through its strategic approach, industry
                       expertise, and successful SEO campaigns that drive
@@ -1621,7 +1659,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Prokash boasts a team of seasoned SEO experts in
                       Bangladesh with a deep understanding of search engine
                       algorithms, industry trends, and effective optimization
@@ -1661,7 +1699,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       Prokash is dedicated to improving your website's SEO
                       ranking through strategic planning, on-page optimization,
                       content enhancement, and other proven SEO techniques.
@@ -1699,7 +1737,7 @@ const Home = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <p className="text_body_small_regular">
+                    <p className="text_body_small_regular left">
                       To discuss your SEO requirements or inquire about our
                       services, contact us through our website, and our team
                       will be happy to assist you.

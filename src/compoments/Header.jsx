@@ -175,7 +175,14 @@ const Header = () => {
                 disableElevation
                 variant="contained"
                 size="small"
-                sx={{ borderRadius: "100vw", mr: 2, fontSize: "8px" }}
+                sx={{
+                  borderRadius: "100vw",
+                  mr: 1,
+                  fontSize: "8px",
+                  "& .MuiButton-startIcon": {
+                    mr: 0.5,
+                  },
+                }}
                 // className="nav_button"
                 // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
                 // onClick={handleClickOpen}
@@ -188,7 +195,13 @@ const Header = () => {
               <Button
                 variant="outlined"
                 size="small"
-                sx={{ borderRadius: "100vw", fontSize: "8px" }}
+                sx={{
+                  borderRadius: "100vw",
+                  fontSize: "8px",
+                  "& .MuiButton-startIcon": {
+                    mr: 0.5,
+                  },
+                }}
                 // className="nav_button"
                 // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
                 startIcon={

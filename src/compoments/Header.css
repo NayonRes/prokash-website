@@ -163,7 +163,8 @@
 }
 @media screen and (max-width: 600px) {
   .header_logo_style {
-    width: 130px;
+    width: 120px;
+    margin-top: 5px;
   }
   .appbar_holder {
     padding: 0px 20px;

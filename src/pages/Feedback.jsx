@@ -95,26 +95,7 @@ const Feedback = () => {
         {data.map((item, i) => (
           <Box key={i}>
             <Box sx={{ ...card }}>
-              <Grid
-                container
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ mb: 3 }}
-              >
-                <Grid item xs="auto">
-                  <Typography
-                    variant="base"
-                    sx={{ ...cardTitle, fontWeight: 700 }}
-                  >
-                    IFIXIT
-                  </Typography>
-                </Grid>
-                <Grid item xs="auto" sx={{ textAlign: "right" }}>
-                  <Typography variant="base" sx={{ ...cardTitle }}>
-                    IPHONE REPAIR CENTER
-                  </Typography>
-                </Grid>
-              </Grid>
+              
               <img
                 src="/feedback-images/story.png"
                 alt=""

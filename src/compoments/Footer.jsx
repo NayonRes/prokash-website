@@ -42,11 +42,8 @@ const Footer = () => {
                   </Grid>
                   <Grid item xs={10}>
                     <p className="footer_item2">
-                      <Link
-                        to="mailto:info@theqrpay.com"
-                        className="link_style"
-                      >
-                        oho@onlineheadoffice.com
+                      <Link to="mailto:hello@prokash.io" className="link_style">
+                        hello@prokash.io
                       </Link>
                     </p>
                   </Grid>

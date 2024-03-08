@@ -88,11 +88,15 @@
   margin: 0 !important;
   color: #696969 !important;
   font-style: normal !important;
-  font-weight: 500 !important;
+  /* font-weight: 400 !important; */
   font-size: 18px !important;
   line-height: 28px !important;
 }
-
+.hero_image {
+  display: block;
+  margin: auto;
+  width: 70%;
+}
 .text_body_medium li,
 .title_semibold_small li {
   text-align: left !important;
@@ -830,7 +834,6 @@
   }
 
   .text_body_medium {
-    font-weight: 400 !important;
     font-size: 14px !important;
     line-height: 22px !important;
   }
@@ -840,13 +843,7 @@
     line-height: 21px !important;
   }
   .text_body_xs_regular {
-    /* font-family: "Poppins", sans-serif;
-    margin: 0;
-    color: #696969;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 19px; */
+    font-size: 11px;
   }
 
   .outlined_buttton,
@@ -879,6 +876,10 @@
   .card7 {
     flex: 100%;
   }
+
+  .hero_image {
+    width: 35%;
+  }
   .idea_card {
     min-height: 140px;
   }
@@ -892,6 +893,9 @@
   .card_image {
     width: 70%;
   }
+  .subtitle_bold {
+    font-size: 14px !important;
+  }
   .showForMobileViewOnly {
     display: none !important;
   }
@@ -901,6 +905,7 @@
   .showForTabAndMobileViewOnly {
     display: block !important;
   }
+
   .centerForTabAndMobileViewOnly {
     text-align: center !important;
     margin-left: auto !important;
@@ -917,15 +922,20 @@
   } */
 }
 @media screen and (max-width: 600px) {
+  .hero_image {
+    width: 40%;
+  }
   .card_image {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 24px;
   }
   .card6 {
     flex: 0 0 calc(50% - 15px);
     min-width: 0px;
     max-width: 365px;
+    padding: 40px 36px;
   }
   .idea_card {
     flex-direction: column-reverse !important;
@@ -966,6 +976,12 @@
   .showForTabAndMobileViewOnly {
     display: block !important;
   }
+
+  .centerForMobileViewOnly {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
   .centerForTabAndMobileViewOnly {
     text-align: center !important;
   }
@@ -975,7 +991,7 @@
     font-style: inherit !important;
     font-weight: 400;
     font-size: 26px;
-    line-height: 26px;
+    line-height: 36px;
   }
 
   .title_large2 {
@@ -995,19 +1011,22 @@
     /* font-weight: 700;
     font-size: 18px;
     line-height: 32px; */
+    line-height: 24px;
   }
   .title_semibold_small {
     /* changed */
-    font-size: 14px;
+    /* font-size: 14px; */
     text-align: center;
   }
   .subtitle_bold {
-    text-align: center !important;
+    font-size: 12px !important;
+
+    line-height: 20px !important;
+    /* text-align: center !important; */
   }
   .text_body_medium {
     /* changed */
     text-align: center;
-    font-weight: 400 !important;
     font-size: 14px !important;
     line-height: 22px !important;
   }
@@ -1098,6 +1117,9 @@
     width: 60px;
     height: 60px;
     font-size: 30px;
+  }
+  .accrodian_style svg {
+    font-size: 20px !important;
   }
 }
 

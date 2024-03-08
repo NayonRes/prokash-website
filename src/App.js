@@ -129,7 +129,7 @@ function App(props) {
         // console.log(" ------------------else if---------------");
 
         divPosition.style.background = "rgba(141, 93, 217,.1)";
-        divPosition.style.backdropFilter = "blur(20px)";
+        divPosition.style.backdropFilter = "blur(70px)";
         // if (windowHeight < y + 120) {
         //   // document.getElementById("header").style.top = "0px";
         //   divPosition.style.background = "rgba(207,227,255,.5)";
@@ -158,7 +158,6 @@ function App(props) {
           TransitionComponent={Slide}
         >
           <AuthContextProvider>
-         
             <div
               style={{
                 position: "relative",
