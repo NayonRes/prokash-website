@@ -39,16 +39,34 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      // main: "#40739e",
-      main: "#834BFF",
-      contrastText: "#fff",
+      main: ColorPalette.light.primary.main,
+      light: ColorPalette.light.primary.light,
+      contrastText: ColorPalette.light.primary.contrastText,
     },
-    // secondary: {
-    //   main: "#8A8C90",
-    // },
+    secondary: {
+      main: ColorPalette.light.secondary.main,
+      light: ColorPalette.light.secondary.light,
+      contrastText: ColorPalette.light.secondary.contrastText,
+    },
+    success: {
+      main: ColorPalette.light.success.main,
+      light: ColorPalette.light.success.light,
+      contrastText: ColorPalette.light.success.contrastText,
+    },
+    info: {
+      main: ColorPalette.light.info.main,
+      light: ColorPalette.light.info.light,
+      contrastText: ColorPalette.light.info.contrastText,
+    },
+    warning: {
+      main: ColorPalette.light.warning.main,
+      light: ColorPalette.light.warning.light,
+      contrastText: ColorPalette.light.warning.contrastText,
+    },
     error: {
-      main: "#cb2027",
-      contrastText: "#fff",
+      main: ColorPalette.light.error.main,
+      light: ColorPalette.light.error.light,
+      contrastText: ColorPalette.light.error.contrastText,
     },
   },
   // breakpoints: {

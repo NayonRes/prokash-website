@@ -145,7 +145,7 @@ const AddCustomer = ({ handleSignUpClose }) => {
             method: "post",
             data: data,
             // headers: {
-            //   Authorization: `Bearer ${adtech_admin_panel.token}`,
+            //   Authorization: `Bearer ${prokash_user.token}`,
             // },
           });
           console.log("response", response);
@@ -173,6 +173,12 @@ const AddCustomer = ({ handleSignUpClose }) => {
           if (error?.response?.status === 500) {
             handleSnakbarOpen(error?.response?.statusText, "error");
           } else {
+            if (error.response.data?.errors?.recaptcha_token?.length > 0) {
+              handleSnakbarOpen(
+                error.response.data?.errors?.recaptcha_token[0],
+                "error"
+              );
+            }
             setErrors(error.response.data.errors);
           }
           // handleSnakbarOpen(error.response.data.messages.toString(), "error");

@@ -28,8 +28,8 @@ import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import FilterListOffOutlinedIcon from "@mui/icons-material/FilterListOffOutlined";
 import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
 import Collapse from "@mui/material/Collapse";
-import { getDataWithToken } from "../../services/GetDataService";
-import { AuthContext } from "../../context/AuthContext";
+import { getDataWithToken } from "../../../services/GetDataService";
+import { AuthContext } from "../../../context/AuthContext";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -45,7 +45,17 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-const CustomerList = () => {
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
+import PulseLoader from "react-spinners/PulseLoader";
+import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
+import CellTowerOutlinedIcon from "@mui/icons-material/CellTowerOutlined";
+import MoneyOffCsredOutlinedIcon from "@mui/icons-material/MoneyOffCsredOutlined";
+const CompleteOrderList = () => {
   const theme = useTheme();
   const { prokash_user, logout } = useContext(AuthContext);
   const [openFilter, setOpenFilter] = useState(false);
@@ -54,10 +64,9 @@ const CustomerList = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobileNo, setmobileNo] = useState("");
+  const [invoiceNo, setInvoiceNo] = useState("");
   const [gender, setGender] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Complete");
   const [totalPage, setTotalPage] = useState(0);
   const [totalData, setTotalData] = useState(0);
   const [message, setMessage] = useState("");
@@ -66,6 +75,19 @@ const CustomerList = () => {
   const [createdStartTime, setCreatedStartTime] = useState(null);
   const [createdEndTime, setCreatedEndTime] = useState(null);
   const { enqueueSnackbar } = useSnackbar();
+  const [downloadloading, setDownloadloading] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [updateId, setUpdateId] = useState("");
+  const [updateLoading, setUpdateLoading] = useState(false);
+
+  const handleClickOpen = (id) => {
+    setUpdateId(id);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const handleSnakbarOpen = (msg, vrnt) => {
     let duration;
     if (vrnt === "error") {
@@ -95,14 +117,13 @@ const CustomerList = () => {
     for (let i = 0; i < 25; i++) {
       let cells = [];
 
-      for (let j = 0; j < 10; j++) {
+      for (let j = 0; j < 12; j++) {
         cells.push(
           <TableCell key={j} sx={{ py: 1.5 }}>
             <Skeleton></Skeleton>
           </TableCell>
         );
       }
-
       rows.push(<TableRow key={i}>{cells}</TableRow>);
     }
 
@@ -110,13 +131,12 @@ const CustomerList = () => {
   };
   const clearFilter = (event) => {
     setName("");
-    setEmail("");
-    setmobileNo("");
-    setStatus("");
+    setInvoiceNo("");
+    // setStatus("");
     setCreatedStartTime(null);
     setCreatedEndTime(null);
     setPage(0);
-    let newUrl = `api/customer`;
+    let newUrl = `api/order?status=${status}`;
     getData("", newUrl);
   };
   const getData = async (pageNO, newUrl) => {
@@ -152,15 +172,11 @@ const CustomerList = () => {
         newCreatedEndTime = dayjs(createdEndTime).format("YYYY-MM-DD");
       }
 
-      url = `api/customer?keyword=${name.trim()}&email=${encodeURIComponent(
-        email.trim()
-      )}&mobile=${encodeURIComponent(
-        mobileNo.trim()
-      )}&gender=${gender}&status=${newStatus}&from=${newCreatedStartTime}&to=${newCreatedEndTime}&page=${newPageNO}`;
+      url = `api/order?promotion=${name.trim()}&invoice_no=${invoiceNo.trim()}&gender=${gender}&status=${newStatus}&from=${newCreatedStartTime}&to=${newCreatedEndTime}&page=${newPageNO}`;
     }
 
     let res = await getDataWithToken(url, prokash_user.token);
-    console.log("res", res);
+
     if (res?.status === 401 || res?.status === 403) {
       logout();
       return;
@@ -180,7 +196,7 @@ const CustomerList = () => {
     }
     setLoading(false);
   };
-  const [downloadloading, setDownloadloading] = useState(false);
+
   const downloadFile = async (type) => {
     setDownloadloading(true);
     // try {
@@ -203,10 +219,8 @@ const CustomerList = () => {
       newCreatedEndTime = dayjs(createdEndTime).format("YYYY-MM-DD");
     }
 
-    let url = `api/customer/export?keyword=${name.trim()}&email=${encodeURIComponent(
-      email.trim()
-    )}&mobile=${encodeURIComponent(
-      mobileNo.trim()
+    let url = `api/order/export?promotion=${name.trim()}&invoice_no=${encodeURIComponent(
+      invoiceNo.trim()
     )}&gender=${gender}&status=${newStatus}&from=${newCreatedStartTime}&to=${newCreatedEndTime}`;
 
     let res = await axios({
@@ -223,7 +237,7 @@ const CustomerList = () => {
       const link = document.createElement("a");
 
       link.href = url;
-      link.setAttribute("download", `Customer.${type}`);
+      link.setAttribute("download", `Order.${type}`);
 
       document.body.appendChild(link);
       link.click();
@@ -267,6 +281,48 @@ const CustomerList = () => {
     setDownloadloading(false);
   };
 
+  const updateStatus = async (id) => {
+    // let err = false;
+    // setErrors({});
+
+    setUpdateLoading(true);
+    try {
+      let data = {
+        status: "Complete",
+      };
+      let response = await axios({
+        url: `/api/order/${id}/action`,
+        method: "put",
+        data: data,
+        headers: {
+          Authorization: `Bearer ${prokash_user.token}`,
+        },
+      });
+
+      if (response?.status > 199 && response?.status < 300) {
+        handleSnakbarOpen("Update Successfully", "success");
+        getData();
+      }
+    } catch (error) {
+      console.log("error", error);
+      setUpdateLoading(false);
+      if (error?.response?.status === 401 || error?.response?.status === 403) {
+        logout();
+        return;
+      }
+      if (error?.response?.status === 500) {
+        handleSnakbarOpen(error?.response?.statusText, "error");
+      } else {
+        // setErrors(error.response.data.errors);
+      }
+      // handleSnakbarOpen(error.response.data.messages.toString(), "error");
+      // if (error.response.data.errors.length < 1) {
+      //   handleSnakbarOpen("Something went wrong", "error");
+      // }
+
+      setUpdateLoading(false);
+    }
+  };
   const checkCreateAndUpdatedSame = (createdAt, updatedAt) => {
     // Convert strings to Date objects
     const createdDate = new Date(createdAt);
@@ -279,7 +335,6 @@ const CustomerList = () => {
       return false;
     }
   };
-
   useEffect(() => {
     // setLoading(true);
     getData();
@@ -313,7 +368,7 @@ const CustomerList = () => {
                   color="text.main"
                   sx={{ fontWeight: 500 }}
                 >
-                  Customer List
+                  Complete Order List
                 </Typography>
 
                 {/* <Breadcrumbs
@@ -329,7 +384,7 @@ const CustomerList = () => {
           </Grid>
           <Grid item xs="auto">
             {prokash_user?.permission?.some(
-              (el) => el.name === "customer-export"
+              (el) => el.name === "order-export"
             ) && (
               <>
                 <Button
@@ -341,7 +396,7 @@ const CustomerList = () => {
                 >
                   Download
                 </Button>
-                &nbsp;&nbsp;
+                &nbsp;&nbsp;{" "}
               </>
             )}
             <Button
@@ -367,7 +422,19 @@ const CustomerList = () => {
               <TextField
                 fullWidth
                 id="outlined-basic"
-                label="Name"
+                label="Invoice No"
+                variant="outlined"
+                size="small"
+                className="xs_input"
+                value={invoiceNo}
+                onChange={(e) => setInvoiceNo(e.target.value)}
+              />
+            </Grid>
+            <Grid item lg={2}>
+              <TextField
+                fullWidth
+                id="outlined-basic"
+                label="promotion"
                 variant="outlined"
                 size="small"
                 className="xs_input"
@@ -375,36 +442,18 @@ const CustomerList = () => {
                 onChange={(e) => setName(e.target.value)}
               />
             </Grid>
-            <Grid item lg={2}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Email"
-                variant="outlined"
-                size="small"
-                className="xs_input"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Grid>
-            <Grid item lg={2}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Mobile No"
-                variant="outlined"
-                size="small"
-                className="xs_input"
-                value={mobileNo}
-                onChange={(e) => setmobileNo(e.target.value)}
-              />
-            </Grid>
-            <Grid item lg={2}>
+
+            {/* <Grid item lg={2}>
               <FormControl
                 variant="outlined"
                 fullWidth
                 size="small"
-                className="xs_select"
+                sx={{
+                  "& .MuiOutlinedInput-input": {
+                    // color: "#718096",
+                    padding: "7px 14px",
+                  },
+                }}
               >
                 <InputLabel id="demo-status-outlined-label">Status</InputLabel>
                 <Select
@@ -419,7 +468,7 @@ const CustomerList = () => {
                   <MenuItem value={"Inactive"}>Inactive</MenuItem>
                 </Select>
               </FormControl>
-            </Grid>
+            </Grid> */}
             <Grid item lg={2}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
@@ -455,7 +504,6 @@ const CustomerList = () => {
               </LocalizationProvider>
             </Grid>
 
-            <Grid item lg={10}></Grid>
             <Grid item lg={2}>
               <Grid container alignItems="center" spacing={{ lg: 6, xl: 3 }}>
                 <Grid item xs={3}>
@@ -500,18 +548,21 @@ const CustomerList = () => {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell sx={{ whiteSpace: "nowrap" }}>Mobile No</TableCell>
-                <TableCell align="center">Status</TableCell>
+                <TableCell sx={{ whiteSpace: "nowrap" }}>Invoice No</TableCell>
+                <TableCell>Promotion</TableCell>
+                <TableCell>Amount</TableCell>
+                <TableCell sx={{ whiteSpace: "nowrap" }} align="center">
+                  Promotion Period
+                </TableCell>
+                <TableCell>gender</TableCell>
+                <TableCell>Age</TableCell>
+                <TableCell>Location</TableCell>
+                {/* <TableCell align="center">Status</TableCell> */}
                 <TableCell>Remarks</TableCell>
                 <TableCell sx={{ whiteSpace: "nowrap" }}>Created At</TableCell>
                 <TableCell sx={{ whiteSpace: "nowrap" }}>Updated At</TableCell>
                 <TableCell sx={{ whiteSpace: "nowrap" }}>Created By</TableCell>
                 <TableCell sx={{ whiteSpace: "nowrap" }}>Updated By</TableCell>
-                <TableCell sx={{ whiteSpace: "nowrap" }} align="center">
-                  Actions
-                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -528,28 +579,50 @@ const CustomerList = () => {
                         whiteSpace: "nowrap",
                       }}
                     >
-                      {row?.name}
+                      {row?.id}
                     </TableCell>
-                    <TableCell>{row?.email}</TableCell>
-                    <TableCell>{row?.mobile}</TableCell>
-                    {/* <TableCell>{row?.gender}</TableCell> */}
-
+                    <TableCell>{row?.promotion}</TableCell>
+                    <TableCell
+                      sx={{
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      Tk. {row?.amount}
+                    </TableCell>
                     <TableCell align="center">
-                      {/* <img
-                        src={
-                          row.status === "Acitve"
-                            ? "/image/verified.svg"
-                            : "/image/unverified.svg"
+                      {row?.promotion_period}{" "}
+                      {parseInt(row?.promotion_period) > 1 ? "Days" : "Day"}
+                    </TableCell>
+                    <TableCell>{row?.gender}</TableCell>
+                    <TableCell
+                      sx={{
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {row?.min_age} - {row?.max_age}
+                    </TableCell>
+                    <TableCell
+                      sx={
+                        {
+                          // maxWidth: "220px",
+                          // background: "red",
                         }
-                        alt=""
-                        height="20px"
-                        style={{ position: "relative", top: 5 }}
-                      />{" "}
-                      &nbsp; */}
+                      }
+                    >
+                      {row?.divisions?.toString()}
+                      {/* {JSON.parse(row?.divisions)?.map((item, i) =>
+                        JSON.parse(row?.divisions).length < i + 2 ? (
+                          <span key={i}>{item}</span>
+                        ) : (
+                          <span key={i}>{item}&nbsp;,</span>
+                        )
+                      )} */}
+                    </TableCell>
+
+                    {/* <TableCell align="center">
+                     
                       {row.status === "Active" ? (
-                        // <span style={{ color: theme.palette.success.main }}>
-                        //   {row.status}
-                        // </span>
+                        
                         <Chip
                           label={row.status}
                           variant="outlined"
@@ -566,7 +639,7 @@ const CustomerList = () => {
                           sx={{ minWidth: "75px", textAlign: "center" }}
                         />
                       )}
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell sx={{ width: "190px" }}>
                       {row?.remarks === null
                         ? "-------"
@@ -575,6 +648,7 @@ const CustomerList = () => {
                         : row?.remarks}
                     </TableCell>
                     <TableCell sx={{ minWidth: "90px" }}>
+                      {" "}
                       {moment(row?.created_at).format(
                         "DD MMM, YYYY, HH:mm:ss a"
                       )}
@@ -604,18 +678,6 @@ const CustomerList = () => {
                         ? row.updated_by.name
                         : "-------"}
                     </TableCell>
-                    <TableCell
-                      sx={{ whiteSpace: "nowrap", p: 0 }}
-                      align="center"
-                    >
-                      <IconButton
-                        aria-label="edit"
-                        component={Link}
-                        to={`/update-customer/${row?.id}`}
-                      >
-                        <EditOutlinedIcon />
-                      </IconButton>
-                    </TableCell>
                   </TableRow>
                 ))}
 
@@ -640,8 +702,61 @@ const CustomerList = () => {
           />
         )}
       </Paper>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        maxWidth="lg"
+        sx={{ ".MuiDialog-paper": { p: 3 } }}
+      >
+        <DialogTitle
+          id="alert-dialog-title"
+          sx={{ fontWeight: 600, position: "relative" }}
+        >
+          {"Are you sure?"}{" "}
+          <IconButton
+            sx={{ position: "absolute", right: 0, top: -10 }}
+            onClick={handleClose}
+          >
+            <ClearOutlinedIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent sx={{ minWidth: "350px" }}>
+          <DialogContentText id="alert-dialog-description">
+            You want to pass it to publish list!!!
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions sx={{ pt: 0, pb: 1.5 }}>
+          <Button
+            variant="contained"
+            disableElevation
+            // size="small"
+            style={{
+              minHeight: "37px",
+              minWidth: "180px",
+            }}
+            endIcon={
+              <SendOutlinedIcon
+                style={{ position: "relative", top: -2, fontSize: "16px" }}
+              />
+            }
+            disabled={updateLoading}
+            onClick={updateStatus}
+          >
+            {updateLoading === false && <>&nbsp;&nbsp; Confirm</>}
+            <PulseLoader
+              color={"#353b48"}
+              loading={updateLoading}
+              size={10}
+              speedMultiplier={0.5}
+            />{" "}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
 
-export default CustomerList;
+export default CompleteOrderList;
