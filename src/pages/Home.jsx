@@ -1,11 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import "../App.css";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "../compoments/MouseDown.css";
-import Lottie from "lottie-react";
-import splash from "../animations/splash.json";
-import UnlockThePower from "../animations/UnlockThePower.json";
 import { Link } from "react-router-dom";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -19,10 +16,12 @@ import DoneAllIcon from "@mui/icons-material/DoneAll";
 import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
 import Marquee from "react-fast-marquee";
 import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
+import { AuthContext } from "../context/AuthContext";
 
 const Home = () => {
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState("");
+  const { prokash_user, logout, login } = useContext(AuthContext);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -592,7 +591,7 @@ const Home = () => {
                       variant="base"
                       sx={{ ...cardTitle, color: "#999999" }}
                     >
-                      WORKING HOURS
+                      MONTHLY
                     </Typography>
                   </Grid>
                 </Grid>

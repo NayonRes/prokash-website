@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -7,7 +7,14 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import "./Header.css";
-import { Grid, ListItemIcon, Menu, MenuItem, TextField } from "@mui/material";
+import {
+  Grid,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
@@ -19,35 +26,29 @@ import DialogContent from "@mui/material/DialogContent";
 import ClearIcon from "@mui/icons-material/Clear";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
+import { useTheme } from "@mui/material/styles";
+import AddCustomer from "../pages/customer/AddCustomer";
+import { AuthContext } from "../context/AuthContext";
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 const Header = () => {
   // const { window } = props;
   const location = useLocation();
   const navigate = useNavigate();
+  const theme = useTheme();
+  const { prokash_user, logout, login } = useContext(AuthContext);
   console.log("location", location.pathname);
   const [serveOpen, setServeOpen] = useState(false);
-  const [open, setOpen] = React.useState(false);
-  const [serviceAnchorEl, setServiceAnchorEl] = useState(null);
-  const [useCaseAnchorEl, setUseCaseAnchorEl] = useState(null);
-  const [caseStudiesAnchorEl, setCaseStudiesAnchorEl] = useState(null);
-  const [menuAnchorEl, setMenuAnchorEl] = useState(null);
-  const serviceOpen = Boolean(serviceAnchorEl);
-  const useCaseOpen = Boolean(useCaseAnchorEl);
-  const caseStudiesOpen = Boolean(caseStudiesAnchorEl);
-  const menuOpen = Boolean(menuAnchorEl);
-
-  const checkServeOpen = () => {
-    let serveMenus = [
-      "/startup",
-      "/small-and-medium-sized-business",
-      "/enterprise",
-    ];
-    if (serveMenus.includes(location.pathname)) {
-      setServeOpen(true);
-    }
-  };
+  const [open, setOpen] = useState(false);
+  const [signUpOpen, setSignUpOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const menuOpen = Boolean(anchorEl);
 
   const handleClickOpen = () => {
     setOpen(true);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
   };
 
   const handleClose = (event, reason) => {
@@ -55,85 +56,62 @@ const Header = () => {
       setOpen(false);
     }
   };
-
-  const handleChange = () => {
-    setServeOpen((prev) => !prev);
+  const handleClickSignUpOpen = () => {
+    setSignUpOpen(true);
   };
 
-  const MenuHandleClick = (event) => {
-    setMenuAnchorEl(event.currentTarget);
-  };
-  const MenuHandleClose = () => {
-    setServeOpen(false);
-    setMenuAnchorEl(null);
-  };
-  const ServiceHandleClick = (event) => {
-    setServiceAnchorEl(event.currentTarget);
-  };
-  const ServiceHandleClose = () => {
-    setServiceAnchorEl(null);
-  };
-  const UseCaseHandleClick = (event) => {
-    setUseCaseAnchorEl(event.currentTarget);
-  };
-  const UseCaseHandleClose = () => {
-    setUseCaseAnchorEl(null);
-  };
-  const CaseStudiesHandleClick = (event) => {
-    setCaseStudiesAnchorEl(event.currentTarget);
-  };
-  const CaseStudiesHandleClose = () => {
-    setCaseStudiesAnchorEl(null);
+  const handleSignUpClose = (event, reason) => {
+    if (reason !== "backdropClick") {
+      setSignUpOpen(false);
+    }
   };
 
-  const checkServiceMenuActive = () => {
-    let services = [
-      "/services/fintech-software-development",
-      "/services/ewallet-app-development",
-      "/services/p2p-development",
-    ];
-    if (services.includes(location.pathname)) {
-      return true;
-    }
+  const startNowButtonStyle = {
+    px: 3,
+    py: 1,
+    borderRadius: "100vw",
+    mr: 2,
+    [theme.breakpoints.down("sm")]: {
+      mr: 1,
+      px: 2,
+      fontSize: "8px",
+      "& .MuiButton-startIcon": {
+        mr: 0.5,
+        fontSize: "12px",
+      },
+      "& .MuiSvgIcon-root": {
+        fontSize: "12px !important",
+      },
+    },
   };
-  const checkUseCasesMenuActive = () => {
-    let services = [
-      "/use-cases",
-      "/use-cases/e-wallet",
-      "/use-cases/general-ledger",
-      "/use-cases/mobile-wallet",
-      "/use-cases/money-transfer",
-      "/use-cases/neobank",
-      "/use-cases/payment-acceptance",
-    ];
-    if (services.includes(location.pathname)) {
-      return true;
-    }
+  const loginButtonStyle = {
+    px: 3,
+    py: 1,
+    borderRadius: "100vw",
+    [theme.breakpoints.down("sm")]: {
+      px: 2,
+      borderRadius: "100vw",
+      fontSize: "8px",
+      "& .MuiButton-startIcon": {
+        fontSize: "12px",
+        mr: 0.5,
+      },
+      "& .MuiSvgIcon-root": {
+        fontSize: "12px",
+      },
+    },
   };
-  const checkCaseStudiesMenuActive = () => {
-    let services = [
-      "/case-studies/payment-solution-provider",
-      "/case-studies/digital-wallet-solution",
-      "/case-studies/mobile-money-processing",
-    ];
-    if (services.includes(location.pathname)) {
-      return true;
-    }
-  };
-  const checkWhoWeServeMenuActive = () => {
-    let services = [
-      "/startup",
-      "/small-and-medium-sized-business",
-      "/enterprise",
-    ];
-    if (services.includes(location.pathname)) {
-      return true;
-    }
-  };
-  useEffect(() => {
-    checkServeOpen();
-  }, []);
 
+  const navigateRoutes = (routeName) => {
+    navigate(routeName, { replace: true });
+  };
+  const fnLogout = () => {
+    logout();
+    navigate("/");
+  };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
   return (
     <>
       <div
@@ -164,87 +142,259 @@ const Header = () => {
                 />
               </Link>
             </Box>
-            <Box sx={{ display: { xs: "block", md: "none" } }}>
-              {/* <MobileDrawer
-                checkServiceMenuActive={checkServiceMenuActive}
-                checkUseCasesMenuActive={checkUseCasesMenuActive}
-                checkCaseStudiesMenuActive={checkCaseStudiesMenuActive}
-                checkWhoWeServeMenuActive={checkWhoWeServeMenuActive}
-              /> */}
-              <Button
-                disableElevation
-                variant="contained"
-                size="small"
-                sx={{
-                  borderRadius: "100vw",
-                  mr: 1,
-                  fontSize: "8px",
-                  "& .MuiButton-startIcon": {
-                    mr: 0.5,
-                  },
-                }}
-                // className="nav_button"
-                // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
-                // onClick={handleClickOpen}
-                startIcon={
-                  <LibraryAddCheckOutlinedIcon style={{ fontSize: "12px" }} />
-                }
-              >
-                Start now
-              </Button>
-              <Button
-                variant="outlined"
-                size="small"
-                sx={{
-                  borderRadius: "100vw",
-                  fontSize: "8px",
-                  "& .MuiButton-startIcon": {
-                    mr: 0.5,
-                  },
-                }}
-                // className="nav_button"
-                // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
-                startIcon={
-                  <ExitToAppOutlinedIcon style={{ fontSize: "12px" }} />
-                }
-                onClick={handleClickOpen}
-              >
-                Login
-              </Button>
-            </Box>
-            <Box sx={{ display: { xs: "none", md: "block" } }}>
-              {/* <Button
-                component={Link}
-                to="/"
-                className={`nav_item ${location.pathname === "/" && "active"}`}
-              >
-                Home
-              </Button> */}
 
-              <Button
-                disableElevation
-                variant="contained"
-                sx={{ px: 3, py: 1, borderRadius: "100vw", mr: 2 }}
-                // className="nav_button"
-                // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
-                // onClick={handleClickOpen}
-                startIcon={<LibraryAddCheckOutlinedIcon />}
-              >
-                Start now
-              </Button>
-              <Button
-                variant="outlined"
-                sx={{ px: 3, py: 1, borderRadius: "100vw" }}
-                // className="nav_button"
-                // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
-                startIcon={<ExitToAppOutlinedIcon />}
-                onClick={handleClickOpen}
-              >
-                Login
-              </Button>
+            <Box>
+              {prokash_user?.token ? (
+                <>
+                  <Button
+                    variant="outlined"
+                    id="basic-button"
+                    aria-controls={menuOpen ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={menuOpen ? "true" : undefined}
+                    onClick={handleClick}
+                    sx={{
+                      ...loginButtonStyle,
+                      textTransform: "none",
+                    }}
+                    startIcon={<PermIdentityOutlinedIcon />}
+                  >
+                    {prokash_user?.name}&nbsp;
+                  </Button>
+
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={menuOpen}
+                    onClose={handleMenuClose}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                    PaperProps={{
+                      elevation: 0,
+                      sx: {
+                        overflow: "visible",
+                        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                        mt: 1.5,
+                        "& .MuiAvatar-root": {
+                          width: 32,
+                          height: 32,
+                          ml: -0.5,
+                          mr: 1,
+                        },
+                        "&:before": {
+                          content: '""',
+                          display: "block",
+                          position: "absolute",
+                          top: 0,
+                          right: 14,
+                          width: 10,
+                          height: 10,
+                          bgcolor: "background.paper",
+                          transform: "translateY(-50%) rotate(45deg)",
+                          zIndex: 0,
+                        },
+                      },
+                    }}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                  >
+                    <MenuItem
+                      onClick={() => {
+                        handleMenuClose();
+                        navigateRoutes("/change-password");
+                      }}
+                    >
+                      Change Password
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        handleMenuClose();
+                        fnLogout();
+                      }}
+                    >
+                      Sign Out
+                    </MenuItem>
+                  </Menu>
+                </>
+              ) : (
+                <>
+                  <Button
+                    disableElevation
+                    variant="contained"
+                    sx={{
+                      ...startNowButtonStyle,
+                    }}
+                    // className="nav_button"
+                    // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
+                    onClick={handleClickSignUpOpen}
+                    startIcon={<LibraryAddCheckOutlinedIcon />}
+                  >
+                    Start now
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      ...loginButtonStyle,
+                    }}
+                    // className="nav_button"
+                    // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
+                    startIcon={<ExitToAppOutlinedIcon />}
+                    onClick={handleClickOpen}
+                  >
+                    Login
+                  </Button>
+                </>
+              )}
             </Box>
           </Toolbar>
         </AppBar>
+        <Dialog
+          open={signUpOpen}
+          onClose={handleSignUpClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          maxWidth="lg"
+          className="demo_dialog"
+        >
+          <DialogContent style={{ padding: "0px" }}>
+            <Box
+              sx={{
+                boxSizing: "border-box",
+                padding: "50px 40px 40px 40px",
+                position: "relative",
+                minWidth: { sm: "auto", md: "800px", lg: "1000px" },
+              }}
+            >
+              <IconButton
+                onClick={handleSignUpClose}
+                className="demo_form_close_button"
+              >
+                <ClearIcon />
+              </IconButton>
+              <p
+                className="demo_form_title center mb24"
+                style={{ marginTop: "0px" }}
+              >
+                ব্যবসার প্রসারে পাশে আছে প্রকাশ
+              </p>
+
+              <Grid container alignItems="center">
+                <Grid
+                  item
+                  md={6}
+                  className="hideForMobileViewOnly hideForTabViewOnly"
+                >
+                  <img
+                    src="/hero.png"
+                    alt="prokash model"
+                    style={{
+                      display: "block",
+                      margin: "auto",
+                      width: "50%",
+                      marginBottom: "24px",
+                    }}
+                  />
+                  <h3
+                    className="title_semibold_medium mb12 center"
+                    // data-aos="fade-up"
+                    // data-aos-delay="400"
+                  >
+                    যেমন বাজেট, তেমন খরচ!
+                  </h3>
+                  <Box sx={{ width: "65%", margin: "auto" }}>
+                    <Grid container className="mb12">
+                      <Grid item sx={{ width: "40px" }}>
+                        {" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                      </Grid>
+                      <Grid item sx={{ width: "Calc(100% - 40px)" }}>
+                        <p
+                          className="text_body_xs_regular left"
+                          style={{ fontWeight: 500 }}
+                        >
+                          ফেইসবুক, গুগল কিংবা ইউটিউবে মিনিটের মধ্যে বিজ্ঞাপন
+                        </p>
+                      </Grid>
+                    </Grid>
+                    <Grid container className="mb12">
+                      <Grid item sx={{ width: "40px" }}>
+                        {" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                      </Grid>
+                      <Grid item sx={{ width: "Calc(100% - 40px)" }}>
+                        <p
+                          className="text_body_xs_regular left"
+                          style={{ fontWeight: 500 }}
+                        >
+                          ফ্রি প্রকাশ একাউন্ট সঠিক কাস্টোমারের কাছে বিজ্ঞাপন
+                          প্রচার সর্বোচ্চ ফলাফল ও বিক্রয় বৃদ্ধি এড একাউন্টের
+                          প্রয়োজন নেই
+                        </p>
+                      </Grid>
+                    </Grid>
+                    <Grid container>
+                      <Grid item sx={{ width: "40px" }}>
+                        {" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                      </Grid>
+                      <Grid item sx={{ width: "Calc(100% - 40px)" }}>
+                        <p
+                          className="text_body_xs_regular left"
+                          style={{ fontWeight: 500 }}
+                        >
+                          বিকাশ দিয়ে পেমেন্ট করার সুবিধা
+                        </p>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Grid>
+                <Grid item sm={12} md={6}>
+                  <AddCustomer handleSignUpClose={handleSignUpClose} />
+                </Grid>
+              </Grid>
+            </Box>
+          </DialogContent>
+          {/* <DialogActions>
+          <Button onClick={handleSignUpClose}>Disagree</Button>
+          <Button onClick={handleSignUpClose} autoFocus>
+            Agree
+          </Button>
+        </DialogActions> */}
+        </Dialog>
         <Dialog
           open={open}
           onClose={handleClose}

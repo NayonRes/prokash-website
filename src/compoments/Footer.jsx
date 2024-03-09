@@ -15,7 +15,7 @@ const Footer = () => {
       {/* <MySlider /> */}
       <footer style={{ borderTop: "1px solid #f4f4f4" }}>
         <Container maxWidth="lg" style={{ padding: "56px 24px" }}>
-          <Grid container spacing={10}>
+          <Grid container justifyContent="space-between" spacing={10}>
             <Grid item xs={12} sm={12} md={12} lg={4}>
               <Link to="/">
                 <img
@@ -28,9 +28,9 @@ const Footer = () => {
                 className="footer_item"
                 style={{ marginTop: "13px", fontWeight: 400 }}
               >
-                Simplify boosting for Bangladeshi SMBs. Our web service
-                eliminates complexities, allowing businesses to boost posts
-                seamlessly without the need for ad accounts.
+                Prokash simplifies digital marketing for effective sales and
+                marketing in Bangladesh, offering quick and easy services for
+                businesses.
               </p>
             </Grid>
             <Grid item xs={12} sm={4} md={4} lg={4}>
@@ -141,28 +141,6 @@ const Footer = () => {
                 </Grid>
               </address>
             </Grid>
-
-            <Grid item xs={12} sm={4} md={4} lg={4}>
-              <p className="footer_title">Menu 2</p>
-              <ul className="footer_item">
-                <li>
-                  {/* <Link to="/platform" className="link_style"> */}
-                  Item 1{/* </Link> */}
-                </li>
-                <li>
-                  {/* <Link to="/startup" className="link_style"> */}
-                  Item 2{/* </Link> */}
-                </li>
-                <li>
-                  {/* <Link to="/about-us" className="link_style"> */}
-                  Item 3{/* </Link> */}
-                </li>
-                <li>
-                  {/* <Link to="/terms-and-conditions" className="link_style"> */}
-                  Item 4{/* </Link> */}
-                </li>
-              </ul>
-            </Grid>
           </Grid>
         </Container>
         <div className="footer_bottom_section_holder">
@@ -184,7 +162,9 @@ const Footer = () => {
                 className="hideForMobileViewOnly"
               >
                 <p className="footer_text_style" style={{ textAlign: "right" }}>
-                  All Rights Reserved.
+                  <Link to="/privacy-policy" style={{ textDecoration: "none" }}>
+                    * Privacy Policy
+                  </Link>
                 </p>
               </Grid>
             </Grid>

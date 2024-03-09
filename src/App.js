@@ -24,6 +24,10 @@ import { BrowserRouter } from "react-router-dom";
 import { Paper } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import ColorPalette from "./color-palette/ColorPalette";
+import {
+  GoogleReCaptchaProvider,
+  GoogleReCaptcha,
+} from "react-google-recaptcha-v3";
 
 const theme = createTheme({
   typography: {
@@ -57,7 +61,8 @@ const theme = createTheme({
   //   },
   // },
 });
-
+axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+axios.defaults.headers.common["Content-Type"] = "application/json";
 function ScrollTop(props) {
   const { children, window } = props;
 
@@ -148,45 +153,53 @@ function App(props) {
   }, []);
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <SnackbarProvider
-          maxSnack={1}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          TransitionComponent={Slide}
-        >
-          <AuthContextProvider>
-            <div
-              style={{
-                position: "relative",
-                maxWidth: "100%",
-                margin: "auto",
-                // display: "none",
-              }}
-            >
-              <Header />
-              <div>
-                <Navigation />
+      <GoogleReCaptchaProvider
+        reCaptchaKey={process.env.REACT_APP_RECAPTCHA_KEY}
+        // reCaptchaKey={process.env.REACT_APP_RECAPTCHA_KEY}
+      >
+        <ThemeProvider theme={theme}>
+          <SnackbarProvider
+            maxSnack={1}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            TransitionComponent={Slide}
+          >
+            <AuthContextProvider>
+              <div
+                style={{
+                  position: "relative",
+                  maxWidth: "100%",
+                  margin: "auto",
+                  // display: "none",
+                }}
+              >
+                <Header />
+                <div>
+                  <Navigation />
+                </div>
+                <div>
+                  <Footer />{" "}
+                </div>
+                <ScrollTop {...props}>
+                  <Fab
+                    // color="primary"
+                    size="small"
+                    style={{ background: "#fff" }}
+                    aria-label="scroll back to top"
+                  >
+                    <VerticalAlignTopIcon
+                      onClick={scrollToTop}
+                      color="#25316"
+                    />
+                  </Fab>
+                </ScrollTop>
               </div>
-              <div>
-                <Footer />{" "}
-              </div>
-              <ScrollTop {...props}>
-                <Fab
-                  // color="primary"
-                  size="small"
-                  style={{ background: "#fff" }}
-                  aria-label="scroll back to top"
-                >
-                  <VerticalAlignTopIcon onClick={scrollToTop} color="#25316" />
-                </Fab>
-              </ScrollTop>
-            </div>
-          </AuthContextProvider>
-        </SnackbarProvider>
-      </ThemeProvider>
+            </AuthContextProvider>
+          </SnackbarProvider>
+        </ThemeProvider>
+      </GoogleReCaptchaProvider>
     </>
   );
 }
