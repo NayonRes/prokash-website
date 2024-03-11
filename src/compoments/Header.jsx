@@ -30,7 +30,13 @@ import { useTheme } from "@mui/material/styles";
 import AddCustomer from "../pages/customer/AddCustomer";
 import { AuthContext } from "../context/AuthContext";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-const Header = () => {
+import Login from "../pages/user-forms/Login";
+const Header = ({
+  signUpOpen,
+  setSignUpOpen,
+  handleClickSignUpOpen,
+  handleSignUpClose,
+}) => {
   // const { window } = props;
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,7 +45,6 @@ const Header = () => {
   console.log("location", location.pathname);
   const [serveOpen, setServeOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  const [signUpOpen, setSignUpOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const menuOpen = Boolean(anchorEl);
 
@@ -54,15 +59,6 @@ const Header = () => {
   const handleClose = (event, reason) => {
     if (reason !== "backdropClick") {
       setOpen(false);
-    }
-  };
-  const handleClickSignUpOpen = () => {
-    setSignUpOpen(true);
-  };
-
-  const handleSignUpClose = (event, reason) => {
-    if (reason !== "backdropClick") {
-      setSignUpOpen(false);
     }
   };
 
@@ -97,7 +93,7 @@ const Header = () => {
         mr: 0.5,
       },
       "& .MuiSvgIcon-root": {
-        fontSize: "12px",
+        fontSize: "12px !important",
       },
     },
   };
@@ -225,6 +221,7 @@ const Header = () => {
                     sx={{
                       ...startNowButtonStyle,
                     }}
+                    id="start-now-button"
                     // className="nav_button"
                     // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
                     onClick={handleClickSignUpOpen}
@@ -404,36 +401,27 @@ const Header = () => {
           className="demo_dialog"
         >
           <DialogContent style={{ padding: "0px" }}>
-            <Grid container style={{ maxWidth: "600px" }}>
-              {/* <Grid
-                item
-                md={5.5}
-                className="demo_dialog_left  hideForTabViewOnly hideForMobileViewOnly"
+            <Box
+              sx={{
+                boxSizing: "border-box",
+                padding: {
+                  xs: "50px 40px 40px 40px",
+                  sm: "50px 40px 40px 40px",
+                  md: "60px 80px 60px",
+                  lg: "60px 80px 60px",
+                },
+                position: "relative",
+                minWidth: { sm: "auto", md: "450px", lg: "550px" },
+              }}
+            >
+              <IconButton
+                onClick={handleClose}
+                className="demo_form_close_button"
               >
-                <p
-                  className="demo_form_title center"
-                  style={{ marginTop: "114px" }}
-                >
-                  Request a Demo?
-                </p>
-                <p className="text_body_medium center">
-                  Fill it up. We will contact you
-                </p>
-              </Grid> */}
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                style={{ padding: "50px 40px 40px 40px", position: "relative" }}
-              >
-                <IconButton
-                  onClick={handleClose}
-                  className="demo_form_close_button"
-                >
-                  <ClearIcon />
-                </IconButton>
-                <p
+                <ClearIcon />
+              </IconButton>
+              <Login handleClose={handleClose} />
+              {/* <p
                   className="demo_form_title center"
                   style={{ marginTop: "0px" }}
                 >
@@ -502,9 +490,8 @@ const Header = () => {
                       Submit
                     </Button>
                   </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
+                </Grid> */}
+            </Box>
           </DialogContent>
           {/* <DialogActions>
           <Button onClick={handleClose}>Disagree</Button>

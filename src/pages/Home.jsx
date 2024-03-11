@@ -18,7 +18,12 @@ import Marquee from "react-fast-marquee";
 import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
 import { AuthContext } from "../context/AuthContext";
 
-const Home = () => {
+const Home = ({
+  signUpOpen,
+  setSignUpOpen,
+  handleClickSignUpOpen,
+  handleSignUpClose,
+}) => {
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState("");
   const { prokash_user, logout, login } = useContext(AuthContext);
@@ -61,7 +66,10 @@ const Home = () => {
     //   scrollableDiv.scrollTop = 0;
     // }
   };
-
+  const clickStartNowButton = () => {
+    let myButton = document.getElementById("start-now-button").click();
+    console.log("myButton", myButton);
+  };
   const styles = (theme) => ({
     root: {
       backgroundColor: "blue",
@@ -158,8 +166,7 @@ const Home = () => {
                 data-aos="fade-down"
                 data-aos-delay="1000"
                 data-aos-offset="0"
-
-                // onClick={scrollToTop}
+                onClick={handleClickSignUpOpen}
               >
                 Start Now
               </Button>

@@ -120,6 +120,16 @@ function ScrollTop(props) {
 }
 
 function App(props) {
+  const [signUpOpen, setSignUpOpen] = useState(false);
+  const handleClickSignUpOpen = () => {
+    setSignUpOpen(true);
+  };
+
+  const handleSignUpClose = (event, reason) => {
+    if (reason !== "backdropClick") {
+      setSignUpOpen(false);
+    }
+  };
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -193,9 +203,19 @@ function App(props) {
                   // display: "none",
                 }}
               >
-                <Header />
+                <Header
+                  signUpOpen={signUpOpen}
+                  setSignUpOpen={setSignUpOpen}
+                  handleClickSignUpOpen={handleClickSignUpOpen}
+                  handleSignUpClose={handleSignUpClose}
+                />
                 <div>
-                  <Navigation />
+                  <Navigation
+                    signUpOpen={signUpOpen}
+                    setSignUpOpen={setSignUpOpen}
+                    handleClickSignUpOpen={handleClickSignUpOpen}
+                    handleSignUpClose={handleSignUpClose}
+                  />
                 </div>
                 <div>
                   <Footer />{" "}

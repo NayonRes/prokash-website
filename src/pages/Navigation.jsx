@@ -14,12 +14,27 @@ function PrivateRoute({ children }) {
   // console.log("prokash_user?.data?.token", prokash_user);
   return prokash_user?.token ? children : <Navigate to="/" />;
 }
-const Navigation = () => {
+const Navigation = ({
+  signUpOpen,
+  setSignUpOpen,
+  handleClickSignUpOpen,
+  handleSignUpClose,
+}) => {
   return (
     <div>
       {" "}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              signUpOpen={signUpOpen}
+              setSignUpOpen={setSignUpOpen}
+              handleClickSignUpOpen={handleClickSignUpOpen}
+              handleSignUpClose={handleSignUpClose}
+            />
+          }
+        />
 
         <Route path="/test" element={<Test />} />
         <Route path="forgot-password" element={<ForgotPassword />} />

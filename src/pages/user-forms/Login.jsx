@@ -38,7 +38,7 @@ import axios from "axios";
 //   },
 // }));
 
-const Login = () => {
+const Login = ({ handleClose }) => {
   // const classes = useStyles();
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
@@ -98,7 +98,7 @@ const Login = () => {
     } else {
       setLoading(true);
       try {
-        let url = `/api/auth/user/login`;
+        let url = `/api/auth/login`;
         let data = {
           email: email.trim(),
           password: password.trim(),
@@ -114,7 +114,7 @@ const Login = () => {
         if (res?.status > 199 && res?.status < 300) {
           handleSnakbarOpen("Successfull", "success");
           login(res?.data.data);
-          navigate("/dashboard");
+          handleClose();
         }
         setLoading(false);
 
@@ -135,164 +135,129 @@ const Login = () => {
   };
   return (
     <React.Fragment>
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        style={{ height: "100vh" }}
+      <form
+        // className={classes.formStyle}
+        onSubmit={onSubmit}
+        // style={{ padding: "50px" }}
       >
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          // className={classes.main}
-          sx={{
-            width: "1100px !important",
-            padding: "10px 30px",
-            background: "#fff",
-            borderRadius: "10px",
-            textAlign: "center",
-          }}
+        <img
+          src="/logo.svg"
+          alt=""
+          style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+        />
+        <Typography
+          variant="h5"
+          component="div"
+          sx={{ margin: "10px 0px 30px", textAlign: "center" }}
         >
-          <Grid item xs={6}>
-            <img
-              src="/image/login.jpg"
-              alt=""
-              style={{ display: "block", margin: "auto", maxWidth: "100%" }}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <form
-              // className={classes.formStyle}
-              onSubmit={onSubmit}
-              style={{ padding: "50px" }}
+          Sign-In to continue{" "}
+        </Typography>
+        <Box sx={{ marginBottom: "30px" }}>
+          <TextField
+            className="demo_form_input_style"
+            autoFocus
+            placeholder="Enter your email address"
+            fullWidth
+            size="small"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <MailOutlineRoundedIcon />
+                </InputAdornment>
+              ),
+            }}
+            variant="outlined"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />{" "}
+          {errors?.email && (
+            <Typography
+              variant="small"
+              color="error.main"
+              sx={{ textAlign: "left" }}
             >
-              <img
-                src="/logo.svg"
-                alt=""
-                style={{ display: "block", margin: "auto", maxWidth: "155px" }}
-              />
-              <Typography
-                variant="h5"
-                component="div"
-                style={{ margin: "10px 0px 30px" }}
-              >
-                Sign-In to continue{" "}
-              </Typography>
-              <Box sx={{ marginBottom: "30px" }}>
-                <TextField
-                  autoFocus
-                  placeholder="Enter your email address"
-                  fullWidth
-                  size="small"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <MailOutlineRoundedIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  variant="outlined"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />{" "}
-                {errors?.email && (
-                  <Typography
-                    variant="small"
-                    color="error.main"
-                    sx={{ textAlign: "left" }}
+              {errors.email.toString()}
+            </Typography>
+          )}
+        </Box>
+        <Box sx={{ marginBottom: "30px" }}>
+          <FormControl
+            fullWidth
+            variant="outlined"
+            className="demo_form_input_style"
+          >
+            <OutlinedInput
+              type={showPassword ? "text" : "password"}
+              id="password"
+              placeholder="Enter your password"
+              size="small"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              startAdornment={
+                <InputAdornment position="start">
+                  <LockOutlinedIcon />
+                </InputAdornment>
+              }
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() => setShowPassword(!showPassword)}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
                   >
-                    {errors.email.toString()}
-                  </Typography>
-                )}
-              </Box>
-              <Box sx={{ marginBottom: "30px" }}>
-                <FormControl fullWidth variant="outlined">
-                  <OutlinedInput
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    placeholder="Enter your password"
-                    size="small"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    startAdornment={
-                      <InputAdornment position="start">
-                        <LockOutlinedIcon />
-                      </InputAdornment>
-                    }
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={() => setShowPassword(!showPassword)}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {showPassword ? (
-                            <VisibilityOffOutlinedIcon />
-                          ) : (
-                            <RemoveRedEyeOutlinedIcon />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                  />
-                </FormControl>
-                {errors?.password && (
-                  <Typography
-                    variant="small"
-                    color="error.main"
-                    sx={{ textAlign: "left" }}
-                  >
-                    {errors.password.toString()}
-                  </Typography>
-                )}
-              </Box>
-              <Button
-                variant="contained"
-                disableElevation
-                fullWidth
-                style={{ marginBottom: "30px", minHeight: "37px" }}
-                disabled={loading}
-                type="submit"
-              >
-                {loading === false && "Continue"}
-                <PulseLoader
-                  color={"#353b48"}
-                  loading={loading}
-                  size={10}
-                  speedMultiplier={0.5}
-                />{" "}
-              </Button>
-              <Grid container alignItems="center">
-                <Grid item xs={6}>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={<Checkbox defaultChecked />}
-                      label="Remember me"
-                    />
-                  </FormGroup>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography
-                    variant="subtitle1"
-                    component="div"
-                    style={{
-                      color: "#F91351",
-                      textAlign: "right",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => navigate("/forgot-password")}
-                  >
-                    Forgot Password?
-                  </Typography>
-                </Grid>
-              </Grid>
-            </form>
-          </Grid>
-        </Grid>
-      </Grid>
+                    {showPassword ? (
+                      <VisibilityOffOutlinedIcon />
+                    ) : (
+                      <RemoveRedEyeOutlinedIcon />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+          {errors?.password && (
+            <Typography
+              variant="small"
+              color="error.main"
+              sx={{ textAlign: "left" }}
+            >
+              {errors.password.toString()}
+            </Typography>
+          )}
+        </Box>
+        <Button
+          variant="contained"
+          disableElevation
+          fullWidth
+          style={{ marginBottom: "20px", minHeight: "37px" }}
+          className="contained_buttton"
+          disabled={loading}
+          type="submit"
+        >
+          {loading === false && "Submit"}
+          <PulseLoader
+            color={"#834BFF"}
+            loading={loading}
+            size={10}
+            speedMultiplier={0.5}
+          />{" "}
+        </Button>
+
+        <Typography
+          variant="subtitle1"
+          component="div"
+          style={{
+            color: "#F91351",
+            textAlign: "right",
+            cursor: "pointer",
+          }}
+          onClick={() => navigate("/forgot-password")}
+        >
+          Forgot Password?
+        </Typography>
+      </form>
     </React.Fragment>
   );
 };
