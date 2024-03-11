@@ -12,6 +12,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { AuthContext } from "../../context/AuthContext";
 import ForgotPasswordResetPassword from "./ForgotPasswordResetPassword";
 import OtpInput from "react-otp-input";
+
+import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
 // const useStyles = makeStyles((theme) => ({
 
 //   newInputStyle: {
@@ -80,7 +82,7 @@ const ForgotPasswordOTPVarify = ({ email, reference, setReference }) => {
       };
 
       let response = await axios({
-        url: "/api/auth/user/verify",
+        url: "/api/auth/verify",
         method: "post",
         data: data,
       });
@@ -118,33 +120,37 @@ const ForgotPasswordOTPVarify = ({ email, reference, setReference }) => {
               background: "#fff",
               borderRadius: "10px",
               textAlign: "center",
-              width: "400px",
+              maxWidth: "400px",
+              border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
               // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
             }}
           >
             <img
               src="/logo.svg"
               alt=""
-              style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+              // style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+              className="form_logo_style"
             />{" "}
             <br />
             <Typography
               variant="h5"
               component="div"
-              style={{ marginBottom: "30px" }}
+              sx={{
+                marginTop: "10px",
+                fontSize: { xs: "1.2rem", sm: "1.5rem" },
+              }}
             >
               Verify your identity.
-              <span
-                style={{
-                  display: "block",
-                  fontSize: "16px",
-                  letterSpacing: "2px",
-                  marginTop: "5px",
-                }}
-              >
-                {" "}
-                We have sent a 6 digits varification code to {email}
-              </span>
+            </Typography>
+            <Typography
+              sx={{
+                marginBottom: "30px",
+                fontSize: { xs: ".8rem", sm: "1rem" },
+                color: "#616161",
+              }}
+            >
+              {" "}
+              We have sent a 6 digits varification code to {email}
             </Typography>
             {/* {otpTimeOut && (
             <React.Fragment>
@@ -228,8 +234,9 @@ const ForgotPasswordOTPVarify = ({ email, reference, setReference }) => {
                       isInputSecure={true}
                       // renderSeparator={<span>-</span>}
                       inputStyle={newInputStyle}
-                      focusStyle={newFocusStyle}
-                      renderInput={(props) => <input {...props} />}
+                      renderInput={(props) => (
+                        <input {...props} className="demo_form_input_style" />
+                      )}
                       containerStyle={{ justifyContent: "space-between" }}
                     />
                   </Grid>
@@ -240,18 +247,19 @@ const ForgotPasswordOTPVarify = ({ email, reference, setReference }) => {
                       variant="contained"
                       fullWidth
                       color="primary"
-                      style={{ minHeight: "37px" }}
+                      style={{ minHeight: "48px" }}
                       //   className={classes.buttonStyle}
                       // inputRef={buttonref}
                       ref={buttonref}
                       // onKeyDown={submitKeyDown}
                       type="submit"
+                      className="contained_buttton"
                       onClick={onSubmit}
                       disabled={loading}
                     >
                       {loading === false && "Continue"}
                       <PulseLoader
-                        color={"#353b48"}
+                        color={"#834BFF"}
                         loading={loading}
                         size={10}
                         speedMultiplier={0.5}

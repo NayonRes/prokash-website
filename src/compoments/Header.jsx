@@ -172,6 +172,12 @@ const Header = ({
                         overflow: "visible",
                         filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                         mt: 1.5,
+                        color: "#616161",
+
+                        "& .MuiMenuItem-root": {
+                          fontSize: "14px",
+                          borderBottom: "1px solid #f9f9f9",
+                        },
                         "& .MuiAvatar-root": {
                           width: 32,
                           height: 32,
@@ -195,6 +201,43 @@ const Header = ({
                     transformOrigin={{ horizontal: "right", vertical: "top" }}
                     anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                   >
+                    <MenuItem
+                      onClick={() => {
+                        handleMenuClose();
+                      }}
+                      sx={
+                        {
+                          // boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
+                        }
+                      }
+                    >
+                      <Box
+                        sx={{
+                          // background: "red",
+                          color: "#222",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {prokash_user?.name}
+                        <Typography
+                          sx={{
+                            display: "block",
+                            color: "#7b7b7b",
+                            fontSize: "12px",
+                          }}
+                        >
+                          {prokash_user?.email}
+                        </Typography>
+                      </Box>
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        handleMenuClose();
+                        navigateRoutes("/order-list");
+                      }}
+                    >
+                      Order List
+                    </MenuItem>
                     <MenuItem
                       onClick={() => {
                         handleMenuClose();
@@ -258,7 +301,12 @@ const Header = ({
             <Box
               sx={{
                 boxSizing: "border-box",
-                padding: "50px 40px 40px 40px",
+                padding: {
+                  xs: "30px 20px",
+                  sm: "50px 40px 40px 40px",
+                  md: "60px 80px 60px",
+                  lg: "60px 80px 60px",
+                },
                 position: "relative",
                 minWidth: { sm: "auto", md: "800px", lg: "1000px" },
               }}
@@ -405,7 +453,7 @@ const Header = ({
               sx={{
                 boxSizing: "border-box",
                 padding: {
-                  xs: "50px 40px 40px 40px",
+                  xs: "30px 20px",
                   sm: "50px 40px 40px 40px",
                   md: "60px 80px 60px",
                   lg: "60px 80px 60px",

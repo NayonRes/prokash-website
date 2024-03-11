@@ -9,8 +9,15 @@ import PulseLoader from "react-spinners/PulseLoader";
 import axios from "axios";
 import ForgotPasswordOTPVarify from "./ForgotPasswordOTPVarify";
 import EmailIcon from "@mui/icons-material/Email";
+import { useNavigate } from "react-router-dom";
+
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
+import { Box } from "@mui/material";
 
 const ForgotPassword = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailSection, setEmailSection] = useState(true);
@@ -65,7 +72,7 @@ const ForgotPassword = () => {
           email,
         };
         let response = await axios({
-          url: "/api/auth/user/forgot",
+          url: "/api/auth/forgot",
           method: "post",
           data: data,
         });
@@ -96,55 +103,58 @@ const ForgotPassword = () => {
           container
           justifyContent="center"
           alignItems="center"
-          style={{ height: "100vh" }}
+          style={{ height: "Calc(100vh - 96px)" }}
         >
-          <form
+          <Box
             onSubmit={onSubmit}
-            style={{
+            sx={{
               padding: "50px",
               background: "#fff",
               borderRadius: "10px",
               textAlign: "center",
-              width: "400px",
+              maxWidth: "400px",
+              border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
               // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
             }}
           >
             <img
               src="/logo.svg"
               alt=""
-              style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+              // style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+              className="form_logo_style"
             />
-            <br />
+            {/* <br /> */}
             <Typography
               variant="h5"
               component="div"
-              style={{ marginBottom: "30px" }}
+              sx={{
+                marginTop: "10px",
+                fontSize: { xs: "1.2rem", sm: "1.5rem" },
+              }}
             >
               Verify your identity.
-              <span
-                style={{
-                  display: "block",
-                  fontSize: "16px",
-                  letterSpacing: "2px",
-                  marginTop: "5px",
-                }}
-              >
-                {" "}
-                Please enter your email address.
-              </span>
             </Typography>
-
+            <Typography
+              sx={{
+                marginBottom: "30px",
+                fontSize: { xs: ".8rem", sm: "1rem" },
+                color: "#616161",
+              }}
+            >
+              Please enter your email address.
+            </Typography>
             <TextField
               autoFocus
               id="email"
-              placeholder="Enter your email address"
+              placeholder="Email"
               fullWidth
               size="small"
+              className="demo_form_input_style"
               style={{ marginBottom: "30px" }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <EmailIcon />
+                    <MailOutlineRoundedIcon />
                   </InputAdornment>
                 ),
               }}
@@ -157,20 +167,31 @@ const ForgotPassword = () => {
               variant="contained"
               disableElevation
               fullWidth
-              style={{ marginBottom: "30px", minHeight: "37px" }}
+              style={{ marginBottom: "30px", minHeight: "48px" }}
               disabled={loading}
+              className="contained_buttton"
               // onClick={onSubmit}
               type="submit"
             >
               {loading === false && "Continue"}
               <PulseLoader
-                color={"#353b48"}
+                color={"#834BFF"}
                 loading={loading}
                 size={10}
                 speedMultiplier={0.5}
               />{" "}
             </Button>
-          </form>
+            <Button
+              variant="outlined"
+              fullWidth
+              color="primary"
+              style={{ border: "none" }}
+              onClick={() => navigate("/")}
+              startIcon={<ArrowBackIcon />}
+            >
+              Back to Login
+            </Button>
+          </Box>
         </Grid>
       )}
 

@@ -16,6 +16,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Box } from "@mui/material";
 
+import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
+
 const ForgotPasswordResetPassword = ({ email, otp, reference }) => {
   const navigate = useNavigate();
   const { login, prokash_user } = useContext(AuthContext);
@@ -93,7 +95,7 @@ const ForgotPasswordResetPassword = ({ email, otp, reference }) => {
         };
 
         let response = await axios({
-          url: "/api/auth/user/reset-password",
+          url: "/api/auth/reset-password",
           method: "post",
           data: data,
         });
@@ -135,6 +137,7 @@ const ForgotPasswordResetPassword = ({ email, otp, reference }) => {
             borderRadius: "10px",
             textAlign: "center",
             width: "400px",
+            border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
             // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
           }}
           onSubmit={onSubmit}
@@ -142,18 +145,26 @@ const ForgotPasswordResetPassword = ({ email, otp, reference }) => {
           <img
             src="/logo.svg"
             alt=""
-            style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+            // style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+            className="form_logo_style"
           />
           <br />
           <Typography
             variant="h5"
             component="div"
-            style={{ marginBottom: "30px" }}
+            sx={{
+              marginBottom: "30px",
+              fontSize: { xs: "1.2rem", sm: "1.5rem" },
+            }}
           >
             Reset your password
           </Typography>
           <Box sx={{ marginBottom: "30px" }}>
-            <FormControl fullWidth variant="outlined">
+            <FormControl
+              fullWidth
+              variant="outlined"
+              className="demo_form_input_style"
+            >
               <OutlinedInput
                 id="newPassword"
                 autoFocus
@@ -188,7 +199,11 @@ const ForgotPasswordResetPassword = ({ email, otp, reference }) => {
             )}
           </Box>
           <Box sx={{ marginBottom: "30px" }}>
-            <FormControl fullWidth variant="outlined">
+            <FormControl
+              fullWidth
+              variant="outlined"
+              className="demo_form_input_style"
+            >
               <OutlinedInput
                 id="confirmPassword"
                 type={confirmPasswordShow ? "text" : "password"}
@@ -227,14 +242,15 @@ const ForgotPasswordResetPassword = ({ email, otp, reference }) => {
             variant="contained"
             disableElevation
             fullWidth
-            style={{ marginBottom: "30px", minHeight: "37px" }}
+            style={{ marginBottom: "30px", minHeight: "48px" }}
             disabled={loading}
             // onClick={onSubmit}
+            className="contained_buttton"
             type="submit"
           >
             {loading === false && "Continue"}
             <PulseLoader
-              color={"#353b48"}
+              color={"#834BFF"}
               loading={loading}
               size={10}
               speedMultiplier={0.5}

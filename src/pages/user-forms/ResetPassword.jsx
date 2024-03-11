@@ -96,7 +96,7 @@ const ResetPassword = () => {
           password_confirm: confirmPassword,
         };
         let response = await axios({
-          url: "/api/auth/user/change-password",
+          url: "/api/auth/change-password",
           method: "post",
           data: data,
         });
@@ -134,13 +134,14 @@ const ResetPassword = () => {
         alignItems="center"
         style={{ height: "80vh" }}
       >
-        <form
-          style={{
+        <Box
+          sx={{
             padding: "50px",
             background: "#fff",
             borderRadius: "10px",
             textAlign: "center",
             width: "400px",
+            border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
             // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
           }}
           onSubmit={onSubmit}
@@ -148,18 +149,26 @@ const ResetPassword = () => {
           <img
             src="/logo.svg"
             alt=""
-            style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+            // style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+            className="form_logo_style"
           />
           <br />
           <Typography
             variant="h5"
             component="div"
-            style={{ marginBottom: "30px" }}
+            sx={{
+              marginBottom: "30px",
+              fontSize: { xs: "1.2rem", sm: "1.5rem" },
+            }}
           >
             Reset your password
           </Typography>
           <Box sx={{ marginBottom: "30px" }}>
-            <FormControl fullWidth variant="outlined">
+            <FormControl
+              fullWidth
+              variant="outlined"
+              className="demo_form_input_style"
+            >
               <OutlinedInput
                 id="oldPassword"
                 autoFocus
@@ -194,7 +203,11 @@ const ResetPassword = () => {
             )}
           </Box>
           <Box sx={{ marginBottom: "30px" }}>
-            <FormControl fullWidth variant="outlined">
+            <FormControl
+              fullWidth
+              variant="outlined"
+              className="demo_form_input_style"
+            >
               <OutlinedInput
                 id="newPassword"
                 type={newPasswordShow ? "text" : "password"}
@@ -228,7 +241,11 @@ const ResetPassword = () => {
             )}
           </Box>
           <Box sx={{ marginBottom: "30px" }}>
-            <FormControl fullWidth variant="outlined">
+            <FormControl
+              fullWidth
+              variant="outlined"
+              className="demo_form_input_style"
+            >
               <OutlinedInput
                 id="confirmPassword"
                 type={confirmPasswordShow ? "text" : "password"}
@@ -267,9 +284,10 @@ const ResetPassword = () => {
             variant="contained"
             disableElevation
             fullWidth
-            style={{ marginBottom: "30px", minHeight: "37px" }}
+            style={{ marginBottom: "30px", minHeight: "48px" }}
             disabled={loading}
             // onClick={onSubmit}
+            className="contained_buttton"
             type="submit"
           >
             {loading === false && "Continue"}
@@ -280,7 +298,7 @@ const ResetPassword = () => {
               speedMultiplier={0.5}
             />{" "}
           </Button>
-        </form>
+        </Box>
       </Grid>
     </div>
   );

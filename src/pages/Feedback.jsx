@@ -8,17 +8,29 @@ import { useTheme } from "@mui/material/styles";
 const Feedback = () => {
   const theme = useTheme();
   const data = [
-    { name: "Bootstrap" },
-    { name: "C#" },
-    { name: "HTML 5" },
-    { name: "CSS 3" },
-    { name: ".NET" },
-    { name: "JavaScript" },
-    { name: "MS SQL Server" },
-    { name: "Material-UI" },
-    { name: "React JS" },
-    { name: "MS Visual Studio" },
-    { name: "Visual Studio Code" },
+    { title: "Boost Sales", src: "/feedback-images/boost_sales.svg" },
+    { title: "SEO Magic", src: "/feedback-images/seo_magic.svg" },
+    { title: "More Video Views", src: "/feedback-images/more_video_views.svg" },
+    {
+      title: "Drive Website Traffic",
+      src: "/feedback-images/drive_website_traffic.svg",
+    },
+    {
+      title: "Attract Customers To Your Store",
+      src: "/feedback-images/attract_customers_to_your_store.svg",
+    },
+    {
+      title: "Automate Audience Targeting",
+      src: "/feedback-images/automate_audience_targeting.svg",
+    },
+    {
+      title: "Create Stunning Visuals",
+      src: "/feedback-images/create_stunning_visuals.svg",
+    },
+    {
+      title: "Run Ads With Bkash",
+      src: "/feedback-images/run_ads_with_bkash.svg",
+    },
   ];
 
   const card = {
@@ -39,7 +51,7 @@ const Feedback = () => {
     // margin: "16px 0 0 0",
     color: "#061A38",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "7px",
+      fontSize: "10px",
     },
   };
   const cardImage = {
@@ -95,12 +107,7 @@ const Feedback = () => {
         {data.map((item, i) => (
           <Box key={i}>
             <Box sx={{ ...card }}>
-              
-              <img
-                src="/feedback-images/story.png"
-                alt=""
-                style={{ ...cardImage }}
-              />
+              <img src={item?.src} alt="" style={{ ...cardImage }} />
               <Typography
                 sx={{
                   ...cardTitle,
@@ -110,14 +117,14 @@ const Feedback = () => {
                   mb: 0.5,
                 }}
               >
-                IFIXIT
+                {item?.title}
               </Typography>
-              <Typography sx={{ ...cardTitle, textAlign: "right", mb: 0.5 }}>
+              {/* <Typography sx={{ ...cardTitle, textAlign: "right", mb: 0.5 }}>
                 Founder
               </Typography>
               <Typography sx={{ ...cardTitle, textAlign: "right", mb: 0.5 }}>
                 iFixit.com.bd
-              </Typography>
+              </Typography> */}
             </Box>
           </Box>
         ))}

@@ -133,6 +133,7 @@ const Login = ({ handleClose }) => {
       }
     }
   };
+
   return (
     <React.Fragment>
       <form
@@ -143,12 +144,17 @@ const Login = ({ handleClose }) => {
         <img
           src="/logo.svg"
           alt=""
-          style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+          // style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+          className="form_logo_style"
         />
         <Typography
-          variant="h5"
+          // variant="h5"
           component="div"
-          sx={{ margin: "10px 0px 30px", textAlign: "center" }}
+          sx={{
+            margin: "10px 0px 30px",
+            textAlign: "center",
+            fontSize: { xs: "1.2rem", sm: "1.5rem" },
+          }}
         >
           Sign-In to continue{" "}
         </Typography>
@@ -156,7 +162,7 @@ const Login = ({ handleClose }) => {
           <TextField
             className="demo_form_input_style"
             autoFocus
-            placeholder="Enter your email address"
+            placeholder="Email"
             fullWidth
             size="small"
             InputProps={{
@@ -231,12 +237,12 @@ const Login = ({ handleClose }) => {
           variant="contained"
           disableElevation
           fullWidth
-          style={{ marginBottom: "20px", minHeight: "37px" }}
+          style={{ marginBottom: "20px", minHeight: "48px" }}
           className="contained_buttton"
           disabled={loading}
           type="submit"
         >
-          {loading === false && "Submit"}
+          {loading === false && "Login"}
           <PulseLoader
             color={"#834BFF"}
             loading={loading}
@@ -249,11 +255,14 @@ const Login = ({ handleClose }) => {
           variant="subtitle1"
           component="div"
           style={{
-            color: "#F91351",
-            textAlign: "right",
+            color: "#616161",
+            textAlign: "center",
             cursor: "pointer",
           }}
-          onClick={() => navigate("/forgot-password")}
+          onClick={() => {
+            handleClose();
+            navigate("/forgot-password");
+          }}
         >
           Forgot Password?
         </Typography>

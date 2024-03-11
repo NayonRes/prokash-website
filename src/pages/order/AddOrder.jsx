@@ -32,13 +32,14 @@ const AddOrder = () => {
         alignItems="center"
         style={{ height: "80vh" }}
       >
-        <form
+        <Box
           style={{
             padding: "50px",
             background: "#fff",
             borderRadius: "10px",
             // textAlign: "center",
             width: "400px",
+            border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
             // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
           }}
           // onSubmit={handleSubmit}
@@ -73,7 +74,7 @@ const AddOrder = () => {
               speedMultiplier={0.5}
             />{" "}
           </Button> */}
-        </form>
+        </Box>
       </Grid>
     </React.Fragment>
   );

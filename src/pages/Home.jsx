@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef, useContext, useState } from "react";
 import "../App.css";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -17,6 +17,7 @@ import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
 import Marquee from "react-fast-marquee";
 import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
 import { AuthContext } from "../context/AuthContext";
+import VisibilitySensor from "react-visibility-sensor";
 
 const Home = ({
   signUpOpen,
@@ -25,8 +26,9 @@ const Home = ({
   handleSignUpClose,
 }) => {
   const theme = useTheme();
-  const [expanded, setExpanded] = React.useState("");
+  const [expanded, setExpanded] = useState("");
   const { prokash_user, logout, login } = useContext(AuthContext);
+  const [visible, setVisible] = useState(false);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -80,6 +82,10 @@ const Home = ({
       },
     },
   });
+  function onChange(isVisible) {
+    console.log("Element is now %s", isVisible ? "visible" : "hidden");
+    setVisible(isVisible);
+  }
   // useEffect(() => {
   //   window.scrollTo({
   //     top: 0,
@@ -264,49 +270,50 @@ const Home = ({
       <div style={{ height: "1px", background: "#fff" }}></div>
       <Container maxWidth="lg" className="container">
         <div className="section_style">
-          <Grid container alignItems="center" className="section_style">
-            <Grid item xs={12} sm={12} md={12} lg={6}>
-              {" "}
-              <img
-                src="/our_story.gif"
-                alt=""
-                className="left_image_style"
-                loading="lazy"
-              />
+          <VisibilitySensor onChange={onChange}>
+            <Grid container alignItems="center" className="section_style">
+              <Grid item xs={12} sm={12} md={12} lg={6}>
+                <img
+                  src={visible ? "/our_story.gif" : "/our_story.png"}
+                  alt=""
+                  className="left_image_style"
+                  loading="lazy"
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={6}>
+                <h6
+                  className="text_body_xs_regular  "
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+                >
+                  OUR STORY
+                </h6>
+                <h3
+                  className="title_semibold_medium mb12"
+                  data-aos="fade-up"
+                  data-aos-delay="400"
+                >
+                  Build by marketers, for founders
+                </h3>
+                <p
+                  className="text_body_medium mb6"
+                  data-aos="fade-up"
+                  data-aos-delay="500"
+                >
+                  We believe that the right advertising plan for your business
+                  can attract the right customers and increase sales.
+                </p>
+                <p
+                  className="text_body_medium mb40"
+                  data-aos="fade-up"
+                  data-aos-delay="500"
+                  style={{ fontWeight: 500 }}
+                >
+                  So advertise more efficiently through Prokash!
+                </p>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={6}>
-              <h6
-                className="text_body_xs_regular  "
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                OUR STORY
-              </h6>
-              <h3
-                className="title_semibold_medium mb12"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                Build by marketers, for founders
-              </h3>
-              <p
-                className="text_body_medium mb6"
-                data-aos="fade-up"
-                data-aos-delay="500"
-              >
-                We believe that the right advertising plan for your business can
-                attract the right customers and increase sales.
-              </p>
-              <p
-                className="text_body_medium mb40"
-                data-aos="fade-up"
-                data-aos-delay="500"
-                style={{ fontWeight: 500 }}
-              >
-                So advertise more efficiently through Prokash!
-              </p>
-            </Grid>
-          </Grid>
+          </VisibilitySensor>
         </div>
         <div className="section_style">
           {/* <div data-aos="fade-up" className="mb60">
