@@ -12,7 +12,7 @@ import Switch from "@mui/material/Switch";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Fab } from "@mui/material";
 import VerticalAlignTopIcon from "@mui/icons-material/VerticalAlignTop";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
@@ -20,7 +20,7 @@ import AuthContextProvider from "./context/AuthContext";
 import Slide from "@mui/material/Slide";
 import axios from "axios";
 import { SnackbarProvider } from "notistack";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import { Paper } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import ColorPalette from "./color-palette/ColorPalette";
@@ -28,6 +28,7 @@ import {
   GoogleReCaptchaProvider,
   GoogleReCaptcha,
 } from "react-google-recaptcha-v3";
+import Layout from "./pages/layout/Layout";
 
 const theme = createTheme({
   typography: {
@@ -67,6 +68,12 @@ const theme = createTheme({
       main: ColorPalette.light.error.main,
       light: ColorPalette.light.error.light,
       contrastText: ColorPalette.light.error.contrastText,
+    },
+    text: {
+      main: ColorPalette.light.text.main,
+      light: ColorPalette.light.text.light,
+      fade: ColorPalette.light.text.fade,
+      contrastText: ColorPalette.light.text.contrastText,
     },
   },
   // breakpoints: {
@@ -120,7 +127,9 @@ function ScrollTop(props) {
 }
 
 function App(props) {
+  const navigate = useNavigate();
   const [signUpOpen, setSignUpOpen] = useState(false);
+
   const handleClickSignUpOpen = () => {
     setSignUpOpen(true);
   };
@@ -203,23 +212,7 @@ function App(props) {
                   // display: "none",
                 }}
               >
-                <Header
-                  signUpOpen={signUpOpen}
-                  setSignUpOpen={setSignUpOpen}
-                  handleClickSignUpOpen={handleClickSignUpOpen}
-                  handleSignUpClose={handleSignUpClose}
-                />
-                <div>
-                  <Navigation
-                    signUpOpen={signUpOpen}
-                    setSignUpOpen={setSignUpOpen}
-                    handleClickSignUpOpen={handleClickSignUpOpen}
-                    handleSignUpClose={handleSignUpClose}
-                  />
-                </div>
-                <div>
-                  <Footer />{" "}
-                </div>
+                <Layout />
                 <ScrollTop {...props}>
                   <Fab
                     // color="primary"

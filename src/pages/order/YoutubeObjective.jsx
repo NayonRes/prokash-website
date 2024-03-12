@@ -90,15 +90,11 @@ const YoutubeObjective = ({
       <TextField
         sx={{
           mb: 3,
-          "& .MuiOutlinedInput-input": {
-            // color: "#718096",
-            padding: "7px 14px",
-          },
         }}
         required
         fullWidth
         label="Youtube Video Link"
-        size="small"
+        className="demo_form_input_style2"
         variant="outlined"
         id="videoLink"
         value={videoLink}
@@ -108,14 +104,10 @@ const YoutubeObjective = ({
       <TextField
         sx={{
           mb: 1,
-          "& .MuiOutlinedInput-input": {
-            // color: "#718096",
-            padding: "7px 14px",
-          },
         }}
         fullWidth
         label="Website Link (Optional)"
-        size="small"
+        className="demo_form_input_style2"
         variant="outlined"
         id="websiteLink"
         value={websiteLink}

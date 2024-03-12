@@ -30,15 +30,15 @@ const AddOrder = () => {
         container
         justifyContent="center"
         alignItems="center"
-        style={{ height: "80vh" }}
+        style={{ minHeight: "80vh" }}
       >
         <Box
-          style={{
-            padding: "50px",
+          sx={{
+            padding: { xs: "30px", sm: "50px" },
             background: "#fff",
             borderRadius: "10px",
             // textAlign: "center",
-            width: "400px",
+            width: { xs: "300px", sm: "400px" },
             border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
             // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
           }}
@@ -49,7 +49,7 @@ const AddOrder = () => {
             component="div"
             style={{ marginBottom: "10px", textAlign: "center" }}
           >
-            Add Order
+            Create Campaign
           </Typography>
           <MySlider />
 

@@ -49,7 +49,7 @@ const Navigation = ({
           }
         />
         <Route
-          path="add-order"
+          path="create-campaign"
           element={
             <PrivateRoute>
               <AddOrder />

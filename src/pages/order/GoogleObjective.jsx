@@ -88,30 +88,22 @@ const GoogleObjective = ({
       <TextField
         sx={{
           mb: 4,
-          "& .MuiOutlinedInput-input": {
-            padding: "7px 14px",
-          },
         }}
         required
         fullWidth
         label="Link"
-        size="small"
+        className="demo_form_input_style2"
         variant="outlined"
         id="link"
         value={link}
         onChange={(e) => setLink(e.target.value)}
       />
       <TextField
-        sx={{
-          "& .MuiOutlinedInput-input": {
-            // color: "#718096",
-            padding: "7px 14px",
-          },
-        }}
+        sx={{}}
         required
         fullWidth
         label="Title"
-        size="small"
+        className="demo_form_input_style2"
         variant="outlined"
         id="title"
         inputProps={{
@@ -123,21 +115,16 @@ const GoogleObjective = ({
       <Typography
         variant="small"
         color="text.light"
-        sx={{ mb: 2, textAlign: "right" }}
+        sx={{ mb: 2, textAlign: "right", display: "block" }}
       >
         {title.length}/90
       </Typography>
       <TextField
-        sx={{
-          "& .MuiOutlinedInput-input": {
-            // color: "#718096",
-            padding: "7px 14px",
-          },
-        }}
+        sx={{}}
         required
         fullWidth
         label="Description"
-        size="small"
+        className="demo_form_input_style2"
         variant="outlined"
         id="description"
         inputProps={{
@@ -151,7 +138,7 @@ const GoogleObjective = ({
       <Typography
         variant="small"
         color="text.light"
-        sx={{ mb: 2, textAlign: "right" }}
+        sx={{ mb: 2, textAlign: "right", display: "block" }}
       >
         {description.length}/90
       </Typography>

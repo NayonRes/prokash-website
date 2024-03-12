@@ -186,15 +186,16 @@ const FacebookObjective = ({
         <TextField
           sx={{
             mb: 1,
-            "& .MuiOutlinedInput-input": {
-              // color: "#718096",
-              padding: "7px 14px",
-            },
+            // "& .MuiOutlinedInput-input": {
+            //   // color: "#718096",
+            //   padding: "7px 14px",
+            // },
           }}
+          className="demo_form_input_style2"
           required
           fullWidth
           label="Post Link"
-          size="small"
+          // size="small"
           variant="outlined"
           id="postLink"
           value={postLink}
@@ -207,15 +208,11 @@ const FacebookObjective = ({
         <TextField
           sx={{
             mb: 1,
-            "& .MuiOutlinedInput-input": {
-              // color: "#718096",
-              padding: "7px 14px",
-            },
           }}
           required
           fullWidth
           label="Video Link"
-          size="small"
+          className="demo_form_input_style2"
           variant="outlined"
           id="videoLink"
           value={videoLink}
@@ -228,15 +225,13 @@ const FacebookObjective = ({
         <TextField
           sx={{
             mb: 1,
-            "& .MuiOutlinedInput-input": {
-              // color: "#718096",
-              padding: "7px 14px",
-            },
+           
+            
           }}
           required
           fullWidth
           label="Website Link"
-          size="small"
+          className="demo_form_input_style2"
           variant="outlined"
           id="websiteLinkforTrafficObective"
           value={websiteLink}
@@ -247,14 +242,11 @@ const FacebookObjective = ({
         <TextField
           sx={{
             mb: 1,
-            "& .MuiOutlinedInput-input": {
-              // color: "#718096",
-              padding: "7px 14px",
-            },
+           
           }}
           fullWidth
           label="Website Link (Optional)"
-          size="small"
+          className="demo_form_input_style2"
           variant="outlined"
           id="websiteLink"
           value={websiteLink}

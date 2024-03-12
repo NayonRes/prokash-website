@@ -121,7 +121,7 @@ const Location = ({
         sx={{ mt: 1 }}
         label="Note"
         fullWidth
-        size="small"
+        className="demo_form_input_style2"
         variant="outlined"
         id="note"
         multiline
