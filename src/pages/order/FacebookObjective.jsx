@@ -132,7 +132,11 @@ const FacebookObjective = ({
           ))}
         </RadioGroup>
       </FormControl>
-      <Typography variant="medium" color="text.main" sx={{ mt: 1, mb: 1 }}>
+      <Typography
+        variant="medium"
+        color="text.main"
+        sx={{ mt: 1, mb: 1, display: "block" }}
+      >
         {obectives.find((res) => res.title === promotion_objective)?.msg}
       </Typography>
       {/* {promotion_objective === "Message" && ( */}
@@ -204,7 +208,7 @@ const FacebookObjective = ({
       </Collapse>
       {/* )} */}
       {/* {promotion_objective === "Reach" && ( */}
-      <Collapse in={promotion_objective === "Reach"}>
+      {/* <Collapse in={promotion_objective === "Reach"}>
         <TextField
           sx={{
             mb: 1,
@@ -218,15 +222,13 @@ const FacebookObjective = ({
           value={videoLink}
           onChange={(e) => setVideoLink(e.target.value)}
         />
-      </Collapse>
+      </Collapse> */}
       {/* )} */}
       {/* {promotion_objective === "Video views" && ( */}
       <Collapse in={promotion_objective === "Traffic"}>
         <TextField
           sx={{
             mb: 1,
-           
-            
           }}
           required
           fullWidth
@@ -242,10 +244,9 @@ const FacebookObjective = ({
         <TextField
           sx={{
             mb: 1,
-           
           }}
           fullWidth
-          label="Website Link (Optional)"
+          label="Website Link"
           className="demo_form_input_style2"
           variant="outlined"
           id="websiteLink"

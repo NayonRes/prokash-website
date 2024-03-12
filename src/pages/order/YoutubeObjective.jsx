@@ -40,8 +40,9 @@ const YoutubeObjective = ({
     clearFacebookObjectiveItem();
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     setPromotion_objective("Video views");
+    clearFacebookObjectiveItem();
   }, []);
 
   return (
@@ -113,7 +114,11 @@ const YoutubeObjective = ({
         value={websiteLink}
         onChange={(e) => setWebsiteLink(e.target.value)}
       />
-      <Typography variant="medium" color="text.main" sx={{ mt: 1, mb: 1 }}>
+      <Typography
+        variant="medium"
+        color="text.main"
+        sx={{ mt: 1, mb: 1, display: "block" }}
+      >
         {obectives.find((res) => res.title === promotion_objective)?.msg}
       </Typography>
     </div>

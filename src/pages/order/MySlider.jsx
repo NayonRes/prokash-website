@@ -70,7 +70,11 @@ function MySlider() {
   const [errors, setErrors] = useState({});
   const [open, setOpen] = React.useState(false);
   const forms = [
-    <BoostItems promotion={promotion} setPromotion={setPromotion} />,
+    <BoostItems
+      promotion={promotion}
+      setPromotion={setPromotion}
+      setPromotion_objective={setPromotion_objective}
+    />,
     <Objective
       promotion={promotion}
       promotion_objective={promotion_objective}
@@ -190,11 +194,20 @@ function MySlider() {
           handleSnakbarOpen("Please enter post link", "error");
           document.getElementById("postLink").focus();
           disabled = true;
-        } else if (videoLink.trim().length < 1) {
-          handleSnakbarOpen("Please enter video link", "error");
-          document.getElementById("videoLink").focus();
-          disabled = true;
         }
+        //  else if (videoLink.trim().length < 1) {
+        //   handleSnakbarOpen("Please enter video link", "error");
+        //   document.getElementById("videoLink").focus();
+        //   disabled = true;
+        // }
+      }
+      if (
+        promotion_objective === "Video views" &&
+        websiteLink.trim().length < 1
+      ) {
+        handleSnakbarOpen("Please enter website link", "error");
+        document.getElementById("websiteLink").focus();
+        disabled = true;
       }
     } else if (promotion === "Google") {
       if (link.trim().length < 1) {
@@ -333,7 +346,7 @@ function MySlider() {
         handleSnakbarOpen("Successful", "success");
         handleClose();
         handleResetForm();
-        navigate("/pending-order-list");
+        navigate(`/payment-method?invoice=${response?.data?.data?.id}`);
       }
     } catch (error) {
       console.log("error", error);

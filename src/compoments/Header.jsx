@@ -31,6 +31,8 @@ import AddCustomer from "../pages/customer/AddCustomer";
 import { AuthContext } from "../context/AuthContext";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import Login from "../pages/user-forms/Login";
+import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
+import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 const Header = ({
   signUpOpen,
   setSignUpOpen,
@@ -142,7 +144,25 @@ const Header = ({
             <Box>
               {prokash_user?.token ? (
                 <>
+                  {" "}
                   <Button
+                    disableElevation
+                    variant="contained"
+                    component={Link}
+                    to="/create-campaign"
+                    sx={{
+                      ...startNowButtonStyle,
+                    }}
+                    id="start-now-button"
+                    // className="nav_button"
+                    // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
+                    onClick={handleClickSignUpOpen}
+                    startIcon={<LibraryAddCheckOutlinedIcon />}
+                  >
+                    Create Campaign
+                  </Button>
+                  &nbsp;
+                  <IconButton
                     variant="outlined"
                     id="basic-button"
                     aria-controls={menuOpen ? "basic-menu" : undefined}
@@ -152,12 +172,15 @@ const Header = ({
                     sx={{
                       ...loginButtonStyle,
                       textTransform: "none",
+                      border: `1px solid ${theme.palette.primary.main}`,
                     }}
-                    startIcon={<PermIdentityOutlinedIcon />}
+                    // startIcon={<PermIdentityOutlinedIcon />}
                   >
-                    {prokash_user?.name}&nbsp;
-                  </Button>
-
+                    {/* {prokash_user?.name}&nbsp; */}{" "}
+                    <PermIdentityOutlinedIcon
+                      style={{ color: theme.palette.primary.main }}
+                    />
+                  </IconButton>
                   <Menu
                     id="basic-menu"
                     anchorEl={anchorEl}
@@ -175,9 +198,15 @@ const Header = ({
                         color: "#616161",
 
                         "& .MuiMenuItem-root": {
-                          fontSize: "14px",
+                          fontSize: "12px",
                           borderBottom: "1px solid #f9f9f9",
+                          py: 1,
+                          px: 3,
+                          "&:last-child": {
+                            borderBottom: "none",
+                          },
                         },
+
                         "& .MuiAvatar-root": {
                           width: 32,
                           height: 32,
@@ -236,7 +265,13 @@ const Header = ({
                         navigateRoutes("/order-list");
                       }}
                     >
-                      Order List
+                      <ListAltOutlinedIcon
+                        style={{
+                          fontSize: "18px",
+                          color: "#616161",
+                        }}
+                      />
+                      &nbsp;&nbsp; Order List
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
@@ -244,7 +279,13 @@ const Header = ({
                         navigateRoutes("/change-password");
                       }}
                     >
-                      Change Password
+                      <HttpsOutlinedIcon
+                        style={{
+                          fontSize: "18px",
+                          color: "#616161",
+                        }}
+                      />{" "}
+                      &nbsp;&nbsp; Change Password
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
@@ -252,7 +293,14 @@ const Header = ({
                         fnLogout();
                       }}
                     >
-                      Sign Out
+                      <ExitToAppOutlinedIcon
+                        style={{
+                          transform: "rotate(180deg)",
+                          fontSize: "18px",
+                          color: "#616161",
+                        }}
+                      />
+                      &nbsp;&nbsp; Sign Out
                     </MenuItem>
                   </Menu>
                 </>

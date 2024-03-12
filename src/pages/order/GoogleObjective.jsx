@@ -142,7 +142,11 @@ const GoogleObjective = ({
       >
         {description.length}/90
       </Typography>
-      <Typography variant="medium" color="text.main" sx={{ mt: 1, mb: 1 }}>
+      <Typography
+        variant="medium"
+        color="text.main"
+        sx={{ mt: 1, mb: 1, display: "block" }}
+      >
         {obectives.find((res) => res.title === promotion_objective)?.msg}
       </Typography>
     </div>

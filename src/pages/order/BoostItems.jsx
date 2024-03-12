@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-const BoostItems = ({ promotion, setPromotion }) => {
+const BoostItems = ({ promotion, setPromotion, setPromotion_objective }) => {
   const theme = useTheme();
   const buttonHolderStyle = {
     py: 1.5,
@@ -144,7 +144,10 @@ const BoostItems = ({ promotion, setPromotion }) => {
       </Box>
       <Box
         sx={{ marginBottom: "18px" }}
-        onClick={() => setPromotion("Youtube")}
+        onClick={() => {
+          setPromotion("Youtube");
+          setPromotion_objective("Video views");
+        }}
       >
         <Box
           sx={{

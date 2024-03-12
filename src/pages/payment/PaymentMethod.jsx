@@ -15,8 +15,9 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Box } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
-const ResetPassword = () => {
+const PaymentMethod = () => {
   const navigate = useNavigate();
   const { prokash_user, login, logout } = useContext(AuthContext);
   const [oldPasswordShow, setOldPasswordShow] = useState(false);
@@ -28,6 +29,10 @@ const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const invoiceId = queryParams.get("invoice");
 
   const handleSnakbarOpen = (msg, vrnt) => {
     let duration;
@@ -81,9 +86,10 @@ const ResetPassword = () => {
   };
 
   const onSubmit = async (e) => {
+    console.log("onSubmit");
     e.preventDefault();
     setErrors({});
-    let err = validation();
+    let err = false;
 
     if (err) {
       return;
@@ -91,20 +97,23 @@ const ResetPassword = () => {
       setLoading(true);
       try {
         let data = {
-          old_password: oldPassword,
-          password: newPassword,
-          password_confirm: confirmPassword,
+          order_id: invoiceId,
+          payment_method: "bkash",
         };
+
         let response = await axios({
-          url: "/api/auth/change-password",
+          url: "/api/payment",
           method: "post",
           data: data,
+          headers: {
+            Authorization: `Bearer ${prokash_user.token}`,
+          },
         });
 
         if (response?.status > 199 && response?.status < 300) {
-          handleSnakbarOpen("Password reset successfully", "success");
-          login({});
-          navigate("/");
+          // handleSnakbarOpen("Successfull", "success");
+          window.location.href = response.data.data.payment_url;
+          // payment_url
         }
       } catch (error) {
         console.log("error", error);
@@ -160,125 +169,12 @@ const ResetPassword = () => {
               fontSize: { xs: "1.2rem", sm: "1.5rem" },
             }}
           >
-            Reset your password
+            Payment Method
           </Typography>
           <Box sx={{ marginBottom: "30px" }}>
-            <FormControl
-              fullWidth
-              variant="outlined"
-              className="demo_form_input_style"
-            >
-              <OutlinedInput
-                id="oldPassword"
-                autoFocus
-                type={oldPasswordShow ? "text" : "password"}
-                placeholder="Old password"
-                size="small"
-                value={oldPassword}
-                onChange={(e) => setOldPassword(e.target.value)}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <LockOutlinedIcon />
-                  </InputAdornment>
-                }
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={() => setOldPasswordShow(!oldPasswordShow)}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {oldPasswordShow ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-            {errors.old_password && (
-              <Typography variant="small" color="error.main">
-                {errors.old_password}
-              </Typography>
-            )}
+            <img src="/Bkash.svg" width="65%" />
           </Box>
-          <Box sx={{ marginBottom: "30px" }}>
-            <FormControl
-              fullWidth
-              variant="outlined"
-              className="demo_form_input_style"
-            >
-              <OutlinedInput
-                id="newPassword"
-                type={newPasswordShow ? "text" : "password"}
-                placeholder="New password"
-                size="small"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <LockOutlinedIcon />
-                  </InputAdornment>
-                }
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={() => setNewPasswordShow(!newPasswordShow)}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {newPasswordShow ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-            {errors.password && (
-              <Typography variant="small" color="error.main">
-                {errors.password}
-              </Typography>
-            )}
-          </Box>
-          <Box sx={{ marginBottom: "30px" }}>
-            <FormControl
-              fullWidth
-              variant="outlined"
-              className="demo_form_input_style"
-            >
-              <OutlinedInput
-                id="confirmPassword"
-                type={confirmPasswordShow ? "text" : "password"}
-                placeholder="Confirm password"
-                size="small"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <LockOutlinedIcon />
-                  </InputAdornment>
-                }
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={() =>
-                        setConfirmPasswordShow(!confirmPasswordShow)
-                      }
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {confirmPasswordShow ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-            {errors.password_confirm && (
-              <Typography variant="small" color="error.main">
-                {errors.password_confirm}
-              </Typography>
-            )}
-          </Box>
+
           <Button
             variant="contained"
             disableElevation
@@ -303,4 +199,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default PaymentMethod;

@@ -9,6 +9,7 @@ import ForgotPassword from "./user-forms/ForgotPassword";
 
 import AddOrder from "./order/AddOrder";
 import Payment from "./payment/Payment";
+import PaymentMethod from "./payment/PaymentMethod";
 
 function PrivateRoute({ children }) {
   const { prokash_user, logout, login } = useContext(AuthContext);
@@ -40,6 +41,7 @@ const Navigation = ({
         <Route path="/test" element={<Test />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="payment/callback" element={<Payment />} />
+        <Route path="payment-method" element={<PaymentMethod />} />
         <Route
           path="change-password"
           element={

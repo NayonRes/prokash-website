@@ -86,6 +86,7 @@ const GenderAndAge = ({
                   id="demo-simple-select"
                   label="Min Age"
                   size="small"
+                  MenuProps={{ PaperProps: { sx: { maxHeight: 200 } } }}
                   value={min_age}
                   onChange={(e) => setMin_age(e.target.value)}
                 >
@@ -120,6 +121,7 @@ const GenderAndAge = ({
                   id="demo-simple-select"
                   size="small"
                   label="Max Age"
+                  MenuProps={{ PaperProps: { sx: { maxHeight: 200 } } }}
                   value={max_age}
                   onChange={(e) => setMax_age(e.target.value)}
                 >

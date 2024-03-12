@@ -15,6 +15,7 @@ const Budget = ({
   setPromotion_period,
 }) => {
   const theme = useTheme();
+
   const handleChange = (event) => {
     setPromotion_period(event.target.value);
   };
@@ -22,6 +23,52 @@ const Budget = ({
     setAmount(value);
     return `${value}°C`;
   }
+
+  const serviceTimeGenerate = () => {
+    switch (amount) {
+      case 1000:
+        return 5;
+      case 1500:
+        return 7;
+      case 2000:
+        return 10;
+      case 2500:
+        return 12;
+      case 3000:
+        return 15;
+      case 3500:
+        return 17;
+      case 4000:
+        return 20;
+      case 4500:
+        return 22;
+      case 5000:
+        return 25;
+      case 5500:
+        return 27;
+      case 6000:
+        return 30;
+      case 6500:
+        return 32;
+      case 7000:
+        return 35;
+      case 7500:
+        return 37;
+      case 8000:
+        return 40;
+      case 8500:
+        return 42;
+      case 9000:
+        return 45;
+      case 9500:
+        return 47;
+      case 10000:
+        return 50;
+
+      default:
+        break;
+    }
+  };
   return (
     <div>
       {" "}
@@ -105,23 +152,29 @@ const Budget = ({
         <FormControl fullWidth sx={{ width: 120 }}>
           {/* <InputLabel id="demo-simple-select-label">Age</InputLabel> */}
           <Select
-            // sx={{
-            //   "& .MuiOutlinedInput-input": {
-            //     // color: "#718096",
-            //     padding: "7px 14px",
-            //   },
-            // }}
+            MenuProps={{ PaperProps: { sx: { maxHeight: 200 } } }}
+            sx={
+              {
+                // "& .MuiPopover-paper-MuiMenu-paper": {
+                //   maxHeight: "180px !important",
+                // },
+                //   "& .MuiOutlinedInput-input": {
+                //     // color: "#718096",
+                //     padding: "7px 14px",
+                //   },
+              }
+            }
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={promotion_period}
             //   label="Age"
             onChange={handleChange}
           >
-            <MenuItem value={1}>1 Day</MenuItem>
-            <MenuItem value={2}>2 Days</MenuItem>
-            <MenuItem value={3}>3 Days</MenuItem>
-            <MenuItem value={4}>4 Days</MenuItem>
-            <MenuItem value={5}>5 Days</MenuItem>
+            {[...Array(serviceTimeGenerate()).keys()].map((item, i) => (
+              <MenuItem value={i + 1}>
+                {i + 1} {i < 1 ? "Day" : "Days"}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Box>

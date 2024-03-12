@@ -188,6 +188,7 @@ const Home = ({
                   data-aos-delay="900"
                   data-aos-offset="0"
                   sx={{ ...buttonStyle }}
+                  onClick={handleClickSignUpOpen}
                 >
                   Start Now
                 </Button>
@@ -373,6 +374,7 @@ const Home = ({
                       data-aos-delay="1000"
                       data-aos-offset="0"
                       // onClick={scrollToTop}
+                      onClick={handleClickSignUpOpen}
                     >
                       Start Now
                     </Button>
