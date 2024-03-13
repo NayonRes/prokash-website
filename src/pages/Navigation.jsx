@@ -10,6 +10,7 @@ import ForgotPassword from "./user-forms/ForgotPassword";
 import AddOrder from "./order/AddOrder";
 import Payment from "./payment/Payment";
 import PaymentMethod from "./payment/PaymentMethod";
+import OrderList from "./order/order-list/OrderList";
 
 function PrivateRoute({ children }) {
   const { prokash_user, logout, login } = useContext(AuthContext);
@@ -55,6 +56,14 @@ const Navigation = ({
           element={
             <PrivateRoute>
               <AddOrder />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="campaign-list"
+          element={
+            <PrivateRoute>
+              <OrderList />
             </PrivateRoute>
           }
         />

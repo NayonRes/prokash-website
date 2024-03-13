@@ -196,7 +196,7 @@ const Login = ({ handleClose }) => {
             <OutlinedInput
               type={showPassword ? "text" : "password"}
               id="password"
-              placeholder="Enter your password"
+              placeholder="Password"
               size="small"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
