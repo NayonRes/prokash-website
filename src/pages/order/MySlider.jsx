@@ -346,7 +346,9 @@ function MySlider() {
         handleSnakbarOpen("Successful", "success");
         handleClose();
         handleResetForm();
-        navigate(`/payment-method?invoice=${response?.data?.data?.id}`);
+        navigate(
+          `/payment-method?invoice=${response?.data?.data?.id}&amount=${amount}`
+        );
       }
     } catch (error) {
       console.log("error", error);

@@ -287,7 +287,7 @@ const ResetPassword = () => {
             disabled={loading}
             onClick={onSubmit}
             className="contained_buttton"
-            type="submit"
+            // type="submit"
           >
             {loading === false && "Continue"}
             <PulseLoader

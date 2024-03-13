@@ -398,10 +398,10 @@ const Home = ({
 
         <div className="section_style">
           <div data-aos="fade-up" className="mb60">
-            <h3 className="title_semibold_medium center">SERVICES</h3>
-            <p className="text_body_medium center mt10 ">
+            <h3 className="title_semibold_medium center">WHAT WE OFFER</h3>
+            {/* <p className="text_body_medium center mt10 ">
               Strategies we've helped validate
-            </p>
+            </p> */}
           </div>
           <div className="card_holder" style={{ justifyContent: "center" }}>
             <div
@@ -573,10 +573,10 @@ const Home = ({
                   <Button
                     variant="contained"
                     disableElevation
-                    sx={{ ...buttonStyle }}
+                    sx={{ ...buttonStyle, minWidth: "70%" }}
                   >
                     {" "}
-                    Book a Schedule
+                    Start Now
                   </Button>
                 </Box>
               </div>
@@ -599,7 +599,7 @@ const Home = ({
                       variant="base"
                       sx={{ ...cardTitle, fontWeight: 700 }}
                     >
-                      FULL-SERVICE
+                      CUSTOMIZE
                     </Typography>
                   </Grid>
                   <Grid item xs="auto" sx={{ textAlign: "right" }}>
@@ -613,15 +613,14 @@ const Home = ({
                 </Grid>
                 <div className="card_text_box">
                   <p className="title_semibold_small center  mb12">
-                    Sales & Marketing
+                    Service Suite
                   </p>
 
                   <p
                     className="text_body_xs_regular center mb24"
                     style={{ fontWeight: 400 }}
                   >
-                    Get Personalized Business Branding, Marketing, And Sales
-                    Solutions On a Monthly, Quarterly, or Yearly Plan.
+                    Tailoring solutions to suit your business needs and growth.
                   </p>
                   <Grid container justifyContent="center">
                     <Grid item xs="auto">
@@ -645,7 +644,7 @@ const Home = ({
                             fill="#834BFF"
                           />
                         </svg>
-                        &nbsp;&nbsp; Customize & Pay
+                        &nbsp;&nbsp; Digital Advertising
                       </p>
                       <p
                         className="text_body_xs_regular left  mb12"
@@ -667,7 +666,161 @@ const Home = ({
                             fill="#834BFF"
                           />
                         </svg>
-                        &nbsp;&nbsp; Maximum ROI
+                        &nbsp;&nbsp; E-commerce Solutions
+                      </p>
+                      <p
+                        className="text_body_xs_regular left  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Social Media Management
+                      </p>
+                      <p
+                        className="text_body_xs_regular left  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; UI/UX & Designt
+                      </p>
+                      <p
+                        className="text_body_xs_regular left  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Video Marketing
+                      </p>
+                      <p
+                        className="text_body_xs_regular left  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Influencer Partnerships
+                      </p>
+                      <p
+                        className="text_body_xs_regular left  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; SEO
+                      </p>
+                      <p
+                        className="text_body_xs_regular left  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Data Analytics
+                      </p>
+                      <p
+                        className="text_body_xs_regular left  mb12"
+                        style={{ fontWeight: 500 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          style={{
+                            position: "relative",
+                            top: 6,
+                          }}
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                        &nbsp;&nbsp; Web & App Development
                       </p>
                       <p
                         className="text_body_xs_regular left"
@@ -689,7 +842,7 @@ const Home = ({
                             fill="#834BFF"
                           />
                         </svg>
-                        &nbsp;&nbsp; Measure & Report
+                        &nbsp;&nbsp; Email Outreach
                       </p>
                     </Grid>
                   </Grid>
@@ -706,7 +859,7 @@ const Home = ({
                   <Button
                     variant="contained"
                     disableElevation
-                    sx={{ ...buttonStyle }}
+                    sx={{ ...buttonStyle, minWidth: "70%" }}
                   >
                     {" "}
                     Book a Schedule

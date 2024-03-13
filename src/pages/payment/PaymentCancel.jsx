@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -12,28 +12,29 @@ import { useSnackbar } from "notistack";
 import { AuthContext } from "../../context/AuthContext";
 import PulseLoader from "react-spinners/PulseLoader";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Avatar from "@mui/material/Avatar";
+import CloseIcon from "@mui/icons-material/Close";
 
-const PaymentMethod = () => {
+const PaymentCancel = () => {
   const navigate = useNavigate();
+
+  const theme = useTheme();
   const { prokash_user, login, logout } = useContext(AuthContext);
-  const [oldPasswordShow, setOldPasswordShow] = useState(false);
-  const [oldPassword, setOldPassword] = useState("");
-  const [newPasswordShow, setNewPasswordShow] = useState(false);
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPasswordShow, setConfirmPasswordShow] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState("");
+
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const invoiceId = queryParams.get("invoice");
-  const amount = queryParams.get("amount");
+  const paymentID = queryParams.get("paymentID");
+  const status = queryParams.get("status");
 
   const handleSnakbarOpen = (msg, vrnt) => {
     let duration;
@@ -48,47 +49,8 @@ const PaymentMethod = () => {
     });
   };
 
-  const validation = () => {
-    let isError = false;
-
-    if (!oldPassword.trim()) {
-      handleSnakbarOpen("Please enter old password", "error");
-      document.getElementById("oldPassword").focus();
-      return (isError = true);
-    }
-    if (!newPassword.trim()) {
-      handleSnakbarOpen("Please enter new password", "error");
-      document.getElementById("newPassword").focus();
-      return (isError = true);
-    }
-    if (newPassword.trim().length < 6) {
-      handleSnakbarOpen(
-        "The password field must be at least 6 characters.",
-        "error"
-      );
-      document.getElementById("newPassword").focus();
-      return (isError = true);
-    }
-    if (!confirmPassword.trim()) {
-      handleSnakbarOpen("Please enter confirm password", "error");
-      document.getElementById("confirmPassword").focus();
-      return (isError = true);
-    }
-    if (newPassword.trim() !== confirmPassword.trim()) {
-      handleSnakbarOpen(
-        "Your new password and confirm password is not same",
-        "error"
-      );
-      document.getElementById("confirmPassword").focus();
-      return (isError = true);
-    }
-
-    return isError;
-  };
-
   const onSubmit = async (e) => {
-    console.log("onSubmit");
-    e.preventDefault();
+    // e.preventDefault();
     setErrors({});
     let err = false;
 
@@ -98,12 +60,13 @@ const PaymentMethod = () => {
       setLoading(true);
       try {
         let data = {
-          order_id: invoiceId,
-          payment_method: "bkash",
+          //   old_password: oldPassword,
+          //   password: newPassword,
+          //   password_confirm: confirmPassword,
+          gateway_payment_id: paymentID,
         };
-
         let response = await axios({
-          url: "/api/payment",
+          url: "/api/payment/execute",
           method: "post",
           data: data,
           headers: {
@@ -112,9 +75,10 @@ const PaymentMethod = () => {
         });
 
         if (response?.status > 199 && response?.status < 300) {
-          // handleSnakbarOpen("Successfull", "success");
-          window.location.href = response.data.data.payment_url;
-          // payment_url
+          setLoading(false);
+          //   handleSnakbarOpen("Password reset successfully", "success");
+          //   login({});
+          //   navigate("/");
         }
       } catch (error) {
         console.log("error", error);
@@ -136,6 +100,9 @@ const PaymentMethod = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  useEffect(() => {
+    onSubmit();
+  }, [paymentID]);
   return (
     <div>
       <Grid
@@ -151,48 +118,55 @@ const PaymentMethod = () => {
             borderRadius: "10px",
             textAlign: "center",
             width: "400px",
-            border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
-            // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+            border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" }, 
           }}
         >
-          <img
-            src="/logo.svg"
-            alt=""
-            // style={{ display: "block", margin: "auto", maxWidth: "155px" }}
-            className="form_logo_style"
-          />
+       
+          <Box sx={{ textAlign: "center" }}>
+            <Avatar
+              sx={{
+                bgcolor: theme.palette.error.main,
+                width: 60,
+                height: 60,
+                margin: "auto",
+              }}
+            >
+              <CloseIcon style={{ color: "#fff" }} />
+            </Avatar>
+          </Box>
           <br />
           <Typography
             variant="h5"
             component="div"
+            color="error.main"
             sx={{
               marginBottom: "30px",
               fontSize: { xs: "1.2rem", sm: "1.5rem" },
             }}
           >
-            Payment Method
+            Payment Failed
           </Typography>
-          <Box sx={{ marginBottom: "30px" }}>
-            <img src="/Bkash.svg" width="65%" />
-          </Box>
+          <Typography
+            variant="base"
+            color="text.light"
+            sx={{ mb: 1, display: "block", marginBottom: "30px" }}
+          >
+            Please try again. <br />
+            Or contact to our support team.
+          </Typography>
 
           <Button
-            variant="contained"
+            variant="text"
+            color="info"
+            component={Link}
+            to="/"
             disableElevation
             fullWidth
             style={{ marginBottom: "30px", minHeight: "48px" }}
-            disabled={loading}
-            onClick={onSubmit}
             className="contained_buttton"
-            type="submit"
           >
-            {loading === false && "Tk. " + amount + " Pay Now"}
-            <PulseLoader
-              color={"#353b48"}
-              loading={loading}
-              size={10}
-              speedMultiplier={0.5}
-            />{" "}
+            <ArrowBackIcon />
+            &nbsp; Back to Home Page
           </Button>
         </Box>
       </Grid>
@@ -200,4 +174,4 @@ const PaymentMethod = () => {
   );
 };
 
-export default PaymentMethod;
+export default PaymentCancel;

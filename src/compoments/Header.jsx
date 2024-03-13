@@ -262,7 +262,7 @@ const Header = ({
                     <MenuItem
                       onClick={() => {
                         handleMenuClose();
-                        navigateRoutes("/order-list");
+                        navigateRoutes("/campaign-list");
                       }}
                     >
                       <ListAltOutlinedIcon
@@ -271,7 +271,7 @@ const Header = ({
                           color: "#616161",
                         }}
                       />
-                      &nbsp;&nbsp; Order List
+                      &nbsp;&nbsp; Campaign List
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
