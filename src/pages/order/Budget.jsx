@@ -20,6 +20,7 @@ const Budget = ({
     setPromotion_period(event.target.value);
   };
   function valuetext(value) {
+    // setAmount(1);
     setAmount(value);
     return `${value}°C`;
   }
@@ -100,7 +101,7 @@ const Budget = ({
           shiftStep={30}
           step={500}
           marks
-          min={1000}
+          min={1}
           max={10000}
         />
         <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>

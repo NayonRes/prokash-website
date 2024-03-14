@@ -104,7 +104,10 @@ const PaymentSuccess = () => {
     event.preventDefault();
   };
   useEffect(() => {
-    onSubmit();
+    console.log("status", status);
+    if (status === "success") {
+      onSubmit();
+    }
   }, [paymentID]);
   return (
     <div>
