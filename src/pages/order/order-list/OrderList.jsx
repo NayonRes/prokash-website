@@ -69,7 +69,7 @@ const OrderList = () => {
   const [name, setName] = useState("");
   const [invoiceNo, setInvoiceNo] = useState("");
   const [gender, setGender] = useState("");
-  const [status, setStatus] = useState("Pending");
+  const [status, setStatus] = useState("");
   const [totalPage, setTotalPage] = useState(0);
   const [totalData, setTotalData] = useState(0);
   const [message, setMessage] = useState("");
@@ -139,9 +139,9 @@ const OrderList = () => {
     let cellNo = prokash_user?.permission?.some(
       (el) => el.name === "order-update"
     )
-      ? 14
-      : 14;
-    for (let i = 0; i < 25; i++) {
+      ? 3
+      : 3;
+    for (let i = 0; i < 10; i++) {
       let cells = [];
 
       for (let j = 0; j < cellNo; j++) {
@@ -163,7 +163,7 @@ const OrderList = () => {
     setCreatedStartTime(null);
     setCreatedEndTime(null);
     setPage(0);
-    let newUrl = `api/order?status=${status}`;
+    let newUrl = `api/order`;
     getData("", newUrl);
   };
   const getData = async (pageNO, newUrl) => {
@@ -171,37 +171,37 @@ const OrderList = () => {
     // setUserList([]);
     setMessage("");
     let newPageNO;
-    let url;
+    // let url;
     if (pageNO) {
       newPageNO = pageNO;
     } else {
       newPageNO = 1;
     }
-    if (newUrl) {
-      url = newUrl;
-    } else {
-      let newStatus = status;
-      let newCreatedStartTime = "";
-      let newCreatedEndTime = "";
-      if (status === "None") {
-        newStatus = "";
-      }
-      if (createdStartTime !== null) {
-        // newCreatedStartTime = moment(createdStartTime).format(
-        //   "YYYY-MM-DD HH:mm:ss"
-        // );
-        newCreatedStartTime = dayjs(createdStartTime).format("YYYY-MM-DD");
-      }
-      if (createdEndTime !== null) {
-        // newCreatedEndTime = moment(createdEndTime).format(
-        //   "YYYY-MM-DD HH:mm:ss"
-        // );
-        newCreatedEndTime = dayjs(createdEndTime).format("YYYY-MM-DD");
-      }
+    // if (newUrl) {
+    //   url = newUrl;
+    // } else {
+    //   let newStatus = status;
+    //   let newCreatedStartTime = "";
+    //   let newCreatedEndTime = "";
+    //   if (status === "None") {
+    //     newStatus = "";
+    //   }
+    //   if (createdStartTime !== null) {
+    //     // newCreatedStartTime = moment(createdStartTime).format(
+    //     //   "YYYY-MM-DD HH:mm:ss"
+    //     // );
+    //     newCreatedStartTime = dayjs(createdStartTime).format("YYYY-MM-DD");
+    //   }
+    //   if (createdEndTime !== null) {
+    //     // newCreatedEndTime = moment(createdEndTime).format(
+    //     //   "YYYY-MM-DD HH:mm:ss"
+    //     // );
+    //     newCreatedEndTime = dayjs(createdEndTime).format("YYYY-MM-DD");
+    //   }
 
-      url = `api/order?promotion=${name.trim()}&invoice_no=${invoiceNo.trim()}&gender=${gender}&status=${newStatus}&from=${newCreatedStartTime}&to=${newCreatedEndTime}&page=${newPageNO}`;
-    }
-
+    //   url = `api/order?promotion=${name.trim()}&invoice_no=${invoiceNo.trim()}&gender=${gender}&status=${newStatus}&from=${newCreatedStartTime}&to=${newCreatedEndTime}&page=${newPageNO}`;
+    // }
+    let url = `api/order?page=${newPageNO}`;
     let res = await getDataWithToken(url, prokash_user.token);
     console.log("res", res);
     if (res?.status === 401 || res?.status === 403) {
@@ -224,135 +224,6 @@ const OrderList = () => {
     setLoading(false);
   };
 
-  const downloadFile = async (type) => {
-    setDownloadloading(true);
-    // try {
-    let newStatus = status;
-    let newCreatedStartTime = "";
-    let newCreatedEndTime = "";
-    if (status === "None") {
-      newStatus = "";
-    }
-    if (createdStartTime !== null) {
-      // newCreatedStartTime = moment(createdStartTime).format(
-      //   "YYYY-MM-DD HH:mm:ss"
-      // );
-      newCreatedStartTime = dayjs(createdStartTime).format("YYYY-MM-DD");
-    }
-    if (createdEndTime !== null) {
-      // newCreatedEndTime = moment(createdEndTime).format(
-      //   "YYYY-MM-DD HH:mm:ss"
-      // );
-      newCreatedEndTime = dayjs(createdEndTime).format("YYYY-MM-DD");
-    }
-
-    let url = `api/order/export?promotion=${name.trim()}&invoice_no=${encodeURIComponent(
-      invoiceNo.trim()
-    )}&gender=${gender}&status=${newStatus}&from=${newCreatedStartTime}&to=${newCreatedEndTime}`;
-
-    let res = await axios({
-      url: url,
-      method: "get",
-      headers: {
-        Authorization: `Bearer ${prokash_user.token}`,
-      },
-      responseType: "blob", // important
-    });
-
-    if (res?.status > 199 && res?.status < 300) {
-      const url = window.URL.createObjectURL(new Blob([res.data]));
-      const link = document.createElement("a");
-
-      link.href = url;
-      link.setAttribute("download", `Order.${type}`);
-
-      document.body.appendChild(link);
-      link.click();
-
-      link.remove();
-
-      handleSnakbarOpen("File download successfully", "success");
-    } else {
-      const isJsonBlob = (data) =>
-        data instanceof Blob && data.type === "application/json";
-      const responseData = isJsonBlob(res?.data)
-        ? await res?.data?.text()
-        : res?.data || {};
-      const responseJson =
-        typeof responseData === "string"
-          ? JSON.parse(responseData)
-          : responseData;
-
-      if (responseJson?.messages.length > 0) {
-        handleSnakbarOpen("Something went wrong", "error");
-      } else {
-        handleSnakbarOpen("Something went wrong", "error");
-      }
-    }
-
-    // } catch (error) {
-    //   const isJsonBlob = (data) =>
-    //     data instanceof Blob && data.type === "application/json";
-    //   const responseData = isJsonBlob(error.response?.data)
-    //     ? await error.response?.data?.text()
-    //     : error.response?.data || {};
-    //   const responseJson =
-    //     typeof responseData === "string"
-    //       ? JSON.parse(responseData)
-    //       : responseData;
-    //   console.log("error", responseJson);
-    //   handleSnakbarOpen(responseJson?.messages.toString(), "error");
-    //   handleClose();
-    //   setDownloadloading(false);
-    // }
-    setDownloadloading(false);
-  };
-
-  const updateStatus = async (newStatus) => {
-    // let err = false;
-    // setErrors({});
-
-    setUpdateLoading(true);
-    try {
-      let data = {
-        status: newStatus,
-      };
-      let response = await axios({
-        url: `/api/order/${updateId}/action`,
-        method: "put",
-        data: data,
-        headers: {
-          Authorization: `Bearer ${prokash_user.token}`,
-        },
-      });
-
-      if (response?.status > 199 && response?.status < 300) {
-        handleSnakbarOpen("Update Successfully", "success");
-        handleClose();
-        handleCloseRefund();
-        setUpdateLoading(false);
-        getData();
-      }
-    } catch (error) {
-      console.log("error", error);
-      setUpdateLoading(false);
-      if (error?.response?.status === 401 || error?.response?.status === 403) {
-        logout();
-        return;
-      }
-      if (error?.response?.status === 500) {
-        handleSnakbarOpen(error?.response?.statusText, "error");
-      } else {
-        // setErrors(error.response.data.errors);
-      }
-      // handleSnakbarOpen(error.response.data.messages.toString(), "error");
-      // if (error.response.data.errors.length < 1) {
-      //   handleSnakbarOpen("Something went wrong", "error");
-      // }
-
-      setUpdateLoading(false);
-    }
-  };
   const checkCreateAndUpdatedSame = (createdAt, updatedAt) => {
     // Convert strings to Date objects
     const createdDate = new Date(createdAt);
@@ -390,15 +261,14 @@ const OrderList = () => {
                     Invoice No
                   </TableCell>
                   <TableCell>Promotion</TableCell>
-                  <TableCell>Amount</TableCell>
+                  {/* <TableCell>Amount</TableCell>
                   <TableCell sx={{ whiteSpace: "nowrap" }} align="center">
                     Promotion Period
-                  </TableCell>
-                  <TableCell>gender</TableCell>
+                  </TableCell> */}
+                  {/* <TableCell>gender</TableCell>
                   <TableCell>Age</TableCell>
-                  <TableCell>Location</TableCell>
-                  {/* <TableCell align="center">Status</TableCell> */}
-                  <TableCell>Note</TableCell>
+                  <TableCell>Location</TableCell>  */}
+                  {/* <TableCell>Note</TableCell>
                   <TableCell sx={{ whiteSpace: "nowrap" }}>
                     Created At
                   </TableCell>
@@ -410,14 +280,14 @@ const OrderList = () => {
                   </TableCell>
                   <TableCell sx={{ whiteSpace: "nowrap" }}>
                     Updated By
-                  </TableCell>
-                  <TableCell sx={{ whiteSpace: "nowrap" }}>
+                  </TableCell> */}
+                  {/* <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>
                     Payment Status
-                  </TableCell>
+                  </TableCell> */}
                   {/* {prokash_user?.permission?.some(
                   (el) => el.name === "order-update"
                 ) && ( */}
-                  <TableCell sx={{ whiteSpace: "nowrap" }} align="center">
+                  <TableCell sx={{ whiteSpace: "nowrap" }} align="right">
                     Actions
                   </TableCell>
                   {/* )} */}
@@ -440,7 +310,7 @@ const OrderList = () => {
                         {row?.id}
                       </TableCell>
                       <TableCell>{row?.promotion}</TableCell>
-                      <TableCell
+                      {/* <TableCell
                         sx={{
                           whiteSpace: "nowrap",
                         }}
@@ -450,8 +320,8 @@ const OrderList = () => {
                       <TableCell align="center">
                         {row?.promotion_period}{" "}
                         {parseInt(row?.promotion_period) > 1 ? "Days" : "Day"}
-                      </TableCell>
-                      <TableCell>{row?.gender}</TableCell>
+                      </TableCell> */}
+                      {/* <TableCell>{row?.gender}</TableCell>
                       <TableCell
                         sx={{
                           whiteSpace: "nowrap",
@@ -461,36 +331,10 @@ const OrderList = () => {
                       </TableCell>
                       <TableCell>
                         {row?.divisions?.toString()}
-                        {/* {row?.divisions?.map((item, i) =>
-                        row?.divisions.length < i + 2 ? (
-                          <span key={i}>{item}</span>
-                        ) : (
-                          <span key={i}>{item}&nbsp;,</span>
-                        )
-                      )} */}
+                        
                       </TableCell>
 
-                      {/* <TableCell align="center">
-                     
-                      {row.status === "Active" ? (
-                        
-                        <Chip
-                          label={row.status}
-                          variant="outlined"
-                          color="success"
-                          size="small"
-                          sx={{ minWidth: "75px", textAlign: "center" }}
-                        />
-                      ) : (
-                        <Chip
-                          label={row.status}
-                          variant="outlined"
-                          color="warning"
-                          size="small"
-                          sx={{ minWidth: "75px", textAlign: "center" }}
-                        />
-                      )}
-                    </TableCell> */}
+                      
                       <TableCell sx={{ width: "190px" }}>
                         {row?.note === null
                           ? "-------"
@@ -528,9 +372,9 @@ const OrderList = () => {
                         {row.updated_by !== null
                           ? row.updated_by.name
                           : "-------"}
-                      </TableCell>
+                      </TableCell>*/}
 
-                      <TableCell align="center">
+                      {/* <TableCell align="center">
                         {row.payment?.status === "Success" ? (
                           <Chip
                             label={row.payment?.status}
@@ -556,9 +400,9 @@ const OrderList = () => {
                             sx={{ minWidth: "75px", textAlign: "center" }}
                           />
                         )}
-                      </TableCell>
+                      </TableCell> */}
 
-                      <TableCell sx={{ whiteSpace: "nowrap" }} align="center">
+                      <TableCell sx={{ whiteSpace: "nowrap" }} align="right">
                         {prokash_user?.permission?.some(
                           (el) => el.name === "order-update"
                         ) && (
@@ -619,124 +463,6 @@ const OrderList = () => {
           )}
         </Paper>
 
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-          maxWidth="lg"
-          sx={{ ".MuiDialog-paper": { p: 3 } }}
-        >
-          <DialogTitle
-            id="alert-dialog-title"
-            sx={{ fontWeight: 600, position: "relative" }}
-          >
-            {"Are you sure?"}{" "}
-            {/* <IconButton
-            sx={{ position: "absolute", right: 0, top: -10 }}
-            onClick={handleClose}
-          >
-            <ClearOutlinedIcon />
-          </IconButton> */}
-          </DialogTitle>
-          <DialogContent sx={{ minWidth: "350px" }}>
-            <DialogContentText id="alert-dialog-description">
-              You want to pass it to <b>publish list!!!</b>
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions sx={{ pt: 0, pb: 1.5 }}>
-            <Button
-              color="text"
-              sx={{ color: theme.palette.text.light }}
-              onClick={handleClose}
-            >
-              Cancel
-            </Button>
-            <Button
-              variant="contained"
-              disableElevation
-              // size="small"
-              style={{
-                minHeight: "37px",
-                // minWidth: "180px",
-              }}
-              endIcon={
-                <SendOutlinedIcon
-                  style={{ position: "relative", top: -2, fontSize: "16px" }}
-                />
-              }
-              disabled={updateLoading}
-              onClick={() => updateStatus("Publish")}
-            >
-              {updateLoading === false && <>&nbsp;&nbsp; Confirm</>}
-              <PulseLoader
-                color={"#353b48"}
-                loading={updateLoading}
-                size={10}
-                speedMultiplier={0.5}
-              />{" "}
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Dialog
-          open={openRefund}
-          onClose={handleCloseRefund}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-          maxWidth="lg"
-          sx={{ ".MuiDialog-paper": { p: 3 } }}
-        >
-          <DialogTitle
-            id="alert-dialog-title"
-            sx={{ fontWeight: 600, position: "relative" }}
-          >
-            {"Are you sure?"}{" "}
-            {/* <IconButton
-            sx={{ position: "absolute", right: 0, top: -10 }}
-            onClick={handleCloseRefund}
-          >
-            <ClearOutlinedIcon />
-          </IconButton> */}
-          </DialogTitle>
-          <DialogContent sx={{ minWidth: "350px" }}>
-            <DialogContentText id="alert-dialog-description">
-              You want to pass it to <b>refund list!!!</b>
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions sx={{ pt: 0, pb: 1.5 }}>
-            <Button
-              color="text"
-              sx={{ color: theme.palette.text.light }}
-              onClick={handleCloseRefund}
-            >
-              Cancel
-            </Button>
-            <Button
-              variant="contained"
-              disableElevation
-              // size="small"
-              style={{
-                minHeight: "37px",
-                // minWidth: "180px",
-              }}
-              endIcon={
-                <SendOutlinedIcon
-                  style={{ position: "relative", top: -2, fontSize: "16px" }}
-                />
-              }
-              disabled={updateLoading}
-              onClick={() => updateStatus("Refunded")}
-            >
-              {updateLoading === false && <>&nbsp;&nbsp; Confirm</>}
-              <PulseLoader
-                color={"#353b48"}
-                loading={updateLoading}
-                size={10}
-                speedMultiplier={0.5}
-              />{" "}
-            </Button>
-          </DialogActions>
-        </Dialog>
         <DetailDialog
           openDetailDialog={openDetailDialog}
           setOpenDetailDialog={setOpenDetailDialog}

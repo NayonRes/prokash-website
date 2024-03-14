@@ -241,17 +241,18 @@ const FacebookObjective = ({
         />
       </Collapse>
       <Collapse in={promotion_objective === "Video views"}>
-        <TextField
+      <TextField
           sx={{
             mb: 1,
           }}
+          required
           fullWidth
-          label="Website Link"
+          label="Video Link"
           className="demo_form_input_style2"
           variant="outlined"
-          id="websiteLink"
-          value={websiteLink}
-          onChange={(e) => setWebsiteLink(e.target.value)}
+          id="videoLink"
+          value={videoLink}
+          onChange={(e) => setVideoLink(e.target.value)}
         />
       </Collapse>
       {/* )} */}

@@ -203,10 +203,10 @@ function MySlider() {
       }
       if (
         promotion_objective === "Video views" &&
-        websiteLink.trim().length < 1
+        videoLink.trim().length < 1
       ) {
-        handleSnakbarOpen("Please enter website link", "error");
-        document.getElementById("websiteLink").focus();
+        handleSnakbarOpen("Please enter video link", "error");
+        document.getElementById("videoLink").focus();
         disabled = true;
       }
     } else if (promotion === "Google") {
@@ -334,7 +334,7 @@ function MySlider() {
         // status: "Active",
       };
       let response = await axios({
-        url: "/api/order",
+        url: "/api/customer/order",
         method: "post",
         data: data,
         headers: {

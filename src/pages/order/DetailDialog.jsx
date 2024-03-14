@@ -63,6 +63,25 @@ const DetailDialog = ({
     return null; // Return null if key is not found
   }
 
+  function getLeadValues(data) {
+    const leadValues = [];
+    data?.forEach((item) => {
+      if (item.key === "lead") {
+        leadValues.push(item.value);
+      }
+    });
+    return leadValues;
+  }
+  function getMediaValues(data) {
+    const mediaValues = [];
+    data?.forEach((item) => {
+      if (item.key === "lead") {
+        mediaValues.push(item.value);
+      }
+    });
+    return mediaValues;
+  }
+
   const checkCreateAndUpdatedSame = (createdAt, updatedAt) => {
     // Convert strings to Date objects
     const createdDate = new Date(createdAt);
@@ -87,7 +106,12 @@ const DetailDialog = ({
       >
         <DialogTitle
           id="alert-dialog-title"
-          sx={{ fontWeight: 600, position: "relative" }}
+          sx={{
+            fontWeight: 600,
+            position: "relative",
+            background: "#f4f4f4",
+            mb: 2,
+          }}
         >
           {/* {"Order Details"}{" "}
           <IconButton
@@ -96,7 +120,12 @@ const DetailDialog = ({
           >
             <ClearOutlinedIcon />
           </IconButton> */}
-          <Grid container alignItems="center" justifyContent="space-between">
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="space-between"
+            // sx={{ background: "#f4f4f4", mb: 2 }}
+          >
             <Grid item xs="auto">
               <Grid container alignItems="center" spacing={1}>
                 <Grid item xs="auto">
@@ -181,7 +210,7 @@ const DetailDialog = ({
                 {detailData?.promotion_objective}
               </span>
             </Typography>
-            {getValueByKey(detailData?.objectives, "media") !== null && (
+            {getMediaValues(detailData?.objectives, "media") !== null && (
               <Typography
                 variant="base"
                 color="text.light"
@@ -190,11 +219,11 @@ const DetailDialog = ({
                 {" "}
                 Message Media: &nbsp;
                 <span style={{ color: theme.palette.text.main }}>
-                  {getValueByKey(detailData?.objectives, "media")?.join(", ")}
+                  {getMediaValues(detailData?.objectives, "media")?.join(", ")}
                 </span>
               </Typography>
             )}
-            {getValueByKey(detailData?.objectives, "lead") !== null && (
+            {getLeadValues(detailData?.objectives, "lead").length > 0 && (
               <Typography
                 variant="base"
                 color="text.light"
@@ -203,7 +232,7 @@ const DetailDialog = ({
                 {" "}
                 Lead Items: &nbsp;
                 <span style={{ color: theme.palette.text.main }}>
-                  {getValueByKey(detailData?.objectives, "lead")?.join(", ")}
+                  {getLeadValues(detailData?.objectives, "lead")?.join(", ")}
                 </span>
               </Typography>
             )}
@@ -534,7 +563,7 @@ const DetailDialog = ({
                 {detailData?.payment?.gateway_trx_id}
               </span>
             </Typography>
-            <Typography
+            {/* <Typography
               variant="base"
               color="text.light"
               sx={{ mb: 1, display: "block" }}
@@ -543,6 +572,17 @@ const DetailDialog = ({
               Gateway Payment Id: &nbsp;
               <span style={{ color: theme.palette.text.main }}>
                 {detailData?.payment?.gateway_payment_id}
+              </span>
+            </Typography> */}
+            <Typography
+              variant="base"
+              color="text.light"
+              sx={{ mb: 1, display: "block" }}
+            >
+              {" "}
+              Note: &nbsp;
+              <span style={{ color: theme.palette.text.main }}>
+                {detailData?.note}
               </span>
             </Typography>
           </DialogContentText>
