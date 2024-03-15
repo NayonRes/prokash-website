@@ -168,6 +168,7 @@ const AddCustomer = ({ handleSignUpClose }) => {
             error?.response?.status === 403
           ) {
             logout();
+            handleSnakbarOpen("Your session is out", "error");
             return;
           }
           if (error?.response?.status === 500) {

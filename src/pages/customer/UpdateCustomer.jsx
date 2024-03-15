@@ -146,6 +146,7 @@ const UpdateCustomer = () => {
           error?.response?.status === 403
         ) {
           logout();
+          handleSnakbarOpen("Your session is out", "error");
           return;
         }
         if (error?.response?.status === 500) {
@@ -166,14 +167,11 @@ const UpdateCustomer = () => {
     let url = `api/customer/${id}`;
     let res = await getDataWithToken(url, prokash_user.token);
     console.log("res", res);
-    if (res?.status === 401) {
-      logout();
-      return;
-    }
-    console.log("res.data.data", res.data.data);
+   
 
     if (res?.status === 401 || res?.status === 403) {
       logout();
+      handleSnakbarOpen("Your session is out", "error");
       return;
     }
     if (res?.status > 199 && res?.status < 300) {

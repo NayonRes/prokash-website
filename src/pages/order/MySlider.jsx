@@ -355,6 +355,7 @@ function MySlider() {
       setLoading(false);
       if (error?.response?.status === 401 || error?.response?.status === 403) {
         logout();
+        handleSnakbarOpen("Your session is out", "error");
         return;
       }
       if (error?.response?.status === 500) {

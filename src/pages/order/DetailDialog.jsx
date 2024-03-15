@@ -75,7 +75,7 @@ const DetailDialog = ({
   function getMediaValues(data) {
     const mediaValues = [];
     data?.forEach((item) => {
-      if (item.key === "lead") {
+      if (item.key === "media") {
         mediaValues.push(item.value);
       }
     });
@@ -109,74 +109,32 @@ const DetailDialog = ({
           sx={{
             fontWeight: 600,
             position: "relative",
-            background: "#f4f4f4",
-            mb: 2,
           }}
         >
-          {/* {"Order Details"}{" "}
+          {"Order Details"}{" "}
           <IconButton
             sx={{ position: "absolute", right: 0, top: -10 }}
             onClick={handleDetailClose}
           >
             <ClearOutlinedIcon />
-          </IconButton> */}
-          <Grid
-            container
-            alignItems="center"
-            justifyContent="space-between"
-            // sx={{ background: "#f4f4f4", mb: 2 }}
-          >
-            <Grid item xs="auto">
-              <Grid container alignItems="center" spacing={1}>
-                <Grid item xs="auto">
-                  {" "}
-                  <Avatar
-                    sx={{
-                      width: 32,
-                      height: 32,
-                      bgcolor: `${theme.palette.primary.light}`,
-                    }}
-                  >
-                    <ListAltOutlinedIcon
-                      sx={{
-                        color: theme.palette.primary.main,
-                        fontSize: "18px",
-                      }}
-                    />
-                  </Avatar>
-                </Grid>
-                <Grid item xs="auto">
-                  <Typography
-                    variant="base"
-                    color="text.main"
-                    sx={{ fontWeight: 500 }}
-                  >
-                    Campaign Details
-                  </Typography>
-
-                  {/* <Breadcrumbs
-                  aria-label="breadcrumb"
-                  // className={classes.breadcrumbsStyle}
-                >
-                  <Link to="/">Home</Link>
-                  <Link to="/">Users</Link>
-                  <Link to="#">List of Users</Link>
-                </Breadcrumbs> */}
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs="auto" sx={{ textAlign: "right" }}>
-              <IconButton
-                // sx={{ position: "absolute", right: 0, top: -10 }}
-                onClick={handleDetailClose}
-              >
-                <ClearOutlinedIcon />
-              </IconButton>
-            </Grid>
-          </Grid>
+          </IconButton>
         </DialogTitle>
         <DialogContent sx={{ minWidth: "350px" }}>
           <DialogContentText id="alert-dialog-description">
+          <Typography
+              variant="base"
+              color="primary.main"
+              sx={{
+                mb: 1,
+                display: "block",
+                fontWeight: 600,
+                background: "#f4f4f4",
+                textAlign: "center",
+              }}
+            >
+              {" "}
+              Order Info:
+            </Typography>
             <Typography
               variant="base"
               color="text.light"
@@ -427,6 +385,7 @@ const DetailDialog = ({
                 )}
               </span>
             </Typography>
+
             <Typography
               variant="base"
               color="text.light"
@@ -489,6 +448,31 @@ const DetailDialog = ({
                   />
                 )}
               </span>
+            </Typography>
+            <Typography
+              variant="base"
+              color="text.light"
+              sx={{ mb: 1, display: "block" }}
+            >
+              {" "}
+              Note: &nbsp;
+              <span style={{ color: theme.palette.text.main }}>
+                {detailData?.note}
+              </span>
+            </Typography>
+            <Typography
+              variant="base"
+              color="primary.main"
+              sx={{
+                mb: 1,
+                display: "block",
+                fontWeight: 600,
+                background: "#f4f4f4",
+                textAlign: "center",
+              }}
+            >
+              {" "}
+              Order Info:
             </Typography>
             <Typography
               variant="base"
@@ -574,17 +558,7 @@ const DetailDialog = ({
                 {detailData?.payment?.gateway_payment_id}
               </span>
             </Typography> */}
-            <Typography
-              variant="base"
-              color="text.light"
-              sx={{ mb: 1, display: "block" }}
-            >
-              {" "}
-              Note: &nbsp;
-              <span style={{ color: theme.palette.text.main }}>
-                {detailData?.note}
-              </span>
-            </Typography>
+        
           </DialogContentText>
         </DialogContent>
         {/* <DialogActions sx={{ pt: 0, pb: 1.5, justifyContent: "center" }}>

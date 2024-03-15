@@ -42,7 +42,14 @@ const Navigation = ({
         <Route path="/test" element={<Test />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="payment/callback" element={<Payment />} />
-        <Route path="payment-method" element={<PaymentMethod />} />
+        <Route
+          path="payment-method"
+          element={
+            <PrivateRoute>
+              <PaymentMethod />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="change-password"
           element={

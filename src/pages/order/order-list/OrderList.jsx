@@ -201,11 +201,12 @@ const OrderList = () => {
 
     //   url = `api/order?promotion=${name.trim()}&invoice_no=${invoiceNo.trim()}&gender=${gender}&status=${newStatus}&from=${newCreatedStartTime}&to=${newCreatedEndTime}&page=${newPageNO}`;
     // }
-    let url = `api/order?page=${newPageNO}`;
+    let url = `api/customer/order?page=${newPageNO}`;
     let res = await getDataWithToken(url, prokash_user.token);
     console.log("res", res);
     if (res?.status === 401 || res?.status === 403) {
       logout();
+      handleSnakbarOpen("Your session is out", "error");
       return;
     }
 
@@ -244,31 +245,39 @@ const OrderList = () => {
   return (
     <div>
       <Container maxWidth="lg" className="container" sx={{ my: 4 }}>
-        <Paper sx={{ p: 3, pb: 0 }}>
-          <TableContainer
-            style={{
-              overflowX: "auto",
-              minWidth: "100%",
-              width: "100%",
-              // width: "Calc(100vw - 385px)",
-              // maxHeight: "Calc(100vh - 280px)",
+        <div style={{ minHeight: "80vh" }}>
+          <Paper
+            sx={{
+              p: 3,
+              pb: 0,
+              boxShadow: "none",
+              border: "2px solid #f4f4f4",
             }}
           >
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell sx={{ whiteSpace: "nowrap" }}>
-                    Invoice No
-                  </TableCell>
-                  <TableCell>Promotion</TableCell>
-                  {/* <TableCell>Amount</TableCell>
+            <TableContainer
+              style={{
+                overflowX: "auto",
+                minWidth: "100%",
+                width: "100%",
+                // width: "Calc(100vw - 385px)",
+                // maxHeight: "Calc(100vh - 280px)",
+              }}
+            >
+              <Table aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={{ whiteSpace: "nowrap" }}>
+                      Invoice No
+                    </TableCell>
+                    <TableCell>Promotion</TableCell>
+                    {/* <TableCell>Amount</TableCell>
                   <TableCell sx={{ whiteSpace: "nowrap" }} align="center">
                     Promotion Period
                   </TableCell> */}
-                  {/* <TableCell>gender</TableCell>
+                    {/* <TableCell>gender</TableCell>
                   <TableCell>Age</TableCell>
                   <TableCell>Location</TableCell>  */}
-                  {/* <TableCell>Note</TableCell>
+                    {/* <TableCell>Note</TableCell>
                   <TableCell sx={{ whiteSpace: "nowrap" }}>
                     Created At
                   </TableCell>
@@ -281,36 +290,36 @@ const OrderList = () => {
                   <TableCell sx={{ whiteSpace: "nowrap" }}>
                     Updated By
                   </TableCell> */}
-                  {/* <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>
+                    {/* <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>
                     Payment Status
                   </TableCell> */}
-                  {/* {prokash_user?.permission?.some(
+                    {/* {prokash_user?.permission?.some(
                   (el) => el.name === "order-update"
                 ) && ( */}
-                  <TableCell sx={{ whiteSpace: "nowrap" }} align="right">
-                    Actions
-                  </TableCell>
-                  {/* )} */}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {!loading &&
-                  list?.length > 0 &&
-                  list?.map((row, i) => (
-                    <TableRow
-                    // sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
-                      <TableCell
-                        sx={{
-                          // color: `${theme.palette.primary.main}`,
-                          fontWeight: 500,
-                          whiteSpace: "nowrap",
-                        }}
+                    <TableCell sx={{ whiteSpace: "nowrap" }} align="right">
+                      Actions
+                    </TableCell>
+                    {/* )} */}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {!loading &&
+                    list?.length > 0 &&
+                    list?.map((row, i) => (
+                      <TableRow
+                      // sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                       >
-                        {row?.id}
-                      </TableCell>
-                      <TableCell>{row?.promotion}</TableCell>
-                      {/* <TableCell
+                        <TableCell
+                          sx={{
+                            // color: `${theme.palette.primary.main}`,
+                            fontWeight: 500,
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          {row?.id}
+                        </TableCell>
+                        <TableCell>{row?.promotion}</TableCell>
+                        {/* <TableCell
                         sx={{
                           whiteSpace: "nowrap",
                         }}
@@ -321,7 +330,7 @@ const OrderList = () => {
                         {row?.promotion_period}{" "}
                         {parseInt(row?.promotion_period) > 1 ? "Days" : "Day"}
                       </TableCell> */}
-                      {/* <TableCell>{row?.gender}</TableCell>
+                        {/* <TableCell>{row?.gender}</TableCell>
                       <TableCell
                         sx={{
                           whiteSpace: "nowrap",
@@ -374,7 +383,7 @@ const OrderList = () => {
                           : "-------"}
                       </TableCell>*/}
 
-                      {/* <TableCell align="center">
+                        {/* <TableCell align="center">
                         {row.payment?.status === "Success" ? (
                           <Chip
                             label={row.payment?.status}
@@ -402,66 +411,67 @@ const OrderList = () => {
                         )}
                       </TableCell> */}
 
-                      <TableCell sx={{ whiteSpace: "nowrap" }} align="right">
-                        {prokash_user?.permission?.some(
-                          (el) => el.name === "order-update"
-                        ) && (
-                          <>
-                            <Button
-                              variant="outlined"
-                              color="info"
-                              size="small"
-                              disabled={row.payment?.status !== "Success"}
-                              startIcon={
-                                <PlaylistPlayOutlinedIcon
-                                  style={{ position: "relative", top: -1 }}
-                                />
-                              }
-                              onClick={() => handleClickOpen(row?.id)}
-                            >
-                              Publish Order
-                            </Button>{" "}
-                            &nbsp;
-                          </>
-                        )}
-                        <Button
-                          variant="outlined"
-                          color="text"
-                          size="small"
-                          startIcon={
-                            <VisibilityOutlinedIcon
-                              style={{ position: "relative", top: 0 }}
-                            />
-                          }
-                          onClick={() => handleDetailClickOpen(row)}
-                        >
-                          Details
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                        <TableCell sx={{ whiteSpace: "nowrap" }} align="right">
+                          {prokash_user?.permission?.some(
+                            (el) => el.name === "order-update"
+                          ) && (
+                            <>
+                              <Button
+                                variant="outlined"
+                                color="info"
+                                size="small"
+                                disabled={row.payment?.status !== "Success"}
+                                startIcon={
+                                  <PlaylistPlayOutlinedIcon
+                                    style={{ position: "relative", top: -1 }}
+                                  />
+                                }
+                                onClick={() => handleClickOpen(row?.id)}
+                              >
+                                Publish Order
+                              </Button>{" "}
+                              &nbsp;
+                            </>
+                          )}
+                          <Button
+                            variant="outlined"
+                            color="text"
+                            size="small"
+                            startIcon={
+                              <VisibilityOutlinedIcon
+                                style={{ position: "relative", top: 0 }}
+                              />
+                            }
+                            onClick={() => handleDetailClickOpen(row)}
+                          >
+                            Details
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
 
-                {loading && pageLoading()}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          {!loading && list?.length < 1 ? (
-            <Box sx={{ textAlign: "center", p: 2 }}>
-              <strong> No Data Found</strong>
-            </Box>
-          ) : null}
-          {list?.length > 0 && (
-            <TablePagination
-              rowsPerPageOptions={[]}
-              component="div"
-              count={totalData}
-              page={page}
-              onPageChange={handleChangePage}
-              rowsPerPage={rowsPerPage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-          )}
-        </Paper>
+                  {loading && pageLoading()}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            {!loading && list?.length < 1 ? (
+              <Box sx={{ textAlign: "center", p: 2 }}>
+                <strong> No Data Found</strong>
+              </Box>
+            ) : null}
+            {list?.length > 0 && (
+              <TablePagination
+                rowsPerPageOptions={[]}
+                component="div"
+                count={totalData}
+                page={page}
+                onPageChange={handleChangePage}
+                rowsPerPage={rowsPerPage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            )}
+          </Paper>
+        </div>
 
         <DetailDialog
           openDetailDialog={openDetailDialog}

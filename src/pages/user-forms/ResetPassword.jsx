@@ -111,6 +111,7 @@ const ResetPassword = () => {
         setLoading(false);
         if (error?.response?.status === 401) {
           logout();
+          handleSnakbarOpen("Your session is out", "error");
           return;
         }
         if (error?.response?.status === 500) {

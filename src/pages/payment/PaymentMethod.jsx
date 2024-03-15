@@ -120,6 +120,7 @@ const PaymentMethod = () => {
         console.log("error", error);
         setLoading(false);
         if (error?.response?.status === 401) {
+          handleSnakbarOpen("Your session is out", "error");
           logout();
           return;
         }
