@@ -26,8 +26,20 @@ const Objective = ({
   setDescription,
 }) => {
   const clearObjectiveItem = () => {
+    console.log("clearObjectiveItem promotion", promotion);
+    switch (promotion) {
+      case "Facebook":
+        setPromotion_objective("");
+        break;
+      case "Google":
+        setPromotion_objective("Traffic");
+        break;
+      case "Youtube":
+        setPromotion_objective("Video views");
+        break;
+    }
     // facebook objective value
-    setPromotion_objective("");
+    // setPromotion_objective("");
     setPostLink("");
     setWebsiteLink("");
     setVideoLink("");

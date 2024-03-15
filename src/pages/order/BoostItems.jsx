@@ -146,7 +146,7 @@ const BoostItems = ({ promotion, setPromotion, setPromotion_objective }) => {
         sx={{ marginBottom: "18px" }}
         onClick={() => {
           setPromotion("Youtube");
-          setPromotion_objective("Video views");
+          // setPromotion_objective("Video views");
         }}
       >
         <Box
