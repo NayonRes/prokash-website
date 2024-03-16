@@ -139,8 +139,8 @@ const OrderList = () => {
     let cellNo = prokash_user?.permission?.some(
       (el) => el.name === "order-update"
     )
-      ? 3
-      : 3;
+      ? 4
+      : 4;
     for (let i = 0; i < 10; i++) {
       let cells = [];
 
@@ -290,9 +290,9 @@ const OrderList = () => {
                   <TableCell sx={{ whiteSpace: "nowrap" }}>
                     Updated By
                   </TableCell> */}
-                    {/* <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>
-                    Payment Status
-                  </TableCell> */}
+                    <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>
+                      Status
+                    </TableCell>
                     {/* {prokash_user?.permission?.some(
                   (el) => el.name === "order-update"
                 ) && ( */}
@@ -383,56 +383,63 @@ const OrderList = () => {
                           : "-------"}
                       </TableCell>*/}
 
-                        {/* <TableCell align="center">
-                        {row.payment?.status === "Success" ? (
-                          <Chip
-                            label={row.payment?.status}
-                            variant="outlined"
-                            color="success"
-                            size="small"
-                            sx={{ minWidth: "75px", textAlign: "center" }}
-                          />
-                        ) : row.payment?.status === "Failed" ? (
-                          <Chip
-                            label={row.payment?.status}
-                            variant="outlined"
-                            color="error"
-                            size="small"
-                            sx={{ minWidth: "75px", textAlign: "center" }}
-                          />
-                        ) : (
-                          <Chip
-                            label={row.payment?.status}
-                            variant="outlined"
-                            color="warning"
-                            size="small"
-                            sx={{ minWidth: "75px", textAlign: "center" }}
-                          />
-                        )}
-                      </TableCell> */}
+                        <TableCell align="center">
+                          {row?.status === "Complete" ? (
+                            <Chip
+                              label={row?.status}
+                              variant="outlined"
+                              color="success"
+                              size="small"
+                              sx={{
+                                minWidth: "75px",
+                                textAlign: "center",
+                                border: "none",
+                                fontSize: "16px",
+                              }}
+                            />
+                          ) : row?.status === "Publish" ? (
+                            <Chip
+                              label={row?.status}
+                              variant="outlined"
+                              color="info"
+                              size="small"
+                              sx={{
+                                minWidth: "75px",
+                                textAlign: "center",
+                                border: "none",
+                                fontSize: "16px",
+                              }}
+                            />
+                          ) : row?.status === "Pending" ? (
+                            <Chip
+                              label={row?.status}
+                              variant="outlined"
+                              color="warning"
+                              size="small"
+                              sx={{
+                                minWidth: "75px",
+                                textAlign: "center",
+                                border: "none",
+                                fontSize: "16px",
+                              }}
+                            />
+                          ) : (
+                            <Chip
+                              label={row?.status}
+                              variant="outlined"
+                              color="error"
+                              size="small"
+                              sx={{
+                                minWidth: "75px",
+                                textAlign: "center",
+                                border: "none",
+                                fontSize: "16px",
+                              }}
+                            />
+                          )}
+                        </TableCell>
 
                         <TableCell sx={{ whiteSpace: "nowrap" }} align="right">
-                          {prokash_user?.permission?.some(
-                            (el) => el.name === "order-update"
-                          ) && (
-                            <>
-                              <Button
-                                variant="outlined"
-                                color="info"
-                                size="small"
-                                disabled={row.payment?.status !== "Success"}
-                                startIcon={
-                                  <PlaylistPlayOutlinedIcon
-                                    style={{ position: "relative", top: -1 }}
-                                  />
-                                }
-                                onClick={() => handleClickOpen(row?.id)}
-                              >
-                                Publish Order
-                              </Button>{" "}
-                              &nbsp;
-                            </>
-                          )}
                           <Button
                             variant="outlined"
                             color="text"

@@ -103,7 +103,8 @@ const PaymentMethod = () => {
         };
 
         let response = await axios({
-          url: "/api/payment",
+          // url: "/api/payment",
+          url: "/api/customer/payment",
           method: "post",
           data: data,
           headers: {

@@ -472,7 +472,7 @@ const DetailDialog = ({
               }}
             >
               {" "}
-              Order Info:
+              Payment Info:
             </Typography>
             <Typography
               variant="base"

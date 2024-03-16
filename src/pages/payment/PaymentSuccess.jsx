@@ -67,7 +67,7 @@ const PaymentSuccess = () => {
           gateway_payment_id: paymentID,
         };
         let response = await axios({
-          url: "/api/payment/execute",
+          url: "/api/customer/payment/execute",
           method: "post",
           data: data,
           headers: {
