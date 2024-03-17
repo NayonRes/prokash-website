@@ -77,7 +77,7 @@ const Footer = () => {
                   <a
                     href="https://www.facebook.com/prokash.io"
                     target="_blank"
-                    style={{ marginRight: "10px" }} 
+                    style={{ marginRight: "10px" }}
                   >
                     <svg
                       width="30"
@@ -151,7 +151,7 @@ const Footer = () => {
                       width="32"
                       height="32"
                       viewBox="0 0 32 32"
-                      fill="none" 
+                      fill="none"
                       className="social_icon"
                     >
                       <rect width="32" height="32" rx="9" fill="#686868" />
@@ -176,8 +176,11 @@ const Footer = () => {
                   &copy; Copyright {new Date().getFullYear()} Prokash.
                 </p>
                 <p className="footer_text_style showForMobileViewOnly">
-                  <Link to="/privacy-policy" style={{ textDecoration: "none" }}>
-                    * Privacy Policy
+                  <Link
+                    to="/terms-of-service"
+                    style={{ textDecoration: "none" }}
+                  >
+                    * Terms of Service
                   </Link>
                 </p>
               </Grid>
@@ -189,8 +192,11 @@ const Footer = () => {
                 className="hideForMobileViewOnly"
               >
                 <p className="footer_text_style" style={{ textAlign: "right" }}>
-                  <Link to="/privacy-policy" style={{ textDecoration: "none" }}>
-                    * Privacy Policy
+                  <Link
+                    to="/terms-of-service"
+                    style={{ textDecoration: "none" }}
+                  >
+                    * Terms of Service
                   </Link>
                 </p>
               </Grid>

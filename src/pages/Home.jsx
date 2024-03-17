@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
 import "../App.css";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "../compoments/MouseDown.css";
-import { Link } from "react-router-dom";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -18,17 +16,25 @@ import Marquee from "react-fast-marquee";
 import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
 import { AuthContext } from "../context/AuthContext";
 import VisibilitySensor from "react-visibility-sensor";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 
 const Home = ({
+  open,
+  setOpen,
+  handleClickOpen,
+  handleClose,
   signUpOpen,
   setSignUpOpen,
   handleClickSignUpOpen,
   handleSignUpClose,
 }) => {
   const theme = useTheme();
+
   const [expanded, setExpanded] = useState("");
   const { prokash_user, logout, login } = useContext(AuthContext);
   const [visible, setVisible] = useState(false);
+  const [searchParams] = useSearchParams();
+  console.log(searchParams.get("route")); // 'name'
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -83,16 +89,28 @@ const Home = ({
     },
   });
   function onChange(isVisible) {
-    console.log("Element is now %s", isVisible ? "visible" : "hidden");
+    // console.log("Element is now %s", isVisible ? "visible" : "hidden");
     setVisible(isVisible);
   }
-  // useEffect(() => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     left: 0,
-  //     behavior: "smooth",
-  //   });
-  // }, []);
+
+  // searchParams.get('route')
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
+  useEffect(() => {
+    if (searchParams.get("route") === "sign-up") {
+      handleClickSignUpOpen();
+    }
+  }, []);
+  useEffect(() => {
+    if (searchParams.get("route") === "login") {
+      handleClickOpen();
+    }
+  }, []);
 
   return (
     <div>
@@ -574,6 +592,7 @@ const Home = ({
                     variant="contained"
                     disableElevation
                     sx={{ ...buttonStyle, minWidth: "70%" }}
+                    onClick={handleClickSignUpOpen}
                   >
                     {" "}
                     Start Now
@@ -710,7 +729,7 @@ const Home = ({
                             fill="#834BFF"
                           />
                         </svg>
-                        &nbsp;&nbsp; UI/UX & Designt
+                        &nbsp;&nbsp; UI/UX & Design
                       </p>
                       <p
                         className="text_body_xs_regular left  mb12"
@@ -1878,17 +1897,17 @@ const Home = ({
               <div data-aos="fade-up" data-aos-delay="1260">
                 <Accordion
                   expanded={
-                    expanded === "How can I contact Prokash for SEO services?"
+                    expanded === "How can I contact Prokash for SEO services"
                   }
                   onChange={handleChange(
-                    "How can I contact Prokash for SEO services?"
+                    "How can I contact Prokash for SEO services"
                   )}
                   className="accrodian_style card_shadow mb12"
                 >
                   <AccordionSummary
                     expandIcon={
                       expanded ===
-                      "How can I contact Prokash for SEO services?" ? (
+                      "How can I contact Prokash for SEO services" ? (
                         <RemoveIcon />
                       ) : (
                         <AddIcon />
@@ -1901,7 +1920,7 @@ const Home = ({
                       // sx={{ flexShrink: 0 }}
                       className="subtitle_bold"
                     >
-                      How can I contact Prokash for SEO services?
+                      How can I contact Prokash for SEO services
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>

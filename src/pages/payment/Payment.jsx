@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -31,6 +31,14 @@ const Payment = () => {
   const queryParams = new URLSearchParams(location.search);
   const paymentID = queryParams.get("paymentID");
   const status = queryParams.get("status");
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <div>
       <Container maxWidth="lg" className="container">

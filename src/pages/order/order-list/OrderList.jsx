@@ -246,6 +246,13 @@ const OrderList = () => {
     <div>
       <Container maxWidth="lg" className="container" sx={{ my: 4 }}>
         <div style={{ minHeight: "80vh" }}>
+          <h3
+            className="title_semibold_medium mb12"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            Campaign List
+          </h3>
           <Paper
             sx={{
               p: 3,
@@ -267,7 +274,7 @@ const OrderList = () => {
                 <TableHead>
                   <TableRow>
                     <TableCell sx={{ whiteSpace: "nowrap" }}>
-                      Invoice No
+                      Campaign ID
                     </TableCell>
                     <TableCell>Promotion</TableCell>
                     {/* <TableCell>Amount</TableCell>
@@ -386,41 +393,44 @@ const OrderList = () => {
                         <TableCell align="center">
                           {row?.status === "Complete" ? (
                             <Chip
-                              label={row?.status}
+                              label="Completed"
                               variant="outlined"
-                              color="success"
+                              // color="success"
                               size="small"
                               sx={{
                                 minWidth: "75px",
                                 textAlign: "center",
                                 border: "none",
                                 fontSize: "16px",
+                                color: "#B278DB",
                               }}
                             />
                           ) : row?.status === "Publish" ? (
                             <Chip
-                              label={row?.status}
+                              label="Active"
                               variant="outlined"
-                              color="info"
+                              // color="info"
                               size="small"
                               sx={{
                                 minWidth: "75px",
                                 textAlign: "center",
                                 border: "none",
                                 fontSize: "16px",
+                                color: "#85D000",
                               }}
                             />
                           ) : row?.status === "Pending" ? (
                             <Chip
-                              label={row?.status}
+                              label="In Review"
                               variant="outlined"
-                              color="warning"
+                              // color="warning"
                               size="small"
                               sx={{
                                 minWidth: "75px",
                                 textAlign: "center",
                                 border: "none",
                                 fontSize: "16px",
+                                color: "#FFC300",
                               }}
                             />
                           ) : (

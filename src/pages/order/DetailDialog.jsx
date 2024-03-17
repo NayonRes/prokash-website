@@ -121,7 +121,7 @@ const DetailDialog = ({
         </DialogTitle>
         <DialogContent sx={{ minWidth: "350px" }}>
           <DialogContentText id="alert-dialog-description">
-          <Typography
+            <Typography
               variant="base"
               color="primary.main"
               sx={{
@@ -558,7 +558,6 @@ const DetailDialog = ({
                 {detailData?.payment?.gateway_payment_id}
               </span>
             </Typography> */}
-        
           </DialogContentText>
         </DialogContent>
         {/* <DialogActions sx={{ pt: 0, pb: 1.5, justifyContent: "center" }}>

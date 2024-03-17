@@ -18,9 +18,11 @@ import {
   GoogleReCaptcha,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
+import { useNavigate } from "react-router-dom";
 
 const AddCustomer = ({ handleSignUpClose }) => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const { prokash_user, logout, login } = useContext(AuthContext);
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [name, setName] = useState("");
@@ -158,6 +160,7 @@ const AddCustomer = ({ handleSignUpClose }) => {
             setMobileNo("");
             login(response?.data.data);
             handleSignUpClose();
+            navigate("/create-campaign");
           }
         } catch (error) {
           console.log("error", error);
@@ -382,7 +385,7 @@ const AddCustomer = ({ handleSignUpClose }) => {
             // onClick={onSubmit}
             type="submit"
           >
-            {loading === false && "Submit"}
+            {loading === false && "Start"}
             <PulseLoader
               color={"#834BFF"}
               loading={loading}

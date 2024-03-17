@@ -11,6 +11,7 @@ import AddOrder from "./order/AddOrder";
 import Payment from "./payment/Payment";
 import PaymentMethod from "./payment/PaymentMethod";
 import OrderList from "./order/order-list/OrderList";
+import TermsOfService from "./terms-of-service/TermsOfService";
 
 function PrivateRoute({ children }) {
   const { prokash_user, logout, login } = useContext(AuthContext);
@@ -18,6 +19,10 @@ function PrivateRoute({ children }) {
   return prokash_user?.token ? children : <Navigate to="/" />;
 }
 const Navigation = ({
+  open,
+  setOpen,
+  handleClickOpen,
+  handleClose,
   signUpOpen,
   setSignUpOpen,
   handleClickSignUpOpen,
@@ -31,6 +36,10 @@ const Navigation = ({
           path="/"
           element={
             <Home
+              open={open}
+              setOpen={setOpen}
+              handleClickOpen={handleClickOpen}
+              handleClose={handleClickOpen}
               signUpOpen={signUpOpen}
               setSignUpOpen={setSignUpOpen}
               handleClickSignUpOpen={handleClickSignUpOpen}
@@ -74,6 +83,7 @@ const Navigation = ({
             </PrivateRoute>
           }
         />
+        <Route path="terms-of-service" element={<TermsOfService />} />
       </Routes>
     </div>
   );

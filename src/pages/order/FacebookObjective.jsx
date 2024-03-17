@@ -34,7 +34,7 @@ const FacebookObjective = ({
       msg: "Get messages from potential customers using messaging apps.",
     },
     { title: "Reach", msg: "Expand your brand's reach to a maximum audience." },
-    { title: "Engagement", msg: "Get more likes and comments on your post." },
+    { title: "Page Like", msg: "Get more likes and comments on your post." },
     { title: "Leads", msg: "Capture more leads for your business." },
     { title: "Video views", msg: "Get more people to watch your video" },
   ];

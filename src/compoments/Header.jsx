@@ -34,6 +34,10 @@ import Login from "../pages/user-forms/Login";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 const Header = ({
+  open,
+  setOpen,
+  handleClickOpen,
+  handleClose,
   signUpOpen,
   setSignUpOpen,
   handleClickSignUpOpen,
@@ -46,24 +50,22 @@ const Header = ({
   const { prokash_user, logout, login } = useContext(AuthContext);
   console.log("location", location.pathname);
   const [serveOpen, setServeOpen] = useState(false);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const menuOpen = Boolean(anchorEl);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
+  // const handleClose = (event, reason) => {
+  //   if (reason !== "backdropClick") {
+  //     setOpen(false);
+  //   }
+  // };
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-
-  const handleClose = (event, reason) => {
-    if (reason !== "backdropClick") {
-      setOpen(false);
-    }
-  };
-
   const startNowButtonStyle = {
     px: 3,
     py: 1,
@@ -156,7 +158,7 @@ const Header = ({
                     id="start-now-button"
                     // className="nav_button"
                     // endIcon={<img src="/favicon.svg" alt="prokash favicon" />}
-                    onClick={handleClickSignUpOpen}
+
                     startIcon={<LibraryAddCheckOutlinedIcon />}
                   >
                     Create Campaign
@@ -395,6 +397,12 @@ const Header = ({
                   >
                     যেমন বাজেট, তেমন খরচ!
                   </h3>
+                  <p
+                    className="text_body_xs_regular center mb24"
+                    style={{ fontWeight: 600 }}
+                  >
+                    ফেইসবুক, গুগল কিংবা ইউটিউবে মিনিটের মধ্যে বিজ্ঞাপন
+                  </p>
                   <Box sx={{ width: "65%", margin: "auto" }}>
                     <Grid container className="mb12">
                       <Grid item sx={{ width: "40px" }}>
@@ -417,7 +425,7 @@ const Header = ({
                           className="text_body_xs_regular left"
                           style={{ fontWeight: 500 }}
                         >
-                          ফেইসবুক, গুগল কিংবা ইউটিউবে মিনিটের মধ্যে বিজ্ঞাপন
+                          ফ্রি প্রকাশ একাউন্ট
                         </p>
                       </Grid>
                     </Grid>
@@ -442,12 +450,61 @@ const Header = ({
                           className="text_body_xs_regular left"
                           style={{ fontWeight: 500 }}
                         >
-                          ফ্রি প্রকাশ একাউন্ট সঠিক কাস্টোমারের কাছে বিজ্ঞাপন
-                          প্রচার সর্বোচ্চ ফলাফল ও বিক্রয় বৃদ্ধি এড একাউন্টের
-                          প্রয়োজন নেই
+                          সঠিক কাস্টোমারের কাছে বিজ্ঞাপন প্রচার
                         </p>
                       </Grid>
                     </Grid>
+                    <Grid container className="mb12">
+                      <Grid item sx={{ width: "40px" }}>
+                        {" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                      </Grid>
+                      <Grid item sx={{ width: "Calc(100% - 40px)" }}>
+                        <p
+                          className="text_body_xs_regular left"
+                          style={{ fontWeight: 500 }}
+                        >
+                          সর্বোচ্চ ফলাফল ও বিক্রয় বৃদ্ধি
+                        </p>
+                      </Grid>
+                    </Grid>
+                    <Grid container className="mb12">
+                      <Grid item sx={{ width: "40px" }}>
+                        {" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M22.9848 3.5564C16.8626 6.96214 14.5419 7.60419 9.40152 15.8545C9.22137 16.1437 8.80995 16.1781 8.58142 15.9255C7.22002 14.4204 5.48773 13.1345 1.06402 12.8685C5.6099 14.6315 6.88561 17.201 8.59396 19.7915C8.79569 20.0974 9.2474 20.0752 9.42887 19.7569C14.4188 11.0036 14.718 9.07434 22.9848 3.5564Z"
+                            fill="#834BFF"
+                          />
+                        </svg>
+                      </Grid>
+                      <Grid item sx={{ width: "Calc(100% - 40px)" }}>
+                        <p
+                          className="text_body_xs_regular left"
+                          style={{ fontWeight: 500 }}
+                        >
+                          এড একাউন্টের প্রয়োজন নেই
+                        </p>
+                      </Grid>
+                    </Grid>
+
                     <Grid container>
                       <Grid item sx={{ width: "40px" }}>
                         {" "}

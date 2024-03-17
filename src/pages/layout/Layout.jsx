@@ -10,6 +10,18 @@ const Layout = () => {
   const navigate = useNavigate();
   const { prokash_user, logout, login } = useContext(AuthContext);
   const [signUpOpen, setSignUpOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason !== "backdropClick") {
+      // navigate("/");
+      setOpen(false);
+    }
+  };
 
   const handleClickSignUpOpen = () => {
     if (prokash_user.token) {
@@ -27,6 +39,10 @@ const Layout = () => {
     <div>
       {" "}
       <Header
+        open={open}
+        setOpen={setOpen}
+        handleClickOpen={handleClickOpen}
+        handleClose={handleClose}
         signUpOpen={signUpOpen}
         setSignUpOpen={setSignUpOpen}
         handleClickSignUpOpen={handleClickSignUpOpen}
@@ -34,6 +50,10 @@ const Layout = () => {
       />
       <div>
         <Navigation
+          open={open}
+          setOpen={setOpen}
+          handleClickOpen={handleClickOpen}
+          handleClose={handleClose}
           signUpOpen={signUpOpen}
           setSignUpOpen={setSignUpOpen}
           handleClickSignUpOpen={handleClickSignUpOpen}

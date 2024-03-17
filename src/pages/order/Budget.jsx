@@ -79,9 +79,10 @@ const Budget = ({
         sx={{
           mt: 1,
           mb: 4,
-          textAlign: "center",
+          // textAlign: "center",
           fontSize: "20px",
           fontWeight: 500,
+          display: "block",
         }}
       >
         Select Your Budget
@@ -142,9 +143,10 @@ const Budget = ({
         sx={{
           mt: 1,
           mb: 3,
-          textAlign: "center",
+          // textAlign: "center",
           fontSize: "20px",
           fontWeight: 500,
+          display: "block",
         }}
       >
         Select Your Boosting Period

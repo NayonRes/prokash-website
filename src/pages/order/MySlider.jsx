@@ -173,7 +173,7 @@ function MySlider() {
           disabled = true;
         }
       }
-      if (promotion_objective === "Engagement" && postLink.trim().length < 1) {
+      if (promotion_objective === "Page Like" && postLink.trim().length < 1) {
         handleSnakbarOpen("Please enter post link", "error");
         document.getElementById("postLink").focus();
         disabled = true;
