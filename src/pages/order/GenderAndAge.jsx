@@ -32,15 +32,17 @@ const GenderAndAge = ({
         variant="h6"
         color="text.main"
         sx={{
-          //   textAlign: "center",
+          textAlign: "center",
 
-          fontSize: "20px",
+          fontSize: "18px",
           fontWeight: 500,
+          color: "#696969",
+          mt: 1,
         }}
       >
         Gender
       </Typography>
-      <FormControl sx={{ pl: 2, mb: 3 }}>
+      <FormControl sx={{ mb: 6, width: "100%" }}>
         {/* <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel> */}
         <RadioGroup
           row
@@ -55,6 +57,9 @@ const GenderAndAge = ({
             "& .MuiSvgIcon-root": {
               fontSize: 16,
             },
+            justifyContent: "center",
+            color: "#696969",
+            fontWeight: 500,
           }}
         >
           <FormControlLabel value="Male" control={<Radio />} label="Male" />
@@ -66,14 +71,15 @@ const GenderAndAge = ({
         variant="h6"
         color="text.main"
         sx={{
-          //   textAlign: "center",
+          textAlign: "center",
 
-          fontSize: "20px",
+          fontSize: "18px",
           fontWeight: 500,
           mb: 2,
+          color: "#696969",
         }}
       >
-        Age
+        Age Range
       </Typography>
       <Box sx={{ px: 2 }}>
         <Grid container alignItems="center" spacing={1}>
@@ -82,6 +88,7 @@ const GenderAndAge = ({
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Min Age</InputLabel>
                 <Select
+                  sx={{ color: "#696969" }}
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   label="Min Age"
@@ -91,7 +98,7 @@ const GenderAndAge = ({
                   onChange={(e) => setMin_age(e.target.value)}
                 >
                   {[...Array(48)].map((item, i) => (
-                    <MenuItem key={i} value={18 + i}>
+                    <MenuItem key={i} value={18 + i} sx={{ color: "#696969" }}>
                       {18 + i}{" "}
                     </MenuItem>
                   ))}
@@ -104,9 +111,10 @@ const GenderAndAge = ({
               variant="h6"
               color="text.main"
               sx={{
-                textAlign: "center", 
-                fontSize: "20px",
+                textAlign: "center",
+                fontSize: "18px",
                 fontWeight: 500,
+                color: "#696969",
               }}
             >
               To
@@ -117,6 +125,7 @@ const GenderAndAge = ({
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Max Age</InputLabel>
                 <Select
+                  sx={{ color: "#696969" }}
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   size="small"
@@ -126,7 +135,7 @@ const GenderAndAge = ({
                   onChange={(e) => setMax_age(e.target.value)}
                 >
                   {[...Array(48)].map((item, i) => (
-                    <MenuItem key={i} value={18 + i}>
+                    <MenuItem key={i} value={18 + i} sx={{ color: "#696969" }}>
                       {18 + i}{" "}
                     </MenuItem>
                   ))}

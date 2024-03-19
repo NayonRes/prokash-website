@@ -65,8 +65,10 @@ const Location = ({
         sx={{
           //   textAlign: "center",
 
-          fontSize: "20px",
+          fontSize: "18px",
           fontWeight: 500,
+          color: "#696969",
+          mb: 1,
         }}
       >
         Location
@@ -79,7 +81,9 @@ const Location = ({
           onChange={handleLocation}
           sx={{
             "& .MuiFormControlLabel-label": {
-              fontSize: 16,
+              fontSize: 14,
+              fontWeight: 500,
+              color: "#696969",
             },
             "& .MuiSvgIcon-root": {
               fontSize: 18,
@@ -105,6 +109,8 @@ const Location = ({
               "& .MuiSvgIcon-root": { fontSize: 16 },
               "& .MuiFormControlLabel-label": {
                 fontSize: 14,
+                color: "#696969",
+                fontWeight: 400,
               },
             }}
             key={i}

@@ -36,12 +36,12 @@ const AddOrder = () => {
         container
         justifyContent="center"
         alignItems="center"
-        style={{ minHeight: "80vh" }}
+        sx={{ minHeight: "80vh", mb: 5 }}
       >
         <Box
           sx={{
             padding: { xs: "30px", sm: "50px" },
-            background: "#fff",
+            background: "#fbfbfb",
             borderRadius: "10px",
             // textAlign: "center",
             width: { xs: "300px", sm: "400px" },
@@ -50,13 +50,13 @@ const AddOrder = () => {
           }}
           // onSubmit={handleSubmit}
         >
-          <Typography
+          {/* <Typography
             variant="h5"
             component="div"
             style={{ marginBottom: "10px", textAlign: "center" }}
           >
             Create Campaign
-          </Typography>
+          </Typography> */}
           <MySlider />
 
           {/* <Button

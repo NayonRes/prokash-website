@@ -18,7 +18,8 @@ import {
   GoogleReCaptcha,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Checkbox from "@mui/material/Checkbox";
 
 const AddCustomer = ({ handleSignUpClose }) => {
   const theme = useTheme();
@@ -35,6 +36,12 @@ const AddCustomer = ({ handleSignUpClose }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [token, setToken] = useState();
   const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
+  const [termsChecked, setTermsChecked] = useState(false);
+  const [termsErrorMessage, setTermsErrorMessage] = useState("");
+
+  const handleTermsChange = (event) => {
+    setTermsChecked(event.target.checked);
+  };
   const validation = () => {
     let isError = false;
     // if (!name.trim()) {
@@ -127,6 +134,11 @@ const AddCustomer = ({ handleSignUpClose }) => {
     // let err = false;
     setErrors({});
     // let recaptcha_token = "testing";
+
+    if (!termsChecked) {
+      setTermsErrorMessage("Please agree to our Terms of Service");
+      return;
+    }
     let recaptcha_token = await handleReCaptchaVerify();
     if (recaptcha_token) {
       if (err) {
@@ -161,6 +173,7 @@ const AddCustomer = ({ handleSignUpClose }) => {
             login(response?.data.data);
             handleSignUpClose();
             navigate("/create-campaign");
+            setTermsErrorMessage("");
           }
         } catch (error) {
           console.log("error", error);
@@ -360,6 +373,34 @@ const AddCustomer = ({ handleSignUpClose }) => {
                 {errors.password}
               </Typography>
             )} */}
+          </Box>
+          <Box sx={{ marginBottom: "40px" }}>
+            {termsErrorMessage && (
+              <Typography
+                variant="small"
+                color="error.main"
+                sx={{ display: "block" }}
+              >
+                {termsErrorMessage}
+              </Typography>
+            )}
+            <Checkbox
+              size="small"
+              label="Label"
+              checked={termsChecked}
+              onChange={handleTermsChange}
+              inputProps={{ "aria-label": "controlled" }}
+            />
+            <span className="text_body_xs_regular">
+              I agree to &nbsp;
+              <a
+                href="https://prokash.io/terms-of-service"
+                style={{ textDecoration: "none" }}
+                target="_black"
+              >
+                *Prokash Terms of Service
+              </a>
+            </span>
           </Box>
           {/* <Box sx={{ marginBottom: "18px" }}> */}
           {/* <GoogleReCaptchaProvider

@@ -371,6 +371,33 @@ function MySlider() {
     setLoading(false);
     // }
   };
+
+  const campaignBoxHolder = {
+    fontSize: "24px",
+    color: "#222",
+    px: 2,
+    pb: 3,
+
+    "& svg": {
+      width: 40,
+      height: 40,
+      position: "relative",
+      top: "4px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "20px",
+      color: "#222",
+      px: 2,
+      pb: 3,
+
+      "& svg": {
+        width: 24,
+        height: 24,
+        position: "relative",
+        top: "3px",
+      },
+    },
+  };
   return (
     <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
       {/* <Paper
@@ -394,20 +421,18 @@ function MySlider() {
             textAlign: "center",
             px: 2,
             py: 2,
-            fontSize: "20px",
-            fontWeight: 600,
+            fontSize: "24px",
+            fontWeight: 500,
+            color: "#696969",
           }}
         >
-          {promotion ? promotion : "Select Your Boost Item"}
+          {promotion ? promotion : "    Create Campaign"}
         </Typography>
       )}
       {promotion === "Youtube" && (
         <Box
           sx={{
-            fontSize: "20px",
-            color: "#222",
-            px: 2,
-            py: 2,
+            ...campaignBoxHolder,
           }}
         >
           <Grid
@@ -424,10 +449,6 @@ function MySlider() {
                 width="24"
                 height="24"
                 viewBox="0 0 48 48"
-                style={{
-                  position: "relative",
-                  top: "3px",
-                }}
               >
                 <path
                   fill="#FF3D00"
@@ -438,7 +459,9 @@ function MySlider() {
             </Grid>
             <Grid item xs="auto">
               You<span style={{ color: "#FF3D00" }}>Tube</span> &nbsp;
-              <span style={{ color: "#718096", fontWeight: 200 }}>Boost</span>
+              <span style={{ color: "#718096", fontWeight: 200 }}>
+                Campaign
+              </span>
             </Grid>
           </Grid>{" "}
         </Box>
@@ -446,10 +469,8 @@ function MySlider() {
       {promotion === "Google" && (
         <Box
           sx={{
-            fontSize: "20px",
+            ...campaignBoxHolder,
             color: "#718096",
-            px: 2,
-            py: 2,
           }}
         >
           <Grid
@@ -491,7 +512,9 @@ function MySlider() {
             </Grid>
             <Grid item xs="auto">
               Google &nbsp;
-              <span style={{ color: "#718096", fontWeight: 200 }}>Boost</span>
+              <span style={{ color: "#718096", fontWeight: 200 }}>
+                Campaign
+              </span>
             </Grid>
           </Grid>{" "}
         </Box>
@@ -499,10 +522,8 @@ function MySlider() {
       {promotion === "Facebook" && (
         <Box
           sx={{
-            fontSize: "20px",
+            ...campaignBoxHolder,
             color: "#316FF6",
-            px: 2,
-            py: 2,
           }}
         >
           <Grid
@@ -543,7 +564,9 @@ function MySlider() {
             </Grid>
             <Grid item xs="auto" sx={{ color: "#039be5" }}>
               Facebook&nbsp;
-              <span style={{ color: "#718096", fontWeight: 200 }}>Boost</span>
+              <span style={{ color: "#718096", fontWeight: 200 }}>
+                Campaign
+              </span>
             </Grid>
           </Grid>{" "}
         </Box>
@@ -555,6 +578,11 @@ function MySlider() {
         onChangeIndex={handleStepChange}
         enableMouseEvents
         disabled
+        sx={{
+          "& .MuiMobileStepper-dot": {
+            width: "16px",
+          },
+        }}
       >
         {forms.map((step, index) => (
           <div key={index}>
@@ -578,7 +606,15 @@ function MySlider() {
         ))}
       </AutoPlaySwipeableViews>
       <MobileStepper
-        sx={{ mt: 2, background: "none", boxShadow: "none" }}
+        sx={{
+          mt: 2,
+          background: "none",
+          boxShadow: "none",
+          "& .MuiMobileStepper-dot": {
+            width: "16px",
+            borderRadius: "8px",
+          },
+        }}
         steps={maxSteps}
         position="static"
         activeStep={activeStep}

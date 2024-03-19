@@ -5,15 +5,15 @@ import { useTheme } from "@mui/material/styles";
 const BoostItems = ({ promotion, setPromotion, setPromotion_objective }) => {
   const theme = useTheme();
   const buttonHolderStyle = {
-    py: 1.5,
-    fontSize: "24px",
+    py: 1,
+    fontSize: "20px",
     // color: "#316FF6",
     background: "#fff",
-    border: "1px solid #dddddd",
-    borderRadius: "8px",
+    // border: "1px solid #dddddd",
+    borderRadius: "4px",
     cursor: "pointer",
     transition: ".5s",
-    width: "auto",
+    width: "85%",
     margin: "auto",
     "&:hover": {
       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
@@ -24,8 +24,8 @@ const BoostItems = ({ promotion, setPromotion, setPromotion_objective }) => {
   const socialIconStyle = {
     position: "relative",
     top: "5px",
-    width: 32,
-    height: 32,
+    width: 24,
+    height: 24,
   };
   return (
     <Box sx={{ mt: 5 }}>
@@ -37,13 +37,14 @@ const BoostItems = ({ promotion, setPromotion, setPromotion_objective }) => {
         <Box
           sx={{
             ...buttonHolderStyle,
+
             boxShadow:
               promotion === "Facebook" &&
               "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
             border:
               promotion === "Facebook"
                 ? `1px solid ${theme.palette.primary.main}`
-                : "1px solid #dddddd",
+                : "",
           }}
         >
           <Grid
@@ -96,7 +97,7 @@ const BoostItems = ({ promotion, setPromotion, setPromotion_objective }) => {
             border:
               promotion === "Google"
                 ? `1px solid ${theme.palette.primary.main}`
-                : "1px solid #dddddd",
+                : "",
           }}
         >
           <Grid
@@ -158,7 +159,7 @@ const BoostItems = ({ promotion, setPromotion, setPromotion_objective }) => {
             border:
               promotion === "Youtube"
                 ? `1px solid ${theme.palette.primary.main}`
-                : "1px solid #dddddd",
+                : "",
           }}
         >
           <Grid

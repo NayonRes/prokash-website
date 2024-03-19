@@ -875,14 +875,19 @@ const Home = ({
                     textAlign: "center",
                   }}
                 >
-                  <Button
-                    variant="contained"
-                    disableElevation
-                    sx={{ ...buttonStyle, minWidth: "70%" }}
+                  <a
+                    href="https://calendly.com/prokash/dmc?fbclid=IwAR1ZErUF0a4OhYuOrvZ7bpHVx8EoMOijmNAFzDm9PgJ7w8zmxavfJQ_0oQU&month=2024-03"
+                    target="_blank"
                   >
-                    {" "}
-                    Book a Schedule
-                  </Button>
+                    <Button
+                      variant="contained"
+                      disableElevation
+                      sx={{ ...buttonStyle, minWidth: "70%" }}
+                    >
+                      {" "}
+                      Book a Schedule
+                    </Button>
+                  </a>
                 </Box>
               </div>
             </div>

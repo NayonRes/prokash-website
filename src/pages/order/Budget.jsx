@@ -79,10 +79,11 @@ const Budget = ({
         sx={{
           mt: 1,
           mb: 4,
-          // textAlign: "center",
-          fontSize: "20px",
+          textAlign: "center",
+          fontSize: "18px",
           fontWeight: 500,
           display: "block",
+          color: "#696969",
         }}
       >
         Select Your Budget
@@ -109,14 +110,14 @@ const Budget = ({
           <Typography
             variant="body2"
             // onClick={() => valuetext(`${1000}°C`)}
-            // sx={{ cursor: "pointer" }}
+            sx={{ color: "#696969", fontWeight: 500 }}
           >
             TK. 1000
           </Typography>
           <Typography
             variant="body2"
             // onClick={() => valuetext(`${10000}°C`)}
-            // sx={{ cursor: "pointer" }}
+            sx={{ color: "#696969", fontWeight: 500 }}
           >
             TK. 10000
           </Typography>
@@ -128,9 +129,9 @@ const Budget = ({
             borderRadius: "8px",
             px: 2,
             py: 3,
-            fontSize: "20px",
+            fontSize: "18px",
             fontWeight: 500,
-            color: theme.palette.text.light,
+            color: "#696969", 
             border: `1px solid ${theme.palette.text.light}`,
           }}
           label={`Tk. ${amount}`}
@@ -143,10 +144,11 @@ const Budget = ({
         sx={{
           mt: 1,
           mb: 3,
-          // textAlign: "center",
-          fontSize: "20px",
+          textAlign: "center",
+          fontSize: "18px",
           fontWeight: 500,
           display: "block",
+          color: "#696969",
         }}
       >
         Select Your Boosting Period
@@ -156,17 +158,17 @@ const Budget = ({
           {/* <InputLabel id="demo-simple-select-label">Age</InputLabel> */}
           <Select
             MenuProps={{ PaperProps: { sx: { maxHeight: 200 } } }}
-            sx={
-              {
-                // "& .MuiPopover-paper-MuiMenu-paper": {
-                //   maxHeight: "180px !important",
-                // },
-                //   "& .MuiOutlinedInput-input": {
-                //     // color: "#718096",
-                //     padding: "7px 14px",
-                //   },
-              }
-            }
+            sx={{
+              color: "#696969",
+            
+              // "& .MuiPopover-paper-MuiMenu-paper": {
+              //   maxHeight: "180px !important",
+              // },
+              //   "& .MuiOutlinedInput-input": {
+              //     // color: "#718096",
+              //     padding: "7px 14px",
+              //   },
+            }}
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={promotion_period}
@@ -174,7 +176,7 @@ const Budget = ({
             onChange={handleChange}
           >
             {[...Array(serviceTimeGenerate()).keys()].map((item, i) => (
-              <MenuItem value={i + 1}>
+              <MenuItem key={i} value={i + 1} sx={{   color: "#696969",}}>
                 {i + 1} {i < 1 ? "Day" : "Days"}
               </MenuItem>
             ))}

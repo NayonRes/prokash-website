@@ -50,8 +50,10 @@ const GoogleObjective = ({
         sx={{
           //   textAlign: "center",
 
-          fontSize: "20px",
+          fontSize: "18px",
           fontWeight: 500,
+          color: "#696969",
+          mb: 1,
         }}
       >
         Objective
@@ -65,6 +67,7 @@ const GoogleObjective = ({
           sx={{
             "& .MuiFormControlLabel-label": {
               fontSize: 14,
+              color: "#696969",
             },
             "& .MuiSvgIcon-root": {
               fontSize: 16,
@@ -145,7 +148,7 @@ const GoogleObjective = ({
       <Typography
         variant="medium"
         color="text.main"
-        sx={{ mt: 1, mb: 1, display: "block" }}
+        sx={{ mt: 1, mb: 1, display: "block", color: "#696969" }}
       >
         {obectives.find((res) => res.title === promotion_objective)?.msg}
       </Typography>
