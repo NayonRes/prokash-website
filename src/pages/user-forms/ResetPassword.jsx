@@ -99,6 +99,9 @@ const ResetPassword = () => {
           url: "/api/auth/change-password",
           method: "post",
           data: data,
+          headers: {
+            Authorization: `Bearer ${prokash_user.token}`,
+          },
         });
 
         if (response?.status > 199 && response?.status < 300) {
