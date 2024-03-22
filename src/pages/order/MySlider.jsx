@@ -69,11 +69,34 @@ function MySlider() {
   const [loading, setLoading] = React.useState(false);
   const [errors, setErrors] = useState({});
   const [open, setOpen] = React.useState(false);
+  const [activeStep, setActiveStep] = React.useState(0);
+
+  const handleNext = () => {
+    if (promotion.trim().length < 1 && activeStep === 0) {
+      handleSnakbarOpen("Please select a boost Item", "error");
+      return;
+    }
+    if (activeStep === 1 && disable2ndNextButton()) {
+      return;
+    }
+
+    if (gender.trim().length < 1 && activeStep === 3) {
+      handleSnakbarOpen("Please select gender", "error");
+      return;
+    }
+
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
   const forms = [
     <BoostItems
       promotion={promotion}
       setPromotion={setPromotion}
       setPromotion_objective={setPromotion_objective}
+      handleNext={handleNext}
     />,
     <Objective
       promotion={promotion}
@@ -131,7 +154,7 @@ function MySlider() {
   const handleClose = () => {
     setOpen(false);
   };
-  const [activeStep, setActiveStep] = React.useState(0);
+
   const maxSteps = forms.length;
   const handleSnakbarOpen = (msg, vrnt) => {
     let duration;
@@ -234,26 +257,7 @@ function MySlider() {
     return disabled;
   };
 
-  const handleNext = () => {
-    if (promotion.trim().length < 1 && activeStep === 0) {
-      handleSnakbarOpen("Please select a boost Item", "error");
-      return;
-    }
-    if (activeStep === 1 && disable2ndNextButton()) {
-      return;
-    }
-
-    if (gender.trim().length < 1 && activeStep === 3) {
-      handleSnakbarOpen("Please select gender", "error");
-      return;
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+ 
 
   const handleStepChange = (step) => {
     setActiveStep(step);

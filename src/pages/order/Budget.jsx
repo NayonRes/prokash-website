@@ -103,7 +103,7 @@ const Budget = ({
           shiftStep={30}
           step={500}
           marks
-          min={1}
+          min={1000}
           max={10000}
         />
         <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
@@ -131,7 +131,7 @@ const Budget = ({
             py: 3,
             fontSize: "18px",
             fontWeight: 500,
-            color: "#696969", 
+            color: "#696969",
             border: `1px solid ${theme.palette.text.light}`,
           }}
           label={`Tk. ${amount}`}
@@ -160,7 +160,7 @@ const Budget = ({
             MenuProps={{ PaperProps: { sx: { maxHeight: 200 } } }}
             sx={{
               color: "#696969",
-            
+
               // "& .MuiPopover-paper-MuiMenu-paper": {
               //   maxHeight: "180px !important",
               // },
@@ -176,7 +176,7 @@ const Budget = ({
             onChange={handleChange}
           >
             {[...Array(serviceTimeGenerate()).keys()].map((item, i) => (
-              <MenuItem key={i} value={i + 1} sx={{   color: "#696969",}}>
+              <MenuItem key={i} value={i + 1} sx={{ color: "#696969" }}>
                 {i + 1} {i < 1 ? "Day" : "Days"}
               </MenuItem>
             ))}

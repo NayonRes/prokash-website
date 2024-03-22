@@ -467,7 +467,7 @@ const Home = ({
                   <Grid container justifyContent="center">
                     <Grid item xs="auto">
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -489,7 +489,7 @@ const Home = ({
                         &nbsp;&nbsp; Free account signup
                       </p>
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -511,7 +511,7 @@ const Home = ({
                         &nbsp;&nbsp; Targeted advertising
                       </p>
                       <p
-                        className="text_body_xs_regular left mb12"
+                        className="text_body_xs_regular left mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -533,7 +533,7 @@ const Home = ({
                         &nbsp;&nbsp; Maximize results, boost sales
                       </p>
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -644,7 +644,7 @@ const Home = ({
                   <Grid container justifyContent="center">
                     <Grid item xs="auto">
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -666,7 +666,7 @@ const Home = ({
                         &nbsp;&nbsp; Digital Advertising
                       </p>
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -688,7 +688,7 @@ const Home = ({
                         &nbsp;&nbsp; E-commerce Solutions
                       </p>
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -710,7 +710,7 @@ const Home = ({
                         &nbsp;&nbsp; Social Media Management
                       </p>
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -732,7 +732,7 @@ const Home = ({
                         &nbsp;&nbsp; UI/UX & Design
                       </p>
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -754,7 +754,7 @@ const Home = ({
                         &nbsp;&nbsp; Video Marketing
                       </p>
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -776,7 +776,7 @@ const Home = ({
                         &nbsp;&nbsp; Influencer Partnerships
                       </p>
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -798,7 +798,7 @@ const Home = ({
                         &nbsp;&nbsp; SEO
                       </p>
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg
@@ -820,7 +820,7 @@ const Home = ({
                         &nbsp;&nbsp; Data Analytics
                       </p>
                       <p
-                        className="text_body_xs_regular left  mb12"
+                        className="text_body_xs_regular left  mb6"
                         style={{ fontWeight: 500 }}
                       >
                         <svg

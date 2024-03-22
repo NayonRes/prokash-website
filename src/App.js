@@ -183,7 +183,7 @@ function App(props) {
     };
 
     AOS.init({
-      offset: 300,
+      offset: 200,
       duration: 500,
       // anchorPlacement: "top-bottom",
     });

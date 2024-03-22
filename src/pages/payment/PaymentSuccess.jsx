@@ -211,14 +211,14 @@ const PaymentSuccess = () => {
                       {" "}
                       Payment Method: Bkash
                     </Typography>
-                    <Typography
+                    {/* <Typography
                       variant="base"
                       color="text.main"
                       sx={{ mb: 1, display: "block", fontWeight: 500 }}
                     >
                       {" "}
                       Payment ID: {paymentID}
-                    </Typography>
+                    </Typography> */}
                   </Box>
                   <Button
                     variant="contained"

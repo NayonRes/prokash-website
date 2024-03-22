@@ -419,7 +419,7 @@ const OrderList = () => {
                                 color: "#85D000",
                               }}
                             />
-                          ) : row?.status === "Pending" ? (
+                          ) : row?.status === "Active" ? (
                             <Chip
                               label="In Review"
                               variant="outlined"
@@ -433,11 +433,24 @@ const OrderList = () => {
                                 color: "#FFC300",
                               }}
                             />
+                          ) : row?.status === "Pending" ? (
+                            <Chip
+                              label="Pending for payment"
+                              variant="outlined"
+                              color="info"
+                              size="small"
+                              sx={{
+                                minWidth: "75px",
+                                textAlign: "center",
+                                border: "none",
+                                fontSize: "16px",
+                              }}
+                            />
                           ) : (
                             <Chip
                               label={row?.status}
                               variant="outlined"
-                              color="error"
+                              color="text"
                               size="small"
                               sx={{
                                 minWidth: "75px",

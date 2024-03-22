@@ -2,7 +2,12 @@ import React from "react";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-const BoostItems = ({ promotion, setPromotion, setPromotion_objective }) => {
+const BoostItems = ({
+  promotion,
+  setPromotion,
+  setPromotion_objective,
+  handleNext,
+}) => {
   const theme = useTheme();
   const buttonHolderStyle = {
     py: 1,
@@ -27,6 +32,7 @@ const BoostItems = ({ promotion, setPromotion, setPromotion_objective }) => {
     width: 24,
     height: 24,
   };
+
   return (
     <Box sx={{ mt: 5 }}>
       {" "}
