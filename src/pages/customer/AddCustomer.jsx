@@ -96,7 +96,7 @@ const AddCustomer = ({ handleSignUpClose }) => {
   };
 
   const handleVerify = () => {
-    console.log("111");
+    // console.log("111");
   };
   // Create an event handler so you can call the verification on button click event or form submit
   const handleReCaptchaVerify = useCallback(async () => {
@@ -162,7 +162,7 @@ const AddCustomer = ({ handleSignUpClose }) => {
             //   Authorization: `Bearer ${prokash_user.token}`,
             // },
           });
-          console.log("response", response);
+          // console.log("response", response);
           if (response?.status > 199 && response?.status < 300) {
             handleSnakbarOpen("Successful", "success");
             setName("");

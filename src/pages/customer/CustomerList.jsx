@@ -160,7 +160,7 @@ const CustomerList = () => {
     }
 
     let res = await getDataWithToken(url, prokash_user.token);
-    console.log("res", res);
+    // console.log("res", res);
     if (res?.status === 401 || res?.status === 403) {
       handleSnakbarOpen("Your session is out", "error");
       logout();

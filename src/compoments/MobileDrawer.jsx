@@ -45,8 +45,8 @@ const MobileDrawer = ({
     setState({ ...state, [anchor]: open });
   };
   const handleChange = (id, route) => {
-    console.log("id", id);
-    console.log("openCollapse", openCollapse);
+    // console.log("id", id);
+    // console.log("openCollapse", openCollapse);
     if (id === openCollapse) {
       setOpenCollapse("");
     } else {

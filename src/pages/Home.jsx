@@ -33,8 +33,7 @@ const Home = ({
   const [expanded, setExpanded] = useState("");
   const { prokash_user, logout, login } = useContext(AuthContext);
   const [visible, setVisible] = useState(false);
-  const [searchParams] = useSearchParams();
-  console.log(searchParams.get("route")); // 'name'
+  const [searchParams] = useSearchParams(); 
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -63,7 +62,7 @@ const Home = ({
   };
   const scrollToTop = () => {
     const scrollableDiv = document.getElementById("message-form");
-    console.log("scrollableDiv", scrollableDiv);
+   
     scrollableDiv.scrollIntoView({
       top: 0,
       behavior: "smooth",
@@ -76,7 +75,7 @@ const Home = ({
   };
   const clickStartNowButton = () => {
     let myButton = document.getElementById("start-now-button").click();
-    console.log("myButton", myButton);
+   
   };
   const styles = (theme) => ({
     root: {

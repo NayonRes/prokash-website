@@ -48,7 +48,7 @@ const Header = ({
   const navigate = useNavigate();
   const theme = useTheme();
   const { prokash_user, logout, login } = useContext(AuthContext);
-  console.log("location", location.pathname);
+  // console.log("location", location.pathname);
   const [serveOpen, setServeOpen] = useState(false);
   // const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);

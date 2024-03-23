@@ -46,7 +46,7 @@ const Location = ({
     }
   };
   const handleChange = (item, i) => {
-    console.log("event.target.checked", item);
+    // console.log("event.target.checked", item);
     // setDivisions(event.target.checked);
     setLocation("Divisions");
     if (divisions.includes(item)) {
@@ -55,7 +55,7 @@ const Location = ({
     } else {
       setDivisions([...divisions, item]);
     }
-    console.log("divisions", divisions);
+    // console.log("divisions", divisions);
   };
   return (
     <div>

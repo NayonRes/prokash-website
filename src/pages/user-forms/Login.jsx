@@ -109,7 +109,7 @@ const Login = ({ handleClose }) => {
           method: "post",
           data: data,
         });
-        console.log("res -----------------", res.data);
+        // console.log("res -----------------", res.data);
 
         if (res?.status > 199 && res?.status < 300) {
           handleSnakbarOpen("Successfull", "success");

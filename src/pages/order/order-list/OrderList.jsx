@@ -203,7 +203,7 @@ const OrderList = () => {
     // }
     let url = `api/customer/order?page=${newPageNO}`;
     let res = await getDataWithToken(url, prokash_user.token);
-    console.log("res", res);
+    // console.log("res", res);
     if (res?.status === 401 || res?.status === 403) {
       logout();
       handleSnakbarOpen("Your session is out", "error");

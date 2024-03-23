@@ -403,7 +403,10 @@
     /* height: calc(100vh - 65px); */
     height: 700px;
   }
-
+  .left_image_style {
+    width: 50%;
+    margin: auto;
+  }
   .card4 {
     background-size: 260px;
   }
@@ -462,6 +465,10 @@
   }
 }
 @media screen and (min-width: 601px) and (max-width: 900px) {
+  .left_image_style {
+    width: 50%;
+    margin: auto;
+  }
   .card4 {
     background-size: 200px;
   }
@@ -512,6 +519,11 @@
   } */
 }
 @media screen and (max-width: 600px) {
+  .left_image_style {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 24px;
+  }
   .form_logo_style {
     display: block;
     margin: auto;
@@ -521,7 +533,7 @@
     width: 55%;
   }
   .card_image {
-    width: 50%;
+    width: 65%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 24px;

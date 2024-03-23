@@ -105,7 +105,7 @@ const PaymentSuccess = () => {
     event.preventDefault();
   };
   useEffect(() => {
-    console.log("status", status);
+    // console.log("status", status);
     if (status === "success") {
       onSubmit();
     }

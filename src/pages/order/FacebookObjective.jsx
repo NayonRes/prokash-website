@@ -69,7 +69,7 @@ const FacebookObjective = ({
     return false;
   };
   const handleMessageMedia = (item, i) => {
-    console.log("event.target.checked", item);
+    // console.log("event.target.checked", item);
 
     if (messageMedia.includes(item)) {
       let newDivisions = messageMedia.filter((res) => res !== item);
@@ -77,10 +77,10 @@ const FacebookObjective = ({
     } else {
       setMessageMedia([...messageMedia, item]);
     }
-    console.log("messageMedia", messageMedia);
+    // console.log("messageMedia", messageMedia);
   };
   const handleLeadItems = (item, i) => {
-    console.log("event.target.checked", item);
+    // console.log("event.target.checked", item);
 
     if (leadItems.includes(item)) {
       let newDivisions = leadItems.filter((res) => res !== item);
@@ -88,7 +88,7 @@ const FacebookObjective = ({
     } else {
       setLeadItems([...leadItems, item]);
     }
-    console.log("leadItems", leadItems);
+    // console.log("leadItems", leadItems);
   };
   return (
     <div>

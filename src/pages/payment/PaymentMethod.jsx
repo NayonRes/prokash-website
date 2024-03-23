@@ -87,7 +87,7 @@ const PaymentMethod = () => {
   };
 
   const onSubmit = async (e) => {
-    console.log("onSubmit");
+    // console.log("onSubmit");
     e.preventDefault();
     setErrors({});
     let err = false;

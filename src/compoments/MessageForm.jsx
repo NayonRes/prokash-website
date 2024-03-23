@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 
 const MessageForm = () => {
   const location = useLocation();
-  console.log("location", location.pathname);
+  // console.log("location", location.pathname);
   const hideMessageBox = () => {
     const hideRouteList = ["/use-cases", "/terms-and-conditions"];
     if (hideRouteList.includes(location.pathname)) {
