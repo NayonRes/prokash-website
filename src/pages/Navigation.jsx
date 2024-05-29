@@ -12,6 +12,7 @@ import Payment from "./payment/Payment";
 import PaymentMethod from "./payment/PaymentMethod";
 import OrderList from "./order/order-list/OrderList";
 import TermsOfService from "./terms-of-service/TermsOfService";
+import Service from "../Service";
 
 function PrivateRoute({ children }) {
   const { prokash_user, logout, login } = useContext(AuthContext);
@@ -84,6 +85,7 @@ const Navigation = ({
           }
         />
         <Route path="terms-of-service" element={<TermsOfService />} />
+        <Route path="service" element={<Service />} />
       </Routes>
     </div>
   );
