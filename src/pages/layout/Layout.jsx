@@ -13,7 +13,6 @@ const Layout = () => {
   const [signUpOpen, setSignUpOpen] = useState(false);
   const [open, setOpen] = useState(false);
 
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -27,7 +26,7 @@ const Layout = () => {
 
   const handleClickSignUpOpen = () => {
     if (prokash_user.token) {
-      return navigate("/create-campaign");
+      return navigate("/services");
     }
     setSignUpOpen(true);
   };

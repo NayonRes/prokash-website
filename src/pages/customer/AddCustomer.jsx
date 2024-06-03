@@ -172,7 +172,7 @@ const AddCustomer = ({ handleSignUpClose }) => {
             setMobileNo("");
             login(response?.data.data);
             handleSignUpClose();
-            navigate("/create-campaign");
+            navigate("/services");
             setTermsErrorMessage("");
           }
         } catch (error) {

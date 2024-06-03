@@ -152,7 +152,7 @@ const Header = ({
                     disableElevation
                     variant="contained"
                     component={Link}
-                    to="/create-campaign"
+                    to="/services"
                     sx={{
                       ...startNowButtonStyle,
                     }}
@@ -162,7 +162,7 @@ const Header = ({
 
                     startIcon={<LibraryAddCheckOutlinedIcon />}
                   >
-                    Create Campaign
+                    Our Services
                   </Button>
                   &nbsp;
                   <IconButton

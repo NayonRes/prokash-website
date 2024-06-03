@@ -1,7 +1,20 @@
-import { Button, Container, Grid } from "@mui/material";
 import React, { useEffect } from "react";
+import { Button, Container, Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Service = () => {
+  const navigate = useNavigate();
+
+  const openWhatsApp = () => {
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=8801644470793&text=মার্কেটিং সেবা সম্পর্কে বিস্তারিত জানতে চাই!`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+  const openAppointment = () => {
+    const appointmentUrl = `https://calendly.com/prokash/dmc`;
+
+    window.open(appointmentUrl, "_blank");
+  };
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -23,6 +36,7 @@ const Service = () => {
             className="service_card "
             data-aos="zoom-in"
             data-aos-delay="200"
+            onClick={() => navigate("/create-campaign")}
           >
             <svg
               width="51"
@@ -84,6 +98,8 @@ const Service = () => {
           </div>
           <div
             className="service_card "
+            role="link"
+            onClick={openWhatsApp}
             data-aos="zoom-in"
             data-aos-delay="200"
           >
@@ -120,6 +136,8 @@ const Service = () => {
           </div>
           <div
             className="service_card "
+            role="link"
+            onClick={openWhatsApp}
             data-aos="zoom-in"
             data-aos-delay="200"
           >
@@ -219,6 +237,8 @@ const Service = () => {
           </div>
           <div
             className="service_card "
+            role="link"
+            onClick={openWhatsApp}
             data-aos="zoom-in"
             data-aos-delay="200"
           >
@@ -266,6 +286,8 @@ const Service = () => {
           </div>
           <div
             className="service_card "
+            role="link"
+            onClick={openWhatsApp}
             data-aos="zoom-in"
             data-aos-delay="200"
           >
@@ -326,6 +348,8 @@ const Service = () => {
           </div>
           <div
             className="service_card "
+            role="link"
+            onClick={openWhatsApp}
             data-aos="zoom-in"
             data-aos-delay="200"
           >
@@ -373,6 +397,8 @@ const Service = () => {
           </div>
           <div
             className="service_card "
+            role="link"
+            onClick={openWhatsApp}
             data-aos="zoom-in"
             data-aos-delay="200"
           >
@@ -413,6 +439,8 @@ const Service = () => {
           </div>
           <div
             className="service_card "
+            role="link"
+            onClick={openWhatsApp}
             data-aos="zoom-in"
             data-aos-delay="200"
           >
@@ -473,6 +501,8 @@ const Service = () => {
           </div>
           <div
             className="service_card "
+            role="link"
+            onClick={openWhatsApp}
             data-aos="zoom-in"
             data-aos-delay="200"
           >
@@ -573,8 +603,10 @@ const Service = () => {
             <Button
               variant="contained"
               size="small"
+              role="link"
               disableElevation
               sx={{ background: "#391291", fontSize: "11px", px: 2 }}
+              onClick={openAppointment}
             >
               Book Appointment
             </Button>

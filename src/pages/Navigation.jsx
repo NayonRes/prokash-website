@@ -85,7 +85,15 @@ const Navigation = ({
           }
         />
         <Route path="terms-of-service" element={<TermsOfService />} />
-        <Route path="service" element={<Service />} />
+
+        <Route
+          path="services"
+          element={
+            <PrivateRoute>
+              <Service />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );
