@@ -14,6 +14,7 @@ import ForgotPasswordResetPassword from "./ForgotPasswordResetPassword";
 import OtpInput from "react-otp-input";
 
 import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
+import { Box } from "@mui/material";
 // const useStyles = makeStyles((theme) => ({
 
 //   newInputStyle: {
@@ -114,14 +115,21 @@ const ForgotPasswordOTPVarify = ({ email, reference, setReference }) => {
           alignItems="center"
           style={{ height: "100vh" }}
         >
-          <div
-            style={{
+          <Box
+            sx={{
               padding: "50px",
               background: "#fff",
               borderRadius: "10px",
               textAlign: "center",
               maxWidth: "400px",
               border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
+              // {
+              //   xs: "0px solid #f4f4f4",
+              //   sm: "1px solid #f4f4f4",
+              //   md: "1px solid #f4f4f4",
+              //   lg: "1px solid #f4f4f4",
+              //   xl: "1px solid #f4f4f4",
+              // },
               // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
             }}
           >
@@ -281,7 +289,7 @@ const ForgotPasswordOTPVarify = ({ email, reference, setReference }) => {
                 </Grid>
               </React.Fragment>
             )}
-          </div>
+          </Box>
         </Grid>
       ) : (
         <ForgotPasswordResetPassword

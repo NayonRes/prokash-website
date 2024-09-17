@@ -105,93 +105,94 @@ const ForgotPassword = () => {
           alignItems="center"
           style={{ height: "Calc(100vh - 96px)" }}
         >
-          <Box
-            onSubmit={onSubmit}
-            sx={{
-              padding: "50px",
-              background: "#fff",
-              borderRadius: "10px",
-              textAlign: "center",
-              maxWidth: "400px",
-              border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
-              // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-            }}
-          >
-            <img
-              src="/logo.svg"
-              alt=""
-              // style={{ display: "block", margin: "auto", maxWidth: "155px" }}
-              className="form_logo_style"
-            />
-            {/* <br /> */}
-            <Typography
-              variant="h5"
-              component="div"
+          <form onSubmit={onSubmit}>
+            <Box
               sx={{
-                marginTop: "10px",
-                fontSize: { xs: "1.2rem", sm: "1.5rem" },
+                padding: "50px",
+                background: "#fff",
+                borderRadius: "10px",
+                textAlign: "center",
+                maxWidth: "400px",
+                border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
+                // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
               }}
             >
-              Verify your identity.
-            </Typography>
-            <Typography
-              sx={{
-                marginBottom: "30px",
-                fontSize: { xs: ".8rem", sm: "1rem" },
-                color: "#616161",
-              }}
-            >
-              Please enter your email address.
-            </Typography>
-            <TextField
-              autoFocus
-              id="email"
-              placeholder="Email"
-              fullWidth
-              size="small"
-              className="demo_form_input_style"
-              style={{ marginBottom: "30px" }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <MailOutlineRoundedIcon />
-                  </InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+              <img
+                src="/logo.svg"
+                alt=""
+                // style={{ display: "block", margin: "auto", maxWidth: "155px" }}
+                className="form_logo_style"
+              />
+              {/* <br /> */}
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{
+                  marginTop: "10px",
+                  fontSize: { xs: "1.2rem", sm: "1.5rem" },
+                }}
+              >
+                Verify your identity.
+              </Typography>
+              <Typography
+                sx={{
+                  marginBottom: "30px",
+                  fontSize: { xs: ".8rem", sm: "1rem" },
+                  color: "#616161",
+                }}
+              >
+                Please enter your email address.
+              </Typography>
+              <TextField
+                autoFocus
+                id="email"
+                placeholder="Email"
+                fullWidth
+                size="small"
+                className="demo_form_input_style"
+                style={{ marginBottom: "30px" }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <MailOutlineRoundedIcon />
+                    </InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-            <Button
-              variant="contained"
-              disableElevation
-              fullWidth
-              style={{ marginBottom: "30px", minHeight: "48px" }}
-              disabled={loading}
-              className="contained_buttton"
-              // onClick={onSubmit}
-              type="submit"
-            >
-              {loading === false && "Continue"}
-              <PulseLoader
-                color={"#834BFF"}
-                loading={loading}
-                size={10}
-                speedMultiplier={0.5}
-              />{" "}
-            </Button>
-            <Button
-              variant="outlined"
-              fullWidth
-              color="primary"
-              style={{ border: "none" }}
-              onClick={() => navigate("/")}
-              startIcon={<ArrowBackIcon />}
-            >
-              Back to Login
-            </Button>
-          </Box>
+              <Button
+                variant="contained"
+                disableElevation
+                fullWidth
+                style={{ marginBottom: "30px", minHeight: "48px" }}
+                disabled={loading}
+                className="contained_buttton"
+                // onClick={onSubmit}
+                type="submit"
+              >
+                {loading === false && "Continue"}
+                <PulseLoader
+                  color={"#834BFF"}
+                  loading={loading}
+                  size={10}
+                  speedMultiplier={0.5}
+                />{" "}
+              </Button>
+              <Button
+                variant="outlined"
+                fullWidth
+                color="primary"
+                style={{ border: "none" }}
+                onClick={() => navigate("/")}
+                startIcon={<ArrowBackIcon />}
+              >
+                Back to Login
+              </Button>
+            </Box>
+          </form>
         </Grid>
       )}
 

@@ -131,7 +131,10 @@ const ForgotPasswordResetPassword = ({ email, otp, reference }) => {
         style={{ height: "80vh" }}
       >
         <form
-          style={{
+         
+          onSubmit={onSubmit}
+        >
+          <Box  sx={{
             padding: "50px",
             background: "#fff",
             borderRadius: "10px",
@@ -139,9 +142,8 @@ const ForgotPasswordResetPassword = ({ email, otp, reference }) => {
             width: "400px",
             border: { xs: "0px solid #f4f4f4", sm: "1px solid #f4f4f4" },
             // boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-          }}
-          onSubmit={onSubmit}
-        >
+          }}>
+
           <img
             src="/logo.svg"
             alt=""
@@ -256,6 +258,7 @@ const ForgotPasswordResetPassword = ({ email, otp, reference }) => {
               speedMultiplier={0.5}
             />{" "}
           </Button>
+          </Box>
         </form>
       </Grid>
     </div>
